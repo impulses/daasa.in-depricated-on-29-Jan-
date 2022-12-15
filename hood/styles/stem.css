@@ -1,0 +1,43 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* stem.css | Few basic styles | 12/12/2022 | Sree */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+@import url("root.css");
+
+:root {
+/* Assorted */
+  --hNavbar:  71px;
+  --wContent: 960px;
+  --hBtn:     34px;
+  --wBtnIcon: 40px;
+  --hBtnIcon: 40px;
+  
+/* Lines */
+  --Ln:     rgba(0, 0, 0, 0.24);
+  --Line: 1.0px solid var(--Ln);
+  --LineH: 0.5px solid var(--Ln);
+}
+
+/* Hide Scrollbar */
+.NoScrollbar::-webkit-scrollbar { display: none; } /* Chrome, Safari and Opera */
+.NoScrollbar { -ms-overflow-style: none; scrollbar-width: none; } /* IE, Edge and Firefox */
+
+/* - - - - - - - - - - - - - - - - */
+.FlexC { display: flex; flex-direction: column; }
+.FlexR { display: flex; flex-direction: row; }
+
+.Grid   { display: grid; }
+
+.Cntr_H { align-items: center; }
+.Cntr_V { justify-content: center; }
+
+.Ell    { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+.fntEng { font-family: 'Nunito Sans', 'Roboto', sans-serif;}
+.fntSaK { font-family: 'Noto Sans Kannada', sans-serif; }
+.fntSeK { font-family: 'Noto Serif Kannada', serif; }
+
+.Brdr { border: 1px solid var(--Border); }
+.Rad4 { border-radius: 4px; }
+.Rad8 { border-radius: 8px; }
+/* - - - - - - - - - - - - - - - - */

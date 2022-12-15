@@ -1,0 +1,102 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* twigs.css | Targeted styles | 12/12/2022 | Sree */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+@import url("stem.css");
+
+.active{
+    background: var(--Blue);
+}
+/* - - - - - - - - - - - - - - - - */
+
+#Navbar {
+    display: grid;
+    grid: var(--hNavbar) / repeat( auto-fit, minmax(160px, 1fr) );
+    gap: 16px;
+    padding: 0 16px;
+    top: 0;
+    z-index: 100;
+    position: sticky;
+    position: -webkit-sticky;
+    /* background-color: rgba(255, 255, 255, .9); */
+    box-sizing: border-box;
+    /* border-bottom: var(--Line);
+    --Blur: 8px;
+    backdrop-filter: blur(var(--Blur));
+    -webkit-backdrop-filter: blur(var(--Blur)); */
+}
+
+#idNav_L, #idNav_R {
+  display: grid;
+  align-items: center;
+  min-height: 64px;
+}
+
+#idNav_L {
+    /* grid: auto / fit-content(40px) auto; /* Uncomment when Icon is added * / */
+    grid: auto / max-content auto;
+    gap: 8px;
+    padding: 8px 0;
+}
+#Title, #Subtitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+  
+  #idNav_R {
+    grid: auto / auto auto;
+    /* justify-self: right; */
+    justify-content: right;
+background: aquamarine;
+}
+/* - - - - - - - - - - - - - - - - */
+
+#Wrapper {
+  display: grid;
+  min-height: calc(100vh - var(--hNavbar));
+  max-width: var(--wContent);
+  margin-left:  auto;
+  margin-right: auto;
+  overflow-y: scroll;
+}
+
+#Wrapper.Prelude {
+  margin-top:    32px;
+  margin-bottom: 32px;
+  background: transparent;
+}
+
+.Prelude > div {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+}
+/* - - - - - - - - - - - - - - - - */
+
+:root {
+  /*Default theme */
+  color: var(--Col);
+  background: var(--BGCol);
+}
+:root nav {
+  background: var(--BGCol);
+  border-bottom: var(--Line);
+}
+/* - - - - - - - -  */
+
+:root.Light {
+  --BGCol: var(--W);
+  --Col: var(--Txt);
+}
+/* - - - - - - - -  */
+
+:root.Dark {
+  --BGCol: #18191a;
+  --Col: #CCC;
+}
+:root.Dark nav {
+  background: #242526;
+  border-bottom: 1px solid #383939;
+}
+/* - - - - - - - -  */

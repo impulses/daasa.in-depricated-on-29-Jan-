@@ -11,12 +11,32 @@
   --hBtn:     34px;
   --wBtnIcon: 40px;
   --hBtnIcon: 40px;
-  
+
+/* Margins & Paddings */
+--px08: 08px;
+--px16: 16px;
+--px18: 18px;
+--px20: 20px;
+--px22: 22px;
+--px24: 24px;
+--px32: 32px;
+--px40: 40px;
+
 /* Lines */
   --Ln:     rgba(0, 0, 0, 0.24);
   --Line: 1.0px solid var(--Ln);
   --LineH: 0.5px solid var(--Ln);
 }
+
+h1 { font-size: 22px; }
+h2 { font-size: 24px; }
+h3 { font-size: 18px; }
+h4 { font-size: 16px; }
+p  { font-size: 16px Serif; }
+.Thn { font-weight: 200; }
+.Reg { font-weight: 300; }
+.Med { font-weight: 500; }
+.Bld { font-weight: 600; }
 
 /* Hide Scrollbar */
 .NoScrollbar::-webkit-scrollbar { display: none; } /* Chrome, Safari and Opera */
@@ -25,19 +45,67 @@
 /* - - - - - - - - - - - - - - - - */
 .FlexC { display: flex; flex-direction: column; }
 .FlexR { display: flex; flex-direction: row; }
-
-.Grid   { display: grid; }
+.Grid  { display: grid; }
+.GridC { display: grid; align-items: center; }
 
 .Cntr_H { align-items: center; }
 .Cntr_V { justify-content: center; }
+/* - - - - - - - - - - - - - - - - */
 
-.Ell    { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.p08   { padding: var(--px08); }
+.pTB08 { padding-top: var(--px08); padding-bottom: var(--px08); }
+.p16   { padding: var(--px16); }
+.pTB16 { padding-top: var(--px16); padding-bottom: var(--px16); }
+.pLR16 { padding-left: var(--px16); padding-right: var(--px16); }
+.p24   { padding: var(--px24); }
+.pTB24 { padding-top: var(--px24); padding-bottom: var(--px24); }
+.pLR24 { padding-left: var(--px24); padding-right: var(--px24); }
+.p32   { padding: var(--px32); }
+.pTB32 { padding-top: var(--px32); padding-bottom: var(--px32); }
+.pLR32 { padding-left: var(--px32); padding-right: var(--px32); }
+.p40   { padding: var(--px40); }
+.pTB40 { padding-top: var(--px40); padding-bottom: var(--px40); }
+.pLR40 { padding-left: var(--px40); padding-right: var(--px40); }
 
-.fntEng { font-family: 'Nunito Sans', 'Roboto', sans-serif;}
-.fntSaK { font-family: 'Noto Sans Kannada', sans-serif; }
-.fntSeK { font-family: 'Noto Serif Kannada', serif; }
+.m08   { margin: var(--px08); }
+.mTB08 { margin-top: var(--px08); margin-bottom: var(--px08); }
+.m16   { margin: var(--px16); }
+.mTB16 { margin-top: var(--px16); margin-bottom: var(--px16); }
+.mLR16 { margin-left: var(--px16); margin-right: var(--px16); }
+.m24   { margin: var(--px24); }
+.mTB24 { margin-top: var(--px32); margin-bottom: var(--px32); }
+.mLR24 { margin-left: var(--px32); margin-right: var(--px32); }
+.m32   { margin: var(--px32); }
+.mTB32 { margin-top: var(--px32); margin-bottom: var(--px32); }
+.mLR32 { margin-left: var(--px32); margin-right: var(--px32); }
+.m40   { margin: var(--px40); }
+.mTB40 { margin-top: var(--px40); margin-bottom: var(--px40); }
+.mLR40 { margin-left: var(--px40); margin-right: var(--px40); }
+/* - - - - - - - - - - - - - - - - */
 
 .Brdr { border: 1px solid var(--Border); }
 .Rad4 { border-radius: 4px; }
 .Rad8 { border-radius: 8px; }
+/* - - - - - - - - - - - - - - - - */
+
+.Ell    { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+/* - - - - - - - - - - - - - - - - */
+
+.fntEng  { font-family: 'Noto Sans', 'Roboto', sans-serif; }
+.fntKaSa { font-family: 'Noto Sans', 'Noto Sans Kannada', sans-serif; }
+.fntKaSe { font-family: 'Noto Serif Kannada', serif; }
+
+.txt16 { font-size: var(--px16); }
+.txt18 { font-size: var(--px18); }
+.txt20 { font-size: var(--px20); }
+.txt22 { font-size: var(--px22); }
+.txt24 { font-size: var(--px24); }
+
+.clrViolet, :is(.clrViolet) :is(p, b, i)  { color: var(--Violet); }
+.clrOrange, :is(.clrOrange) :is(p, b, i)  { color: var(--Orange); }
+
+/* div:is(.cool, .fun) {
+  color: red;
+} */
+
 /* - - - - - - - - - - - - - - - - */

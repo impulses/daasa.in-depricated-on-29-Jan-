@@ -2,7 +2,8 @@
 /* navbar.css | Targets Navbar | 22/12/2022 | Sree */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-@import url("stem.css");
+/* @import url("stem.css"); */
+@import url("twigs.css");
 
 /* - - - - - - - - - - - - - - - - */
 
@@ -40,7 +41,6 @@
 }
 
 #NavIco_Wrap:is(:hover, :focus, :active) { cursor: pointer; background-color: var(--Hover); }
-/* #NavIco_Wrap:is(:hover, :focus, :active) #NavIcon { background-color: var(--Text); } */
 
 #NavIcon {
   height: 18px;
@@ -80,17 +80,24 @@
   font: var(--fEn);
   font-size: 18px;
   color: var(--Txt);
-  background: #FFF;
+  /* background: #FFF; */
+  background: var(--Hover);
   border-radius: 3px;
-  border: 1px solid var(--Border_D);
-  cursor: pointer;
+  /* border: 1px solid var(--Border_D); */
+  border: none;
+  /* cursor: pointer; */
 }
 
-.btnLang:is( :hover, :focus, :active ) {
-  /* color: var(--Txt); */
+.btnLang:not(.Slctd):hover {
+  cursor: pointer;
   color: var(--Blue_D);
-  /* background: var(--Hover); */
   background: var(--Blue_L);
   border: 1px solid var(--Blue_D);
+}
+
+.Slctd {
+  color: #FFF;
+  border: none;
+  background: var(--Txt_H);
 }
 /* - - - - - - - - - - - - - - - - */

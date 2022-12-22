@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
 
 window.fnAddLangBtns = function fnAddLangBtns() {
 
-  const btnIDs = [ 'En','Ka','Ta','Te' ];
+  const btnIDs = [ 'langEn','langKa','langTa','langTe' ];
   const btnTitles = [ 'E', 'ಕ', 'த', 'తె' ];
   const btnClr = [ 'clrEn', 'clrKa', 'clrTa', 'clrTe' ];
   // `${strPageTitle}`
@@ -21,23 +21,21 @@ window.fnAddLangBtns = function fnAddLangBtns() {
 
   btnIDs.forEach( X => {
     var btn = document.createElement("button");
-    btn.id = 'lang-' + X ;
-    // btn.id = X.padStart(7, 'lang-');
+    // btn.id = X.padStart(7, 'lang-'); /* Pads; e.g. 8 with '08' */
+    btn.id = X ;
 
     btn.className = `btnLang GridC ${btnClr[i]}`;
-    // btn.className = `'btnLang GridC'`;
-    // btn.innerHTML = X ;
+    // btn.setAttribute('onclick', 'fnActive(this);');
+
     btn.innerHTML = btnTitles[i++] ;
     btn.addEventListener ( "click", function() {
-      alert(`Change lang to ${X}` )
+    // btn.addEventListener ( "blur", function() {
+      fnActive(this);
+      console.log(`Change lang to ${X}` );
     });
+    (i===2) ? btn.classList.add('Slctd') : null;
     target.appendChild(btn);
   });
-
-  // 2. Append somewhere
-  console.log( target )
-
-  // 3. Add event handler
 }
 /* - - - - - - - - */
 
@@ -46,7 +44,6 @@ window.fnFeedHome = function fnFeedHome() {
   // let html = `<h2>${header}</h2><ul>`;
   // document.getElementById("demo").innerHTML = html;
 
-
-  document.getElementsByTagName('title')[0].innerHTML = "Hello World!";
+  document.getElementsByTagName('title')[0].innerHTML = "TBD";
 }
 /* - - - - - - - - */

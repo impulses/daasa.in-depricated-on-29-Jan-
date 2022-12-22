@@ -20,3 +20,10 @@ const fnDimensions = (Ele) => {
   } );
 }
 /* - - - - - - - - */
+
+/* fnActive | Looks for elements with the same className siblings, marks 'this' element as active. */
+window.fnActive = function fnActive(Element) {
+  let Class = Element.className.split(" ")[0]; // Get the first className
+  Class ? document.querySelectorAll(`.${Class}`).forEach((Item) => { Item.classList.toggle('Slctd', Element === Item) }) : null;
+}
+/* - - - - - - - - */

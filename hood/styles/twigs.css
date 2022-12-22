@@ -5,11 +5,6 @@
 @import url("stem.css");
 /* - - - - - - - - - - - - - - - - */
 
-.active{
-  background: var(--Blue);
-}
-/* - - - - - - - - - - - - - - - - */
-
 /* - - - - COLOR THEMES - - - - */
 :root { /* Default theme */
   color: var(--Col);
@@ -36,4 +31,9 @@
   background: var(--Txt);
   border-bottom: 1px solid #383939;
 }
+/* - - - - - - - - - - - - - - - - */
+
+/* .active {
+  background: var(--Blue);
+} */
 /* - - - - - - - - - - - - - - - - */

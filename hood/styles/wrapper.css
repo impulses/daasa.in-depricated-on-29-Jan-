@@ -1,0 +1,76 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* xWrapper.css | Targets Wrapper | 12/12/2022 | Sree */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+@import url("stem.css");
+/* - - - - - - - - - - - - - - - - */
+
+#Wrapper {
+  display: grid;
+  min-height: calc(100vh - var(--hNavbar));
+  max-width: var(--wContent);
+  margin-left:  auto;
+  margin-right: auto;
+  overflow-y: scroll;
+}
+
+#prmblKa {
+  font-family: 'Noto Serif Kannada';
+  font-weight: 400;
+}
+#prmblKa > *, #prmblEn > * { margin-bottom: 24px; }
+#prmblEn div > p { margin-bottom: var(--px16); }
+
+.Shloka {
+  display: grid;
+  /* grid: 1fr / 1fr; */
+  align-self: center;
+  max-width: fit-content;
+  padding: 16px 24px;
+  margin-bottom: 32px;
+  font-size: 18px;
+  color: var(--Txt);
+  color: var(--Violet);
+  border-top:    1px solid var(--Gray_L);
+  border-bottom: 1px solid var(--Gray_L);
+}
+
+#Panel {
+  display: grid;
+  width: 100%;
+  /* grid-template-columns: repeat( auto-fit, minmax(256px, 1fr) ); */
+  grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );
+  /* https://gridbyexample.com */
+  gap: 24px;
+}
+
+.LangCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /* text-align: end; */
+  padding: 16px 24px;
+  color: var(--Txt_Hdng) !important;
+  background: var(--W);
+  border-radius: 8px;
+  border: 1px solid var(--Border);
+}
+.LangCard:hover {
+  /* border: 1px solid var(--Blue);  */
+  box-shadow: 
+    0 1px 2px 0 rgb(60 64 68 / 24%),
+    0 1px 3px 1px rgb(60 64 68 / 16%)
+}
+/* .LangCard:hover > div:first-child { color:var(--Blue) } */
+.LangCard > div:first-child {
+  font-size: 16px;
+  color: var(--Blue);
+  margin-bottom: 8px;
+}
+.LangCard > div:nth-child(2) {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: var(--Gray);
+}
+/* - - - - - - - - - - - - - - - - */

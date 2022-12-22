@@ -2,80 +2,41 @@
 
 <!DOCTYPE html>
 <html lang="en-IN">
+  <script type="module" src="hood/script/index.js"></script>
   <script type="module" src="/hood/script/index.js"></script>
+  <script type="module" src="/hood/script/feeds.js"></script>
 
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="ದಾಸರ ಪದ, ಸುಳಾದಿ, ದೇವರನಾಮ ಮತ್ತು ಕೀರ್ತನೆಗಳ ಸಂಗ್ರಹ | Compiled Haridasa Sahitya" />
-    <!-- <title>ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ | Haridāsa Literature Compiled</title> -->
-    <title>ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ | ಹರಿದಾಸ ಸಾಹಿತ್ಯಗಳ ಸಮೂಹ ನಿರ್ವಹಿತ ಸಂಗ್ರಹತಾಣ</title>
-    <!-- <script type="module" src="/hood/script/index.js"></script> -->
-    <!-- <link rel="stylesheet" href="/hood/styles/twigs.css" /> -->
+    
+    <!-- <title>ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ | ಹರಿದಾಸ ಸಾಹಿತ್ಯಗಳ ಸಮೂಹ ನಿರ್ವಹಿತ ಸಂಗ್ರಹತಾಣ</title> -->
+    <title>`${strPageTitle}`</title>
+    <!-- <link rel="stylesheet" href="/hood/styles/index.css" /> -->
+    <link rel="stylesheet" href="/hood/styles/index.css" />
   </head>
 
   <body id="Home">
     <nav id="Navbar">
       <div id="idNav_L">
-        <div id="NavIco_Wrap"> <div id="NavIcon"></div> </div>
+        <!-- <div id="NavIco_Wrap"> <div id="NavIcon"></div> </div> -->
             <div id="Title" onclick="location.href='/';">ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ</div>
-            <!-- <div id="Subtitle">ಹರಿದಾಸ ಕೀರ್ತನೆಗಳ ಸಮೂಹ ನಿರ್ವಹಿತ ತಾಣ</div> -->
         </div>
       </div>
       <div id="idNav_R" class="GridC">
-        <div id="WxH" class="fntEng"></div>
-        <!-- <label for="Toggler">
-          <input type="checkbox" id="Toggler"/> Dark Mode
-        </label> -->
+        <!-- <div id="WxH" class="fntEng"></div> -->
+<!-- <label for="Toggler">
+<input type="checkbox" id="Toggler"/> Dark Mode
+</label> -->
 <!-- <div onclick="this.classList.toggle('active');" class="Xxx">Here</div> -->
 <!-- <div onclick="fnActive(this);" class="btnSidebar active">Dasas</div>
 <div onclick="fnActive(this);" class="btnSidebar">Works</div> -->
       </div>
     </nav>
       <main id="Wrapper" class="mTB40">
-        <div class='Preamble FlexC'>
-          <div class="Shloka">भग्न पृष्ठ कटि ग्रीवा बद्ध दृष्टिः अधोमुखी ।<br>कष्टेन लिखितम् शास्त्रम् यत्नेन परिपालय ॥</div>
-            <article id="prmblKa">
-              <h2 class="Med">ಪೀಠಿಕೆ</h2>
-              <!-- <div>ಭಗ್ನ ಪೃಷ್ಠ ಕಟಿ ಗ್ರೀವ ಬದ್ಧದೃಷ್ಟಿರಧೋಮುಖೀ ।<br>ಕಷ್ಟೇನ ಲಿಖಿತಂ ಶಾಸ್ತ್ರಂ <b>ಯತ್ನೇನ ಪರಿಪಾಲಯ</b> ॥</div> -->
-              <div class="Grid Cntr_V fntKaSe txt16">ಶಿಥಿಲಗೊಂಡ ಪೃಷ್ಠ, ಬೆನ್ನು ಮತ್ತು ಕುತ್ತಿಗೆಯೊಂದಿಗೆ; ಸ್ಥಿರ ಕೆಳಮುಖ ನೋಟದಿಂದ ।<br> ಕಷ್ಟಪಟ್ಟು ಶಾಸ್ತ್ರವನ್ನು ಬರೆಯಲಾಗಿದೆ; ಎಚ್ಚರಿಕೆಯಿಂದ ಬದ್ಧತೆಯೊಂದಿಗೆ ಸಂರಕ್ಷಿಸಿ ॥</div>
-              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel inventore eum neque voluptates qui ducimus autem aut quo dolorum officia doloribus quidem impedit, libero facilis dolores nisi, laborum optio maiores?
-              ತಿಳಿದವರು ತಿದ್ದಬೇಕು...
-              </div>
-            </article>
-            <article id="prmblEn" class="fntEng">
-                <h2 class="Med">Preamble</h2>
-                <div class="Grid Cntr_V">
-                    <code>With strained buttocks, back and neck; with a focussed downward gaze ।<br> this scripture was written with difficulty; preserve it with commitment ॥</code>
-                </div>
-                <div>
-                  <p>It's not yet another website for <i>dAsa sAhitya</i>; many do exist already... but this is the <strong>Crowdsourced Archive</strong> where intrigued persons like you have contributed their part, either by adding a lyric or by sending a video they have sung in. You can support this by providing unavailable, or translating the existing works into the language you speak or your'e proficient with.</p>
-                  <p class="clrOrange">Become a <b>'DAASA'</b> – <i>Donate An Amazing Song for Archive</i>.</p>
-                  <p>The task of creating such a repository can't just be a hobby but a service to Daasas, to impart their valuable work in <i>an easily available, neater, organized, convenient and impeccable</i> form.</p>
-                  <p>The works in the available collection have been Curiously Curated, vetted and transliterated (popular works first, rare in near future). Although the correction of inaccuracies is attempted, there may have been a few grammatical as well as linguistic errors left by oversight or by my ignorance. Proficients should help correct them.<br>
-                  <p>The task seems very challenging but immensely stimulating; which reminded the above quoted epigram (subhashita), which is often seen on Sanskrit palm-manuscript copies. This epigram summarizes the hardwork required to write a document and a demand to preserve them carefully.</p>
-                  <p>Let's join hands in building Daasa Saahitya archive; together. You too can do that by contributing and spreading nice words about this space.</p>
-                </div>
-            </article>
-            <div id="Panel">
-              <a href="/lang/en/" class="LangCard fntEng"><div>English Lyrics</div>
-                  <div>X lyrics are available in English.</div>
-              </a>
-              <a href="/lang/kn/" class="LangCard">
-                  <div>ಕನ್ನಡದಲ್ಲಿ ಸಾಹಿತ್ಯ</div>
-                  <div>`${Cnt_K}` ಕೃತಿಗಳ ಸಾಹಿತ್ಯವು ಕನ್ನಡದಲ್ಲಿ ಲಭ್ಯ.</div>
-              </a>
-              <a href="/lang/ta/" class="LangCard"><div>தமிழில் இலக்கியம்</div>
-                  <!-- <div>இங்கே கிடைக்கும் தசா இலக்கியம் தமிழில் படியுங்கள்.</div> -->
-                  <div>x பாடல் வரிகள் தமிழில் கிடைக்கின்றன.</div>
-              </a>
-              <a href="/lang/te/" class="LangCard"><div>తెలుగులో సాహిత్యం</div>
-                  <div>x సాహిత్యం తెలుగులో అందుబాటులో ఉన్నాయి.</div>
-              </a>
-          </div>
-          </div>
-        </main>
+      </main>
   </body>
 
 </html>

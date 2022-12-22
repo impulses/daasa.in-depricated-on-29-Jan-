@@ -29,3 +29,9 @@ Ah snap screen
 
 /* https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/ */
 /* https://codersblock.com/blog/what-can-you-put-in-a-css-variable/ */
+
+* HTML Templates: https://www.danvega.dev/blog/2019/02/13/html-template-tag/
+
+* HTML Templates: https://wesbos.com/template-strings-html/
+* HTML Templates: https://wesbos.com/javascript-template-strings/
+* HTML Templates: https://www.youtube.com/watch?v=tlcEXDGo0oY

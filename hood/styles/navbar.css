@@ -1,0 +1,96 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* navbar.css | Targets Navbar | 22/12/2022 | Sree */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+@import url("stem.css");
+
+/* - - - - - - - - - - - - - - - - */
+
+#Navbar {
+    display: grid;
+    grid: var(--hNavbar) / repeat( auto-fit, minmax(160px, 1fr) );
+    gap: 16px;
+
+    padding: 0 16px;
+    top: 0;
+    z-index: 100;
+    position: sticky;
+    position: -webkit-sticky;
+    box-sizing: border-box;
+
+    background: #FFF;
+    border-bottom: var(--Line);
+}
+
+#idNav_L {
+  display: grid;
+  grid: auto / max-content max-content;
+  align-items: center;
+  gap: 8px;
+  color: var(--Txt_H);
+}
+
+#NavIco_Wrap {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: var(--px40);
+  height: var(--px40);
+  border-radius: 4px;
+}
+
+#NavIco_Wrap:is(:hover, :focus, :active) { cursor: pointer; background-color: var(--Hover); }
+/* #NavIco_Wrap:is(:hover, :focus, :active) #NavIcon { background-color: var(--Text); } */
+
+#NavIcon {
+  height: 18px;
+  width: 20px;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='18' viewBox='0 0 80 48' fill='rgb(112,112,112)' %3E%3Crect y='00' width='80' height='10' rx='2'/%3E%3Crect y='19' width='80' height='10' rx='2'/%3E%3Crect y='38' width='80' height='10' rx='2'/%3E%3C/svg%3E"); */
+  background-color: var(--Gray_D);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='18' viewBox='0 0 80 48' fill='rgb(112,112,112)' %3E%3Crect y='00' width='80' height='10' rx='2'/%3E%3Crect y='19' width='80' height='10' rx='2'/%3E%3Crect y='38' width='80' height='10' rx='2'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='18' viewBox='0 0 80 48' fill='rgb(112,112,112)' %3E%3Crect y='00' width='80' height='10' rx='2'/%3E%3Crect y='19' width='80' height='10' rx='2'/%3E%3Crect y='38' width='80' height='10' rx='2'/%3E%3C/svg%3E");
+}
+
+#Title {
+  font-family: var(--fEn);
+  font-weight: 700;
+  font-size: clamp( 16px, calc(15px + 1vw), 24px );
+  color: var(--Txt_H);
+  cursor: pointer;
+}
+#Title:hover { color: var(--Blue); }
+
+#Subtitle {
+  font-size: 14px;
+  color: var(--Gray_D);
+}
+
+#idNav_R {
+  /* grid: auto / auto auto; */
+  grid: auto / auto auto auto auto auto; /* 4 buttons, 1 dimensions */
+  /* justify-self: right; */
+  justify-content: right;
+  /* background: darkolivegreen; */
+}
+
+.btnLang {
+  width:  32px;
+  height: 32px;
+  margin-left: 16px;
+  font: var(--fEn);
+  font-size: 18px;
+  color: var(--Txt);
+  background: #FFF;
+  border-radius: 3px;
+  border: 1px solid var(--Border_D);
+  cursor: pointer;
+}
+
+.btnLang:is( :hover, :focus, :active ) {
+  /* color: var(--Txt); */
+  color: var(--Blue_D);
+  /* background: var(--Hover); */
+  background: var(--Blue_L);
+  border: 1px solid var(--Blue_D);
+}
+/* - - - - - - - - - - - - - - - - */

@@ -13,19 +13,25 @@
   --hBtnIcon: 40px;
 
 /* Margins & Paddings */
---px08: 08px;
---px16: 16px;
---px18: 18px;
---px20: 20px;
---px22: 22px;
---px24: 24px;
---px32: 32px;
---px40: 40px;
+  --px08: 08px;
+  --px16: 16px;
+  --px18: 18px;
+  --px20: 20px;
+  --px22: 22px;
+  --px24: 24px;
+  --px32: 32px;
+  --px40: 40px;
 
 /* Lines */
-  --Ln:     rgba(0, 0, 0, 0.24);
-  --Line: 1.0px solid var(--Ln);
-  --LineH: 0.5px solid var(--Ln);
+--Ln:     rgba(0, 0, 0, 0.24);
+--Line: 1.0px solid var(--Ln);
+--LineH: 0.5px solid var(--Ln);
+
+/* Fonts */
+--fEn: 'Roboto', 'Noto Sans', 'Noto Sans Kannada', Helvetica, Arial, sans-serif;
+--fKa: 'Noto Serif Kannada', 'Noto Sans', 'Roboto', sans-serif;
+--fTa: 'Noto Sans Tamil', 'Noto Sans', 'Roboto', sans-serif;
+--fTe: 'Noto Sans Telugu', 'Noto Sans', 'Roboto', sans-serif;
 }
 
 h1 { font-size: 22px; }

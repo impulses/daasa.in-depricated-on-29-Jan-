@@ -7,29 +7,41 @@
 :root {
 
 /* - - - - Colors - - - - */
-    --Txt_Hdng:   #202224;
-    --Txt:        #283038;
-    --Txt_Btn:    #485060;
-    --Txt_L:      #585A60;
-    --Gray_D:     #606060;
-    --Gray:       #808080;
-    --Border:     #CCCCCC;
-    --Gray_L:     #DADCE0;
-    --BG:         #ECEFF0;
-    --Hover:      #F0F4F8;
-    --BG_L:       #F8F9FA;
-    --W:          #FFFFFF;
-    --Blue:       #1870F0;
-    --Blue_L:     #E1ECF4;
-    --Maroon:     #800000;
-    --Orange:     #F07008;
-    --Violet:     #8040C0;
-    --Green:      #0D652D;
-    --Green_HL:   #DDFFEE;
-    --Green_BG:   #E8F8E8;
+--Primary: #085890;
+--Orange:  #F07008;
+--Purple:  #8040C0;
+--Maroon:  #800000;
+/* - - - - - - - - */
+--Txt:     #283038;
+--Button:  #333333;
+--Txt_H:   #485060;
+/* - - - - - - - - */
+--Gray_D:  #484848;
+--Gray:    #686868;
+--Gray_M:  #8C8C8C;
+--Gray_L:  #C0C0C0;
+--Border_D:#C8C8C8;
+--Border:  #DADCE0;
+--Hover:   #F0F4F8;
+--BG:      #ECEFF0;
+--BG_L:    #F8F9FA;
+/* - - - - - - - - */
+--Blue_D:  #0268D8;
+--Blue:    #0880F0;
+--Blue_M:  #7DBEFB;
+--Blue_L:  #E0EFFE;
+/* - - - - - - - - */
+--Green:   #609C30;
+--Green_M: #80C040;
+--Green_L: #E8F8E8;
+/* - - - - - - - - */
+--Red:     #D02010;
+--Red_M:   #F8908C;
+--Red_L:   #FFE0DC;
+/* - - - - - - - - */
 
 /* - - - - Typography - - - - */
-    font-family: 'Noto Sans', 'Roboto', 'Noto Sans Kannada', sans-serif;
+    font-family: 'Roboto', 'Noto Sans', 'Noto Sans Kannada', sans-serif;
     font-display: fallback;
     font-size: 16px;
     line-height: 150%;

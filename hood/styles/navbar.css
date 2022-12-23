@@ -12,7 +12,8 @@
     grid: var(--hNavbar) / repeat( auto-fit, minmax(160px, 1fr) );
     gap: 16px;
 
-    padding: 0 16px;
+    /* padding: 16px 24px; */
+    padding: 0px 24px;
     top: 0;
     z-index: 100;
     position: sticky;
@@ -66,11 +67,8 @@
 }
 
 #idNav_R {
-  /* grid: auto / auto auto; */
-  grid: auto / auto auto auto auto auto; /* 4 buttons, 1 dimensions */
-  /* justify-self: right; */
+  grid: auto / auto auto auto auto auto;
   justify-content: right;
-  /* background: darkolivegreen; */
 }
 
 .btnLang {

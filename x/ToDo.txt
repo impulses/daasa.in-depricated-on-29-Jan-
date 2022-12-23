@@ -9,6 +9,7 @@ Contribute with ₹
 Print or share feature 
 Horizontal scroll of videos
 Ah snap screen
+Sponsorers area on home
 * How To Create a Pagination - https://www.w3schools.com/howto/howto_css_pagination.asp
 * JS Filter Table: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table
 * JS Filter Elements: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_elements

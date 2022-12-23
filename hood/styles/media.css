@@ -4,24 +4,73 @@
 
 /* - - - - - - - - Media Queries - - - - - - - - */
 
-@media only screen and ( max-width: 428px ) and ( min-width: 320px ) and (orientation: portrait) {
-  /* #Home, #Indic { grid-template: var(--hNvbr) 1fr / 1fr; } */
-  /* #Indic #Wrapper { padding: 0px; } */
-  /* #Indic #Wrapper { grid-column: 1; } */
-  /* #Indic #Wrapper { margin: 24px; } */
-  #Sidebar, #Adbar   { display: none; }
+@media only screen and ( max-width: 984px ) {
+  #Wrapper {
+    padding: 24px;
+  }
+}
+@media only screen and ( max-width: 768px ) {
+
+  #Home #Wrapper {
+    padding: 24px 16px;
+  }
+
+  #Dasaboard {
+    display: grid;
+    grid: auto / auto ;
+    padding: 0;
+    gap: 16px;
+    /* grid-column: 1; */
+  }
+  #dbDasaStats {
+    grid-row: 1;
+    grid-column: 1 / span 1;
+  }
+
+  #dbStats_L {
+    grid-column: 1 / span 4;
+  }
+
+  #dbStats_R {
+    grid-column: 1 / span 4;
+  }
+
+  #dbStats_R > div {
+    min-height: var(--hdbCard);
+  }
+
+  #idPanel {
+    grid-row: 1;
+    /* grid-template-columns: repeat( auto-fill, minmax(256px, 1fr) ); */
+    grid-template-columns: repeat( auto-fill, minmax( 216px, 1fr ) );
+    gap: 16px;
+  }
+  /* #idPanel > div:nth-child(1) { background: var(--Purple); }
+  #idPanel > div:nth-child(2) { background: var(--Txt_H); }
+  #idPanel > div:nth-child(3) { background: var(--Primary); }
+  #idPanel > div:nth-child(4) { background: var(--Orange); } */
+
+}
+
+@media only screen and ( max-width: 428px ) and ( min-width: 319px ) and (orientation: portrait) {
+
+  #Navbar{
+    grid: auto / repeat( auto-fit, minmax(186px, 1fr) );
+    gap: 16px;
+    padding: 16px;
+  }
+
+  /* #Title { color: var(--Blue_D); } */
+
+  /* #Sidebar, #Adbar   { display: none; } */
   /* html { font-size: 150%; } */
   /* work on the above font-sizes... */
+
   #Wrapper {
     padding-left: var(--px24);
     padding-right: var(--px24);
     background: transparent;
   }
-  /* #prmblEn div > p {
-    margin-bottom: var(--px16);
-    text-align: justify;
-    text-justify: auto;
-  } */
 }
 
 /* @media (hover: hover) {

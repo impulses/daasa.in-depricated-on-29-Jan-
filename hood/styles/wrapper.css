@@ -7,70 +7,111 @@
 
 #Wrapper {
   display: grid;
-  min-height: calc(100vh - var(--hNavbar));
+  grid: auto auto auto / 1fr;
+  gap: 24px;
+
+  min-height: calc( 100vh - var(--hNavbar) );
   max-width: var(--wContent);
   margin-left:  auto;
   margin-right: auto;
+  /* margin-top: 40px;
+  margin-bottom: 40px; */
+  padding-top: 40px;
+  padding-bottom: 40px;
   overflow-y: scroll;
 }
 
-#prmblKa {
-  font-family: 'Noto Serif Kannada';
-  font-weight: 400;
-}
-#prmblKa > *, #prmblEn > * { margin-bottom: 24px; }
-#prmblEn div > p { margin-bottom: var(--px16); }
-
-.Shloka {
-  display: grid;
-  /* grid: 1fr / 1fr; */
-  align-self: center;
-  max-width: fit-content;
-  padding: 16px 24px;
-  margin-bottom: 32px;
-  font-size: 18px;
-  color: var(--Txt);
-  color: var(--Violet);
-  border-top:    1px solid var(--Gray_L);
-  border-bottom: 1px solid var(--Gray_L);
+#dbTitle {
+  font-size: 24px;
+  color: var(--Txt_H);
+  /* grid-column: 1 / span 4; */
 }
 
-#Panel {
+#idDasaboard {
   display: grid;
-  width: 100%;
-  /* grid-template-columns: repeat( auto-fit, minmax(256px, 1fr) ); */
-  grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );
-  /* https://gridbyexample.com */
+  grid: 1fr / 1fr 1fr 1fr 1fr;
   gap: 24px;
 }
 
-.LangCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  /* text-align: end; */
-  padding: 16px 24px;
-  color: var(--Txt_Hdng) !important;
-  background: var(--W);
-  border-radius: 8px;
+#idDasaboard div { display: grid; }
+
+#dbStats_R div, #idPanel div {
+  display: grid;
+  border-radius: 4px;
+}
+
+#dbStats_L {
+  border-radius: 6px;
+  grid-column: 1 / span 3;
+  min-height: 336px;
+}
+#dbStats_R {
+  gap: 24px;
+}
+#dbStats_L, #dbStats_R > div, #idPanel > div {
+  background: #FFF;
   border: 1px solid var(--Border);
 }
-.LangCard:hover {
-  /* border: 1px solid var(--Blue);  */
-  box-shadow: 
-    0 1px 2px 0 rgb(60 64 68 / 24%),
-    0 1px 3px 1px rgb(60 64 68 / 16%)
+
+#idPanel {
+  grid-column: 1 / span 4;
+  gap: 24px;
+  grid: 1fr / repeat(4, 1fr);
 }
-/* .LangCard:hover > div:first-child { color:var(--Blue) } */
-.LangCard > div:first-child {
-  font-size: 16px;
-  color: var(--Blue);
-  margin-bottom: 8px;
+
+:root {
+  --hdbCard: 96px
 }
-.LangCard > div:nth-child(2) {
-  font-size: 14px;
-  letter-spacing: 0.5px;
+#idPanel > div { min-height: var(--hdbCard); }
+
+/* Stats Card and Info Card*/
+.StatCard { grid: 1fr / auto 1fr; }
+
+.StatCard > div:first-child { /* Card Icon */
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  margin: auto 16px;
+  --wxh: clamp( 48px, 10vw, 56px );
+  width:  var(--wxh);
+  height: var(--wxh);
+  /* color: var(--Primary); */
+  background: var(--Hover);
+  font-size: clamp( 16px, calc(15px + 1vw), 24px );
+}
+
+.StatCard > div:nth-child(2) { display: grid; }
+
+.StatCard > div:nth-child(2) > *:first-child {  /* The Number */
+  align-content: end;
+  font-size: clamp( 20px, calc(15px + 1vw), 26px );
+}
+
+.StatCard > div:nth-child(2) > *:nth-child(2) {
+  align-content: start;
+  font-size: clamp( 13.5px, calc(13px + 1vw), 14px );
   color: var(--Gray);
 }
-/* - - - - - - - - - - - - - - - - */
+
+.StatCard:is( :hover, :focus, :active ) {
+  cursor: pointer;
+  border-color: var(--Blue) !important;
+}
+.StatCard:is( :hover, :focus, :active ) *:nth-child(2) > * {
+  color: var(--Blue) !important;
+}
+/* InfoCard */
+.InfoCard {
+  grid: auto 1fr / 1fr;
+  padding: 8px 16px;
+}
+.InfoCard > div:first-child {  /* The Number */
+  align-content: end;
+  font-size: clamp( 20px, calc(15px + 1vw), 26px );
+}
+.InfoCard div:nth-child(2) {
+  align-content: start;
+  font-size: clamp( 13.5px, calc(13px + 1vw), 14px );
+  color: var(--Gray);
+}
+/* .InfoCard { grid: 1fr / auto 1fr; } */

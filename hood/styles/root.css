@@ -5,7 +5,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif+Kannada:wght@300;400;500;600&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 :root {
-
 /* - - - - Colors - - - - */
 --Primary: #085890;
 --Orange:  #F07008;
@@ -57,7 +56,15 @@
     color: var(--Txt);
 }
 
-html { scroll-behavior: smooth; }
+html {
+  /* height: 100%; */
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 100vh;
+}
+
+/* html { scroll-behavior: smooth; } */
 
 a, a:hover, a:visited {
     color: var(--Blue);

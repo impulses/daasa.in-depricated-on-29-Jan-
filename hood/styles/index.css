@@ -2,11 +2,12 @@
 /* index.css | Binds all styles | 12/12/2022 | Sree */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-@import url("root.css");
-@import url("stem.css");
-@import url("twigs.css");
+@import url("~root.css");
+@import url("~stem.css");
+@import url("~twigs.css");
 /* - - - - */
-@import url("navbar.css");
-@import url("wrapper.css");
 @import url("media.css");
+@import url("navbar.css");
+@import url("search.css");
+@import url("wrapper.css");
 /* - - - - - - - - - - - - - - - - */

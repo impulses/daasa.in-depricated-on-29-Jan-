@@ -2,80 +2,104 @@
 
 <!DOCTYPE html>
 <html lang="en-IN">
-  <script type="module" src="hood/script/index.js"></script>
+
   <script type="module" src="/hood/script/index.js"></script>
-  <script type="module" src="/hood/script/feeds.js"></script>
+  <script type="module" src="/hood/script/literals.js"></script>
 
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ದಾಸರ ಪದ, ಸುಳಾದಿ, ದೇವರನಾಮ ಮತ್ತು ಕೀರ್ತನೆಗಳ ಸಂಗ್ರಹ | Compiled Haridasa Sahitya" />
-    
-    <!-- <title>ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ | ಹರಿದಾಸ ಸಾಹಿತ್ಯಗಳ ಸಮೂಹ ನಿರ್ವಹಿತ ಸಂಗ್ರಹತಾಣ</title> -->
-    <title>`${strPageTitle}`</title>
-    <!-- <link rel="stylesheet" href="/hood/styles/index.css" /> -->
+    <meta name="description" content="" />
+    <title></title>
     <link rel="stylesheet" href="/hood/styles/index.css" />
   </head>
-
+  
   <body id="Home">
     <nav id="Navbar">
       <div id="idNav_L">
         <!-- <div id="NavIco_Wrap"> <div id="NavIcon"></div> </div> -->
-            <div id="Title" onclick="location.href='/';">ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ</div>
+            <!-- <div id="Title" onclick="location.href='/';">ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ</div> -->
+            <!-- <div id="Title" onclick="location.href='/';">ದಾಸ ವಿಶೇಷ</div> -->
+            <div id="Title" onclick="location.href='/';"></div>
         </div>
-      </div>
       <div id="idNav_R" class="GridC">
         <!-- <div id="WxH" class="fntEng"></div> -->
 <!-- <label for="Toggler">
 <input type="checkbox" id="Toggler"/> Dark Mode
 </label> -->
-<!-- <div onclick="this.classList.toggle('active');" class="Xxx">Here</div> -->
-<!-- <div onclick="fnActive(this);" class="btnSidebar active">Dasas</div>
-<div onclick="fnActive(this);" class="btnSidebar">Works</div> -->
 
-<!-- 🫶 🪕 🎼 🌗 🎞️ 📌 📖 -->
       </div>
     </nav>
     <main id="Wrapper">
-      <div id="dbTitle">Dasaboard</div>
+      <div id="dbHdng" class="Heading">Dasaboard</div>
       <div id="idDasaboard">
-          <div id="dbStats_L">db_Stats</div>
+        <!-- Dasaboard Left Panel -->
+          <div id="dbStats_L">
+            <div class="dbTableHdr">
+              <div><div id="dbDasaCount">13</div><div>Dasas</div></div>
+              <div><div id="dbWrksCount">128</div><div>Masterworks</div></div>
+            </div>
+            <div class="dbWorkList">
+              <table>
+                <tbody>
+                  <tr><td>ಶ್ರೀಪಾದರಾಜರು</td>            <td>90</td></tr>
+                  <tr><td>ವಾದಿರಾಜ ತೀರ್ಥರು</td>         <td>16</td></tr>
+                  <tr><td>ಪುರಂದರದಾಸರು</td>           <td>80</td></tr>
+                  <tr><td>ಕನಕದಾಸರು</td>              <td>32</td></tr>
+                  <tr><td>ರಾಘವೇಂದ್ರ ತೀರ್ಥರು</td>       <td>60</td></tr>
+                  <tr><td>ಪಾಂಡುರಂಗ ವಿಟ್ಠಲದಾಸರು</td>    <td>32</td></tr>
+                  <tr><td>ಪ್ರಸನ್ನ ವೆಂಕಟದಾಸರು</td>       <td>16</td></tr>
+                  <tr><td>ವಿಜಯದಾಸರು</td>            <td>56</td></tr>
+                  <tr><td>ಗೋಪಾಲದಾಸರು</td>          <td>40</td></tr>
+                  <tr><td>ಜಗನ್ನಾಥದಾಸರು</td>           <td>24</td></tr>
+                  <tr><td>ಹೆಳವನಕಟ್ಟೆ ಗಿರಿಯಮ್ಮ</td>      <td>08</td></tr>
+                  <tr><td>ಹರಪನಹಳ್ಳಿ ಭೀಮವ್ವ</td>       <td>20</td></tr>
+                  <tr><td>ಗುರು ಜಗನ್ನಾಥದಾಸರು</td>      <td>32</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Dasaboard Right Panel -->
           <div id="dbStats_R">
-
-          <div id="crdSubscr" class="InfoCard">
-              <div>64</div><div>Subscribers</div>
-          </div>
-          <div id="crdCntrbt" class="InfoCard">
-              <div>64</div><div>Contributors</div>
-          </div>
-          <div id="crdBkmrk"  class="InfoCard">
-              <div>64</div><div>Videos</div>
-          </div>
-          <div id="crdVideo"  class="InfoCard">
-            <!-- <div>📖</div> -->
-            <div><div>64</div><div>Bookmarked</div></div>
-          </div>
+            <div id="crdVideo" class="InfoCard">
+              <div>72</div><div>Videos</div>
+            </div>
+            <div id="crdVstr" class="InfoCard">
+              <div>10</div><div>Visitors</div>
+            </div>
+            <div id="crdSubscr" class="InfoCard">
+                <div>92</div><div>Subscribers</div>
+            </div>
+            <div id="crdCntrbt" class="InfoCard">
+                <div>18</div><div>Contributors</div>
+            </div>
         </div>
+        <!-- Dasaboard Bottom Panel -->
         <div id="idPanel">
           <div id="crdEn" class="StatCard">
-            <div>E</div>
+            <div class="langIcon">E</div>
             <div><div>64</div><div>English Lyrics</div></div>
           </div>
-          <div id="crdKa" class="StatCard">
-            <div>ಕ</div>
-            <div><div>64</div><div>ಸಾಹಿತ್ಯ ಕನ್ನಡದಲ್ಲಿ</div></div>
-          </div>
+          <a href="/catalog/">
+            <div id="crdKa" class="StatCard">
+            <!-- <div id="crdKa" class="StatCard"> -->
+            <!-- <div id="crdKa" class="StatCard"> -->
+              <div class="langIcon">ಕ</div>
+              <div><div>128</div><div>ಕನ್ನಡ ಸಾಹಿತ್ಯಗಳು</div></div>
+            </div>
+          </a>
           <div id="crdTa" class="StatCard">
-            <div>த</div>
-            <div><div>64</div><div>வரிகள் தமிழில்</div></div>
+            <div class="langIcon">த</div>
+            <div><div>16</div><div>தமிழ் இலக்கியம்</div></div>
           </div>
           <div id="crdTe" class="StatCard">
-            <div>తె</div>
-            <div><div>64</div><div>సాహిత్యం తెలుగులో</div></div>
+            <div class="langIcon">తె</div>
+            <div><div>40</div><div>తెలుగు సాహిత్యం</div></div>
           </div>
         </div>
       </div>
+      <div id="dbHdng" class="Heading">Prelude</div>
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis minus dolorem laboriosam animi totam, magnam quaerat consequatur veniam non, eos itaque? Sunt alias distinctio magni nam mollitia reiciendis, quae at?
 <br>

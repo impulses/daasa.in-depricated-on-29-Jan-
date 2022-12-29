@@ -6,7 +6,8 @@
 
 :root {
 /* - - - - Colors - - - - */
---Primary: #085890;
+--Primary: #104880;
+/* --Primary: #085890; */
 --Orange:  #F07008;
 --Purple:  #8040C0;
 --Maroon:  #800000;
@@ -25,7 +26,7 @@
 --BG:      #ECEFF0;
 --BG_L:    #F8F9FA;
 /* - - - - - - - - */
---Blue_D:  #0268D8;
+--Blue_D:  #1858D8;
 --Blue:    #0880F0;
 --Blue_M:  #7DBEFB;
 --Blue_L:  #E0EFFE;

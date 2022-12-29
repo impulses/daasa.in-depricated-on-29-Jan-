@@ -2,25 +2,21 @@
 /* navbar.css | Targets Navbar | 22/12/2022 | Sree */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* @import url("stem.css"); */
-@import url("twigs.css");
+@import url("~twigs.css");
 
 /* - - - - - - - - - - - - - - - - */
 
 #Navbar {
     display: grid;
-    grid: var(--hNavbar) / repeat( auto-fit, minmax(160px, 1fr) );
+    grid: var(--nbHeight) / repeat( auto-fit, minmax(160px, 1fr) );
     gap: 16px;
-
-    /* padding: 16px 24px; */
-    padding: 0px 24px;
+    padding: var(--nbPadding);
     top: 0;
     z-index: 100;
     position: sticky;
     position: -webkit-sticky;
     box-sizing: border-box;
-
-    background: #FFF;
+    background: rgba(255,255,255,0.96);
     border-bottom: var(--Line);
 }
 
@@ -55,11 +51,12 @@
 #Title {
   font-family: var(--fEn);
   font-weight: 700;
-  font-size: clamp( 16px, calc(15px + 1vw), 24px );
+  font-size: var(--nbTitle);
   color: var(--Txt_H);
   cursor: pointer;
 }
-#Title:hover { color: var(--Blue); }
+
+#Title:hover { color: var(--Purple); }
 
 #Subtitle {
   font-size: 14px;
@@ -78,12 +75,9 @@
   font: var(--fEn);
   font-size: 18px;
   color: var(--Txt);
-  /* background: #FFF; */
   background: var(--Hover);
   border-radius: 3px;
-  /* border: 1px solid var(--Border_D); */
   border: none;
-  /* cursor: pointer; */
 }
 
 .btnLang:not(.Slctd):hover {

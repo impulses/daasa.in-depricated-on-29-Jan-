@@ -1,0 +1,63 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* twigs.css | Targeted styles | 12/12/2022 | Sree */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+@import url("~stem.css");
+/* - - - - - - - - - - - - - - - - */
+
+:root {
+  /* - - - - GLOBALS - - - - */
+  --nbHeight:  71px;
+  --nbTitle:   clamp( 16px, calc(15px + 1vw), 22px );
+  --nbPadding: 0px 24px;
+
+  /* Stats Card and Info Card */
+  --hdbCard: 96px;
+  --StatCardBrdr: 1px solid var(--Border);
+  /* --InfoCardBrdr: 1px solid rgba(0, 0, 0, 0.08); */
+  --InfoCardBrdr: 1px solid rgba(0, 0, 0, 0.04);
+  --BigTxt: clamp( 20px, calc(15px + 1vw), 24px );
+  --MedTxt: clamp( 18px, calc(15px + 1vw), 20px );
+  --IcoTxt: clamp( 16px, calc(15px + 1vw), 24px );
+  --SmlTxt: clamp( 13px, calc( 13px + 1vw), 14px );
+
+  /* - - - - SHADOWS - - - - */
+  --shadowSrchBx: 0px 1px 2px rgba(48, 48, 48, 0.32), 0px 1px 3px 1px rgba(48, 48, 48, 0.16);
+}
+/* - - - - - - - - - - - - - - - - */
+
+/* - - - - COLOR THEMES - - - - */
+:root { /* Default theme */
+  color: var(--Col);
+  background: var(--BGCol);
+}
+/* :root #Navbar {
+  background: var(--BGCol);
+  border-bottom: var(--Line);
+} */
+/* - - - - - - - -  */
+
+:root.Light {
+  --BGCol: var(--W);
+  --Col: var(--Txt);
+}
+/* - - - - - - - - */
+
+:root.Dark {
+  --BGCol: #18191a;
+  --Col: #CCC;
+}
+
+:root.Dark #Navbar {
+  background: var(--Txt);
+  border-bottom: 1px solid #383939;
+}
+/* - - - - - - - - - - - - - - - - */
+
+.ctrTabs{
+  place-self: center;
+  display: grid;
+  grid: 1fr / 1fr 1fr 1fr;
+  gap: 8px;
+}
+/* - - - - - - - - - - - - - - - - */

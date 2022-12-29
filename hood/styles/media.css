@@ -3,55 +3,58 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* - - - - - - - - Media Queries - - - - - - - - */
-
+/* MOVE THESE MEDIA QUERIES TO THE RESPECTIVE CSS FILES-SREE */
 @media only screen and ( max-width: 984px ) {
-  #Wrapper {
-    padding: 24px;
-  }
+  #Home #Wrapper { padding: 24px; }
 }
+/* - - - - */
 @media only screen and ( max-width: 768px ) {
 
-  #Home #Wrapper {
-    padding: 24px 16px;
-  }
+  #Home #Wrapper { padding: 24px 16px; }
 
-  #Dasaboard {
-    display: grid;
-    grid: auto / auto ;
+  #idDasaboard {
+    grid-template-columns: auto ;
+    /* grid: 1fr / 1fr 1fr 1fr 1fr; */
+    /* grid-template-columns: repeat(1, 1fr); */
+    /* grid-template-columns: 1fr !important; */
+
     padding: 0;
     gap: 16px;
-    /* grid-column: 1; */
-  }
-  #dbDasaStats {
-    grid-row: 1;
-    grid-column: 1 / span 1;
+                        background: pink;
   }
 
-  #dbStats_L {
+  /* Check if this exists */
+  /* #dbDasaStats {
+    grid-row: 1;
     grid-column: 1 / span 4;
+    color: red !important;
+  } */
+  
+  #dbStats_L {
+    /* grid-row: 1; */
+    /* grid-column: 1 / span 4; */
+    grid-column: 1 / span 4;
+    background: lightgrey !important;
   }
+
+  :root { --CardSpan: repeat( auto-fill, minmax( 176px, 1fr ) ); }
 
   #dbStats_R {
+    grid-row: 3;
     grid-column: 1 / span 4;
+    grid-template-columns: var(--CardSpan);
   }
 
-  #dbStats_R > div {
-    min-height: var(--hdbCard);
-  }
 
-  #idPanel {
-    grid-row: 1;
-    /* grid-template-columns: repeat( auto-fill, minmax(256px, 1fr) ); */
-    grid-template-columns: repeat( auto-fill, minmax( 216px, 1fr ) );
-    gap: 16px;
-  }
+  /* #dbStats_R > div { min-height: var(--hdbCard); } */
+  #idPanel { grid-template-columns: var(--CardSpan); }
   /* #idPanel > div:nth-child(1) { background: var(--Purple); }
   #idPanel > div:nth-child(2) { background: var(--Txt_H); }
   #idPanel > div:nth-child(3) { background: var(--Primary); }
   #idPanel > div:nth-child(4) { background: var(--Orange); } */
 
 }
-
+/* - - - - */
 @media only screen and ( max-width: 428px ) and ( min-width: 319px ) and (orientation: portrait) {
 
   #Navbar{
@@ -66,7 +69,7 @@
   /* html { font-size: 150%; } */
   /* work on the above font-sizes... */
 
-  #Wrapper {
+#Home #Wrapper {
     padding-left: var(--px24);
     padding-right: var(--px24);
     background: transparent;

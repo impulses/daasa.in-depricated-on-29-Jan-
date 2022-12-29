@@ -1,117 +1,177 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
-/* xWrapper.css | Targets Wrapper | 12/12/2022 | Sree */
+/* wrapper.css | Wrapper style | 12/12/2022 | Sree */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-@import url("stem.css");
+/* @import url("~stem.css"); */
+@import url("~twigs.css");
 /* - - - - - - - - - - - - - - - - */
 
+/* Various Wrapper Styles */
 #Wrapper {
   display: grid;
-  grid: auto auto auto / 1fr;
   gap: 24px;
 
-  min-height: calc( 100vh - var(--hNavbar) );
   max-width: var(--wContent);
+  min-height: calc( 100vh - var(--nbHeight, 71px) );
   margin-left:  auto;
   margin-right: auto;
-  /* margin-top: 40px;
-  margin-bottom: 40px; */
-  padding-top: 40px;
-  padding-bottom: 40px;
+  /* padding: 40px 0; */
   overflow-y: scroll;
+
 }
 
-#dbTitle {
+#Home #Wrapper { /* Homepage */
+  /*delete this later*/ display: grid;
+  /* grid: auto / 1fr; */
+  padding: 40px 0;
+}
+
+#Catalog #Wrapper {
+  background: transparent; /* Sumne */
+  grid: var(--TabbarHeight) var(--SearchboxHeight) auto auto / 1fr;
+}
+/* - - - - - - - - End Wrapper Styles - - - - - - - - */
+
+/* #dbTitle  */
+.Heading {
   font-size: 24px;
   color: var(--Txt_H);
-  /* grid-column: 1 / span 4; */
 }
 
 #idDasaboard {
   display: grid;
-  grid: 1fr / 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr); ;
   gap: 24px;
+  margin-bottom: 48px;
 }
 
-#idDasaboard div { display: grid; }
+#dbStats_L, #dbStats_R > div, .StatCard { border-radius: 6px; }
 
-#dbStats_R div, #idPanel div {
+#dbStats_L { /* Left side table */
   display: grid;
-  border-radius: 4px;
-}
-
-#dbStats_L {
-  border-radius: 6px;
   grid-column: 1 / span 3;
-  min-height: 336px;
-}
-#dbStats_R {
-  gap: 24px;
-}
-#dbStats_L, #dbStats_R > div, #idPanel > div {
+
   background: #FFF;
   border: 1px solid var(--Border);
+  grid: auto 1fr / 1fr;
+  gap: 0;
 }
 
-#idPanel {
+#dbStats_R { /* Left side cards wrapper */
+  display: grid;
+  gap: 24px;
+}
+
+#idPanel { /* Bottom stat cards */
+  display: grid;
   grid-column: 1 / span 4;
   gap: 24px;
   grid: 1fr / repeat(4, 1fr);
 }
 
-:root {
-  --hdbCard: 96px
+.StatCard {
+  display: grid;
+  grid: 1fr / auto 1fr;
+  background: #FFF;
+  /* background: #F0F2F4; */
+  border: var(--StatCardBrdr);
+  min-height: var(--hdbCard);
 }
-#idPanel > div { min-height: var(--hdbCard); }
+.StatCard > div, .StatCard > div > div { display: grid; }
 
-/* Stats Card and Info Card*/
-.StatCard { grid: 1fr / auto 1fr; }
-
-.StatCard > div:first-child { /* Card Icon */
+.langIcon { /* StatCard Icon */
   justify-content: center;
   align-items: center;
   align-self: center;
   margin: auto 16px;
+
   --wxh: clamp( 48px, 10vw, 56px );
-  width:  var(--wxh);
-  height: var(--wxh);
-  /* color: var(--Primary); */
-  background: var(--Hover);
-  font-size: clamp( 16px, calc(15px + 1vw), 24px );
+  width:  var(--wxh); height: var(--wxh);
+  border-radius: 4px;
+  background: var(--BG);
+  background: var(--Blue_L);
+  /* background: #efefef; */
+  /* background: rgba(0, 0, 0, 0.08); */
+  font-size: var(--IcoTxt)
 }
 
-.StatCard > div:nth-child(2) { display: grid; }
-
-.StatCard > div:nth-child(2) > *:first-child {  /* The Number */
+.StatCard > div:nth-child(2) > *:first-child,
+.dbTableHdr div div:first-child { /* Numbers on top */
   align-content: end;
-  font-size: clamp( 20px, calc(15px + 1vw), 26px );
+  font-size: var(--BigTxt)
 }
+.dbTableHdr div div:first-child { color: var(--Txt_H); }
 
-.StatCard > div:nth-child(2) > *:nth-child(2) {
+.StatCard > div:nth-child(2) > *:first-child { color: var(--Blue); }
+
+/* .StatCard > div:nth-child(2) > *:nth-child(2) {
   align-content: start;
-  font-size: clamp( 13.5px, calc(13px + 1vw), 14px );
+  font-size: var(--SmlTxt);
   color: var(--Gray);
-}
+} */
 
+.StatCard:is( :hover, :focus, :active ) *:nth-child(2) *,
 .StatCard:is( :hover, :focus, :active ) {
   cursor: pointer;
-  border-color: var(--Blue) !important;
-}
-.StatCard:is( :hover, :focus, :active ) *:nth-child(2) > * {
   color: var(--Blue) !important;
+  border-color: var(--Blue);
 }
-/* InfoCard */
+
+/* Information Card */
 .InfoCard {
-  grid: auto 1fr / 1fr;
+  display: grid;
+  grid: auto auto / 1fr;
   padding: 8px 16px;
+  background: var(--BG_L);
+  background: rgba(0, 0, 0, 0.03);
+  border: var(--InfoCardBrdr);
 }
-.InfoCard > div:first-child {  /* The Number */
-  align-content: end;
-  font-size: clamp( 20px, calc(15px + 1vw), 26px );
-}
-.InfoCard div:nth-child(2) {
-  align-content: start;
-  font-size: clamp( 13.5px, calc(13px + 1vw), 14px );
+
+.InfoCard > div:first-child{  /* The Number */
+  display: grid;
+  align-items: end;
+  font-size: var(--MedTxt);
+  /* color: var(--Txt_H); */
   color: var(--Gray);
 }
-/* .InfoCard { grid: 1fr / auto 1fr; } */
+
+.dbTableHdr div:nth-child(2),
+.StatCard > div:nth-child(2) > *:nth-child(2),
+.InfoCard div:nth-child(2) { /* Subtitles */
+  align-items: start;
+  font-size: var(--SmlTxt);
+  color: var(--Gray_M);
+}
+
+.dbTableHdr {
+  display: grid;
+  grid: 1fr / 1fr 1fr;
+  padding: 16px;
+  border-bottom: 1px solid var(--Border);
+  height: max-content;
+}
+.dbTableHdr div:nth-child(2) div,
+.dbWorkList tbody>tr>:nth-child(2) { text-align: right; }
+
+/* .dbWorkList { display: grid; } */
+.dbWorkList {
+  display: grid;
+  height: 352px;
+  overflow: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge*/
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
+.dbWorkList::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari and Opera */
+
+.dbWorkList table {
+  border-collapse: collapse;
+  font-size: clamp( 13px, calc( 13px + 1vw), 15px );
+}
+.dbWorkList td { padding: 16px; }
+
+.dbWorkList tr:hover td {
+  cursor: pointer;
+  color: var(--Blue);
+  background: var(--Hover);
+}

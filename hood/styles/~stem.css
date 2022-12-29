@@ -2,11 +2,10 @@
 /* stem.css | Few basic styles | 12/12/2022 | Sree */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-@import url("root.css");
+@import url("~root.css");
 
 :root {
 /* Assorted */
-  --hNavbar:  71px;
   --wContent: 960px;
   --hBtn:     34px;
   --wBtnIcon: 40px;
@@ -97,9 +96,9 @@ p  { font-size: 16px Serif; }
 .Ell    { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 /* - - - - - - - - - - - - - - - - */
 
-.fntEng  { font-family: 'Noto Sans', 'Roboto', sans-serif; }
-.fntKaSa { font-family: 'Noto Sans', 'Noto Sans Kannada', sans-serif; }
-.fntKaSe { font-family: 'Noto Serif Kannada', serif; }
+.fntEng  { font-family: 'Roboto', 'Noto Sans', sans-serif; }
+.fntKaSa { font-family: 'Roboto', 'Noto Sans Kannada', sans-serif; }
+.fntKaSe { font-family: 'Roboto', 'Noto Serif Kannada', serif; }
 
 .txt16 { font-size: var(--px16); }
 .txt18 { font-size: var(--px18); }
@@ -109,9 +108,4 @@ p  { font-size: 16px Serif; }
 
 .clrViolet, :is(.clrViolet) :is(p, b, i)  { color: var(--Violet); }
 .clrOrange, :is(.clrOrange) :is(p, b, i)  { color: var(--Orange); }
-
-/* div:is(.cool, .fun) {
-  color: red;
-} */
-
 /* - - - - - - - - - - - - - - - - */

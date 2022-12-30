@@ -1,10 +1,15 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
-/* navbar.css | Targets Navbar | 22/12/2022 | Sree */
+/* navbar.css | Targets Navbar | 22/12/2022        */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
 @import url("~twigs.css");
 
-/* - - - - - - - - - - - - - - - - */
+:root {
+  /* GLOBALS */
+  --nbHeight:  71px;
+  --nbTitle:   clamp( 16px, calc(15px + 1vw), 20px );
+  --nbPadding: 0px 24px;
+}
 
 #Navbar {
     display: grid;
@@ -39,24 +44,15 @@
 
 #NavIco_Wrap:is(:hover, :focus, :active) { cursor: pointer; background-color: var(--Hover); }
 
-#NavIcon {
-  height: 18px;
-  width: 20px;
-  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='18' viewBox='0 0 80 48' fill='rgb(112,112,112)' %3E%3Crect y='00' width='80' height='10' rx='2'/%3E%3Crect y='19' width='80' height='10' rx='2'/%3E%3Crect y='38' width='80' height='10' rx='2'/%3E%3C/svg%3E"); */
-  background-color: var(--Gray_D);
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='18' viewBox='0 0 80 48' fill='rgb(112,112,112)' %3E%3Crect y='00' width='80' height='10' rx='2'/%3E%3Crect y='19' width='80' height='10' rx='2'/%3E%3Crect y='38' width='80' height='10' rx='2'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='18' viewBox='0 0 80 48' fill='rgb(112,112,112)' %3E%3Crect y='00' width='80' height='10' rx='2'/%3E%3Crect y='19' width='80' height='10' rx='2'/%3E%3Crect y='38' width='80' height='10' rx='2'/%3E%3C/svg%3E");
-}
-
 #Title {
   font-family: var(--fEn);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--nbTitle);
   color: var(--Txt_H);
   cursor: pointer;
 }
 
-#Title:hover { color: var(--Purple); }
+#Title:hover { color: var(--Blue_D); }
 
 #Subtitle {
   font-size: 14px;
@@ -69,9 +65,9 @@
 }
 
 .btnLang {
-  width:  32px;
-  height: 32px;
-  margin-left: 16px;
+  --btnWxH: 32px;
+  width:  var(--btnWxH);
+  height: var(--btnWxH);
   font: var(--fEn);
   font-size: 18px;
   color: var(--Txt);
@@ -79,6 +75,7 @@
   border-radius: 3px;
   border: none;
 }
+#idNav_R button:not(:first-child) { margin-left: 16px; }
 
 .btnLang:not(.Slctd):hover {
   cursor: pointer;
@@ -91,5 +88,17 @@
   color: #FFF;
   border: none;
   background: var(--Txt_H);
+}
+/* - - - - - - - - - - - - - - - - */
+
+/* - - - - - - - - Media Queries - - - - - - - - */
+@media only screen and (max-width: 428px) {
+  #Navbar{
+    grid: auto / repeat( auto-fit, minmax(186px, 1fr) );
+    gap: 16px;
+    padding: 16px;
+  }
+
+  #idNav_R button:not(:first-child) { margin-left: 8px; }
 }
 /* - - - - - - - - - - - - - - - - */

@@ -6,22 +6,11 @@
 /* - - - - - - - - - - - - - - - - */
 
 :root {
-  /* - - - - GLOBALS - - - - */
-  --nbHeight:  71px;
-  --nbTitle:   clamp( 16px, calc(15px + 1vw), 22px );
-  --nbPadding: 0px 24px;
-
-  /* Stats Card and Info Card */
-  --hdbCard: 96px;
-  --StatCardBrdr: 1px solid var(--Border);
-  /* --InfoCardBrdr: 1px solid rgba(0, 0, 0, 0.08); */
-  --InfoCardBrdr: 1px solid rgba(0, 0, 0, 0.04);
   --BigTxt: clamp( 20px, calc(15px + 1vw), 24px );
   --MedTxt: clamp( 18px, calc(15px + 1vw), 20px );
   --IcoTxt: clamp( 16px, calc(15px + 1vw), 24px );
   --SmlTxt: clamp( 13px, calc( 13px + 1vw), 14px );
-
-  /* - - - - SHADOWS - - - - */
+  /* SHADOWS */
   --shadowSrchBx: 0px 1px 2px rgba(48, 48, 48, 0.32), 0px 1px 3px 1px rgba(48, 48, 48, 0.16);
 }
 /* - - - - - - - - - - - - - - - - */
@@ -59,5 +48,20 @@
   display: grid;
   grid: 1fr / 1fr 1fr 1fr;
   gap: 8px;
+}
+
+.Shloka {
+  display: grid;
+  align-self: center;
+  margin: 24px auto;
+
+  max-width: fit-content;
+  padding: 16px 24px;
+
+  font-size: 18px;
+  color: var(--Maroon);
+
+  border-top: 1px solid var(--Gray_L);
+  border-bottom: 1px solid var(--Gray_L);
 }
 /* - - - - - - - - - - - - - - - - */

@@ -27,7 +27,7 @@
 --LineH: 0.5px solid var(--Ln);
 
 /* Fonts */
---fEn: 'Roboto', 'Noto Sans', 'Noto Sans Kannada', Helvetica, Arial, sans-serif;
+--fEn: 'Roboto', 'Helvetica Neue', 'Source Sans Pro', 'Noto Sans', 'Noto Sans Kannada', 'Segoe UI', Helvetica, sans-serif;
 --fKa: 'Noto Serif Kannada', 'Noto Sans', 'Roboto', sans-serif;
 --fTa: 'Noto Sans Tamil', 'Noto Sans', 'Roboto', sans-serif;
 --fTe: 'Noto Sans Telugu', 'Noto Sans', 'Roboto', sans-serif;
@@ -76,6 +76,8 @@ p  { font-size: 16px Serif; }
 .mTB08 { margin-top: var(--px08); margin-bottom: var(--px08); }
 .m16   { margin: var(--px16); }
 .mTB16 { margin-top: var(--px16); margin-bottom: var(--px16); }
+.mT16  { margin-top: var(--px16); }
+.mB16  { margin-bottom: var(--px16); }
 .mLR16 { margin-left: var(--px16); margin-right: var(--px16); }
 .m24   { margin: var(--px24); }
 .mTB24 { margin-top: var(--px32); margin-bottom: var(--px32); }

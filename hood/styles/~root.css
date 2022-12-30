@@ -2,7 +2,7 @@
 /* root.css | Core style defns | 12/12/2022 | Sree */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif+Kannada:wght@300;400;500;600&family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=Noto+Sans+Kannada:wght@300;400;500;600&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif+Kannada:wght@300;400;500;600&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 :root {
 /* - - - - Colors - - - - */
@@ -10,6 +10,7 @@
 /* --Primary: #085890; */
 --Orange:  #F07008;
 --Purple:  #8040C0;
+--Purple_L:  #8058B8;
 --Maroon:  #800000;
 /* - - - - - - - - */
 --Txt:     #283038;
@@ -41,7 +42,7 @@
 /* - - - - - - - - */
 
 /* - - - - Typography - - - - */
-    font-family: 'Roboto', 'Noto Sans', 'Noto Sans Kannada', sans-serif;
+    font-family: var(--fEn);
     font-display: fallback;
     font-size: 16px;
     line-height: 150%;

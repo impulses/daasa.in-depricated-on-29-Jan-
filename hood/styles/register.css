@@ -1,0 +1,56 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* register.css | Registration part | 31/12/2022   */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+@import url("~twigs.css");
+
+:root {
+  --fldHeight:  48px;
+  --regPadding: 0px 8px;
+  --GridGap: 24px;
+  /* --nbTitle:   clamp( 16px, calc(15px + 1vw), 20px ); */
+}
+
+.Register {
+    display: grid;
+    gap: 24px;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--Border_D);
+}
+
+.FormWrap { display: grid; gap: var(--GridGap); }
+
+.FormWrap > div {
+  display: grid;
+  --MinGridSize: 256px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--MinGridSize), 1fr));
+  /* Reuse this Grid template */
+  gap: var(--GridGap);
+}
+/* .FormWrap p {} */
+
+#frmFN, #frmLN, #frmEm, #frmSbmt {
+  height: var(--fldHeight);
+  border-radius: 4px;
+  border: 1px solid var(--Border_D);
+  font-family: var(--fEn);
+
+  padding: 0 8px;
+  font-family: var(--fEn);
+  font-size: 16px;
+}
+
+#frmSbmt {
+  max-width: 180px;
+  color: #FFF;
+  background: var(--Purple);
+  border: none;
+}
+/* - - - - - - - - - - - - - - - - */
+
+/* - - - - - - - - Media Queries - - - - - - - - */
+@media only screen and (min-width: 375px) and (max-width: 599px) {
+  .Register { padding: 24px; }
+}
+/* - - - - - - - - - - - - - - - - */

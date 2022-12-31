@@ -18,7 +18,7 @@
   <body id="Home">
     <nav id="Navbar">
       <div id="idNav_L"><div id="Title" onclick="location.href='/';"></div></div>
-      <div id="idNav_R" class="GridC"></div>
+      <div id="idNav_R"></div>
     </nav>
     <main id="Wrapper">
       <div id="Content">
@@ -98,12 +98,21 @@
           <div id="txtPrelude"></div>
         </div>
         <!-- Registration -->
-        <div class="Pack">
-          <p class="Heading">Become a DAASA</p>
-          <p style="font-size: 14px; color: var(--Gray);"></p>
-          <form action="">
-            <div>?</div>
+        <div class="Register mTB40">
+          <div class="FlexC">
+            <p class="Heading">Become a DAASA</p>
+            <p style="font-size: 14px; color: var(--Gray);">Register to Contribute or Just to Support. Thank You!</p>
+          </div>
+
+          <form class="FormWrap" action="">
+            <div>
+              <input type="text" id="frmFN" name="fn" placeholder="First Name">
+              <input type="text" id="frmLN" name="ln" placeholder="Last Name">
+            </div>
+            <input type="email" id="frmEm" name="em"  placeholder="Email">
+            <input type="submit" id="frmSbmt" value="Sign Me Up">
           </form>
+          <p class="f14 fcL">Don't worry, no spam here! Your information will be used only for <code>daasa.in</code> statistics and related updates. You will not receive any emails.</p>
         </div>
       </div> <!-- End Content -->
     </main>

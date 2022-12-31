@@ -31,7 +31,20 @@
 --fKa: 'Noto Serif Kannada', 'Noto Sans', 'Roboto', sans-serif;
 --fTa: 'Noto Sans Tamil', 'Noto Sans', 'Roboto', sans-serif;
 --fTe: 'Noto Sans Telugu', 'Noto Sans', 'Roboto', sans-serif;
+
 }
+/* Font Sizes */
+.f14 { font-size: 14px; }
+.f15 { font-size: 15px; }
+.f16 { font-size: 16px; }
+.f18 { font-size: 18px; }
+.f20 { font-size: 20px; }
+.f24 { font-size: 24px; }
+/* Font Colors */
+.fcD { color: var(--Txt); }
+.fcM { color: var(--Gray); }
+.fcL { color: var(--Gray_M); }
+.fcR { color: var(--Red); }
 
 h1 { font-size: 22px; }
 h2 { font-size: 24px; }

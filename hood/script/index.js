@@ -1,10 +1,14 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 /* index.js | Utility routines | 22/12/2022 | Sree */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
-
+// const formElem = document.querySelector('form');
 /* When the window loads */
 window.addEventListener("load", function() {
   // fnDimensions('WxH');
+  // formElem.addEventListener('submit', (e) => {
+  //   e.preventDefault();// on form submission, prevent default
+  //   new FormData(formElem);// construct a FormData object, which fires the formdata event
+  // });
 });
 /* - - - - - - - - */
 

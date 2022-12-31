@@ -1,0 +1,56 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* toast.css | Toast Styles | 29/12/2022           */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+@import url("~twigs.css");
+:root { --Btm: 24px; }
+
+#idToast {
+  visibility: hidden;
+  min-width: 200px;
+  margin-left: -100px; /* Divide value of min-width by 2 */
+  background-color: var(--Txt);
+  color: #fff;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 16px 8px;
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+      left: 50%; /* Center*/
+  bottom: var(--Btm);
+  font-family: var(--fEn);
+  display: inline-flex;
+  /* line-hight: 12px */
+}
+#idToast span {
+  margin-left: 12px;
+  margin-top: 2px;
+}
+
+#idToast.show {
+  visibility: visible;
+  /* Add animation: Take 0.5 seconds to fade in and out the SIMPLE-TOAST.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.25s, fadeout 0.25s 2.5s;
+  animation: fadein 0.25s, fadeout 0.25s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: var(--Btm); opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: var(--Btm); opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: var(--Btm); opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: var(--Btm); opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

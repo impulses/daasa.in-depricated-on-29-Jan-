@@ -61,8 +61,10 @@
 }
 
 #idNav_R {
+  display: grid;
   grid: auto / auto auto auto auto auto;
   justify-content: right;
+  align-items: center;
 }
 
 .btnLang {

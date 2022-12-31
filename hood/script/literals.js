@@ -2,14 +2,77 @@
 /* literals.js | Feed Literals | 22/12/2022 | Sree */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Global string declarations */
-let litNBTitle = `ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ`; /* `ದಾಸ ವಿಶೇಷ` */
-// let litNBTitle = `ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ`; /* `ದಾಸ ವಿಶೇಷ` */
-// let litNBTitle = `ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ`; /* `ದಾಸ ವಿಶೇಷ` */
-// let litNBTitle = `ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ`; /* `ದಾಸ ವಿಶೇಷ` */
+/* When the window loads */
+window.addEventListener("load", function() {
+  fnAddLangBtns();
+  fnFeedHome();
+});
+/* - - - - - - - - */
 
-let strPageTitle = `${litNBTitle} | ಹರಿದಾಸ ಸಾಹಿತ್ಯಗಳ ಸಮೂಹ ನಿರ್ವಹಿತ ಸಂಗ್ರಹತಾಣ`;
-/* TBD: Update strPageTitle for a selected dasa/song */
+let currLang = '' // Default to none
+
+const fnWhichLanguage = () => {
+  (currLang === null) ? currLang = 'Ka' : currLang = localStorage.getItem('currLang'); // Check for last lang, default to Ka if null
+  localStorage.setItem( 'currLang', currLang ); // Save to localStorage
+  return currLang;
+}
+/* - - - - - - - - */
+
+const fnPickItInCurrLang = (litVariable) => {
+  let itemPicked = '';
+  litVariable.AllValues.forEach( lng => { (fnWhichLanguage()===lng.la) ? (itemPicked = lng.txt) : null; })
+  console.log("itemPicked="+itemPicked);
+  return(itemPicked);
+}
+/* - - - - - - - - */
+
+// రండి, కృతజ్ఞతతో చదవండి
+
+/* - - - - - - - - */
+const btnLang_ID = [ 'En','Ka','Ta','Te' ];
+// const btnLang_ID = [ 'langEn','langKa','langTa','langTe' ];
+const btnLabel = [ 'E', 'ಕ', 'த', 'తె' ];
+
+window.fnAddLangBtns = function fnAddLangBtns() {
+  let target = document.getElementById('idNav_R'),  i = 0;
+
+  btnLang_ID.forEach( X => {
+    var btn = document.createElement("button");
+    // btn.id = X.padStart(7, 'lang-'); /* Pads; e.g. 8 with '08' */
+    btn.id = X ; // ID for button
+    btn.className = 'btnLang GridC'; // Btn Classes
+    (fnWhichLanguage()===btnLang_ID[i]) ? btn.classList.add('Slctd') : null; // Check for the last saved language and 
+    btn.innerHTML = btnLabel[i++] ;
+
+    btn.addEventListener ( "click", function() {
+      fnActive(this); /* index.js */
+      localStorage.setItem( 'currLang', X ); //Save to localStorage
+      console.log(`Language set to ${X}\nMake this a toast...`);
+      fnFeedHome(); // Update the page content
+    });
+    target.appendChild(btn);
+  });
+}
+/* - - - - - - - - */
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* Global string declarations */
+let litNBTitle = { "AllValues": [
+  { "la": "En", "txt": "Daasa Saahitya Collection" },
+  { "la": "Ka", "txt": "ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ" },
+  { "la": "Ta", "txt": "தாச இலக்கியம் சேகரிப்பு" },
+  { "la": "Te", "txt": "దాస సాహిత్యం సేకరణ" } ]}
+
+let litPageTitle = { "AllValues": [
+  { "la": "En", "txt": "Crowdsourced, Curated Collection of Daasa Literature" },
+  { "la": "Ka", "txt": "ಹರಿದಾಸ ಸಾಹಿತ್ಯಗಳ ಸಮೂಹ ನಿರ್ವಹಿತ ತಾಣ" },
+  { "la": "Ta", "txt": "Tamil TBD" },
+  { "la": "Te", "txt": "Telugu TBD" } ]}
+  
+  
+// /* TBD: Update strPageTitle for a selected dasa/song */
+  /* - - - - - - - - - - - - - - - - - - - - - - - - */
+
 let strDscrptn = 'ದಾಸರ ಪದ, ಸುಳಾದಿ, ದೇವರನಾಮ ಮತ್ತು ಕೀರ್ತನೆಗಳ ಸಂಗ್ರಹ | Compiled Haridasa Sahitya';
 
 let litdbTableHdr = 'Dasaboard'
@@ -34,56 +97,19 @@ let litPrelude =
   // let litPrelude_Ka = `ದಾನವರಾಗಬೇಡಿ, ದಾನವ ಮಾಡಿ`
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
-/* When the window loads */
-window.addEventListener("load", function() {
-  fnAddLangBtns();
-  fnFeedHome();
-});
-/* - - - - - - - - */
 
-let currLang = '' // Default to none
+window.fnFeedHome = async function fnFeedHome() {
+// words = codelines[i].split(" ");
+  document.getElementsByTagName('title')[0].innerHTML = fnPickItInCurrLang(litNBTitle).split(" ")[0] + " | " + fnPickItInCurrLang(litPageTitle);
 
-const fnDetectLang = () => {
-  (currLang === null) ? currLang = 'Ka' : currLang = localStorage.getItem('currLang'); // Check for last lang, default to Ka if null
-  localStorage.setItem( 'currLang', currLang ); // Save to localStorage
-  return currLang;
-}
-/* - - - - - - - - */
-// రండి, కృతజ్ఞతతో చదవండి
-
-/* - - - - - - - - */
-const btnLang_ID = [ 'En','Ka','Ta','Te' ];
-// const btnLang_ID = [ 'langEn','langKa','langTa','langTe' ];
-const btnLabel = [ 'E', 'ಕ', 'த', 'తె' ];
-
-window.fnAddLangBtns = function fnAddLangBtns() {
-  let target = document.getElementById('idNav_R'),  i = 0;
-
-  btnLang_ID.forEach( X => {
-    var btn = document.createElement("button");
-    // btn.id = X.padStart(7, 'lang-'); /* Pads; e.g. 8 with '08' */
-    btn.id = X ;
-    btn.className = 'btnLang GridC';
-    (fnDetectLang()===btnLang_ID[i]) ? btn.classList.add('Slctd') : null;
-    btn.innerHTML = btnLabel[i++] ;
-
-    btn.addEventListener ( "click", function() {
-      fnActive(this); /* index.js */
-      localStorage.setItem( 'currLang', X ); //Save to localStorage
-      console.log(`Language set to ${X}` );
-    });
-    target.appendChild(btn);
-  });
-}
-/* - - - - - - - - */
-
-window.fnFeedHome = function fnFeedHome() {
-  // let html = `<h2>${header}</h2><ul>`;
-  // document.getElementById("demo").innerHTML = html;
-  document.getElementsByTagName('title')[0].innerHTML = strPageTitle;
   document.querySelector('meta[name="description"]').setAttribute("content", strDscrptn);
 
-  document.getElementById('Title').innerHTML = litNBTitle;
+  document.getElementById('Title').innerHTML = fnPickItInCurrLang(litNBTitle);
+
+  // litNBTitle.NBTitle.forEach( xLa => {
+  //   // console.log(xLa.txt);
+  //   (fnWhichLanguage()===xLa.la) ? (document.getElementById('Title').innerHTML = xLa.txt) : null;
+  // });
   document.getElementById('dbHdng').innerHTML = litdbTableHdr;
 
   document.getElementById('txtPrelude').innerHTML = litPrelude;

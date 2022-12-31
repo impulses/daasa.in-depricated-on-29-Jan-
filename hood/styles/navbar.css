@@ -14,7 +14,7 @@
 #Navbar {
     display: grid;
     grid: var(--nbHeight) / repeat( auto-fit, minmax(160px, 1fr) );
-    gap: 16px;
+    /* gap: 8px; */
     padding: var(--nbPadding);
     top: 0;
     z-index: 100;
@@ -27,7 +27,7 @@
 
 #idNav_L {
   display: grid;
-  grid: auto / max-content max-content;
+  grid: 1fr / auto;
   align-items: center;
   gap: 8px;
   color: var(--Txt_H);
@@ -49,6 +49,7 @@
   font-weight: 600;
   font-size: var(--nbTitle);
   color: var(--Txt_H);
+  overflow-wrap: break-word;
   cursor: pointer;
 }
 

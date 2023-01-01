@@ -5,54 +5,51 @@
 /* When the window loads */
 window.addEventListener("load", function() {
   fnAddLangBtns();
-  fnFeedHome();
+  fnFeedHTML();
+  (document.getElementsByTagName('BODY')[0].id==='Home') ? fnFeedHome() : null;
   fnListen4mSubmit();
 });
 /* - - - - - - - - */
 
-const formElem = document.querySelector('form');
+/* const myForm = document.forms.frmReg.elements;
+console.log(myForm.em.placeholder);
+myForm.em.placeholder= "you@email.com"; */
 
 function fnListen4mSubmit() {
+  const formElem = document.getElementById('frmSignUp');
+  // const formElem = document.querySelector('form'); // Use this for all forms
+
+(formElem) ? // Exists?
   formElem.addEventListener('submit', (e) => {
-    e.preventDefault();// on form submission, prevent default
-    new FormData(formElem); // construct a FormData object, which fires the formdata event
-  });
-  
+    e.preventDefault(); // Prevent GET
+    new FormData(formElem); // Construct FormData object
+  }) : null;
+
+(formElem) ? // Exists?
   formElem.addEventListener('formdata', (e) => {
-    // console.log('"Submit" Clicked');
     const data = e.formData; // Get the form data from the event object
     // for (const value of data.values()) { console.log(value); }
-    for (const pair of data.entries()) {
-      console.log(`${pair[0]}, ${pair[1]}`);
-    }
+    for (const pair of data.entries()) { console.log(`${pair[0]}, ${pair[1]}`);}
     const request = new XMLHttpRequest(); // submit the data via XHR
     request.open("POST", "/formHandler");
     request.send(data);
-  });
+  }) : null;
+
 }
 /* - - - - - - - - */
 
-async function fnShowToast(strToasMsg) {
-
+/* Toast Messages */
+async function fnShowToast(Msg) {
   const tDiv = document.createElement("div");
-  tDiv.id = "idToast";
-  tDiv.className = "show"; // Add the "show" class to DIV
-  tDiv.innerText = strToasMsg;
-  document.body.appendChild(tDiv); // Append to body:
-  
-  // var x = document.getElementById("idToast");
-  // x.className = "show"; // Add the "show" class to DIV
-  // x.innerHTML = strToasMsg;
-  // After 3 seconds, remove the show class from DIV
-  setTimeout( function(){
-    tDiv.className = tDiv.className.replace("show", "");
-    tDiv.remove();
-  }, 2000 );
+  tDiv.id = "idToast"; // For styling
+  tDiv.className = "show"; // Add "show" class
+  tDiv.innerText = Msg;
+  document.body.appendChild(tDiv); // Append to body
+  setTimeout( function(){ tDiv.remove(); }, 2000 ); // Remove div after 2 sec
 }
 /* - - - - - - - - */
 
-let currLang = '' // Default to none
-
+let currLang = '' // Global. Default to none
 const fnWhichLanguage = () => {
   (currLang === null) ? currLang = 'Ka' : currLang = localStorage.getItem('currLang'); // Check for last lang, default to Ka if null
   localStorage.setItem( 'currLang', currLang ); // Save to localStorage
@@ -61,11 +58,10 @@ const fnWhichLanguage = () => {
 /* - - - - - - - - */
 
 /* Picks up the string in current language set and returns */
-const fnPickItInCurrLang = (litVariable) => {
-  let itemPicked = '';
-  litVariable.AllValues.forEach( lng => { (fnWhichLanguage()===lng.la) ? (itemPicked = lng.txt) : null; })
-  // console.log("itemPicked="+itemPicked);
-  return( itemPicked );
+const fnPickLangTxt = (litVar) => {
+  let Txt = '';
+  litVar.forEach(lang => { (fnWhichLanguage()===lang.la) ? (Txt=lang.txt) : null});
+  return( Txt );
 }
 /* - - - - - - - - */
 
@@ -73,15 +69,14 @@ const fnPickItInCurrLang = (litVariable) => {
 
 /* - - - - - - - - */
 const btnLang_ID = [ 'En','Ka','Ta','Te' ];
-// const btnLang_ID = [ 'langEn','langKa','langTa','langTe' ];
 const btnLabel = [ 'E', 'ಕ', 'த', 'తె' ];
+/* - - - - - - - - */
 
 window.fnAddLangBtns = function fnAddLangBtns() {
   let target = document.getElementById('idNav_R'),  i = 0;
-
+console.log("TBD: fnAddLangBtns and fnFeedHTML..."); 
   btnLang_ID.forEach( X => {
     var btn = document.createElement("button");
-    // btn.id = X.padStart(7, 'lang-'); /* Pads; e.g. 8 with '08' */
     btn.id = X ; // ID for button
     btn.className = 'btnLang'; // Btn Classes
     (fnWhichLanguage()===btnLang_ID[i]) ? btn.classList.add('Slctd') : null; // Check for the last saved language and 
@@ -90,7 +85,8 @@ window.fnAddLangBtns = function fnAddLangBtns() {
     btn.addEventListener ( "click", function() { // Listen to LangBtns event
       fnActive(this); /* index.js */
       localStorage.setItem( 'currLang', X ); // Save currLang to localStorage
-      fnShowToast(`Language set to ${X}\nCorrect the animation later...`);
+      // fnShowToast(`Language set to ${X}`);
+      fnShowToast(fnPickLangTxt(litLangChanged));
       fnFeedHome(); // Update the page content
     });
     target.appendChild(btn);
@@ -100,33 +96,87 @@ window.fnAddLangBtns = function fnAddLangBtns() {
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 /* Global string declarations */
-let litNBTitle = { "AllValues": [
-  { "la": "En", "txt": "Daasa Saahitya Collection" },
-  { "la": "Ka", "txt": "ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ" },
-  { "la": "Ta", "txt": "தாச இலக்கியம் சேகரிப்பு" },
-  { "la": "Te", "txt": "దాస సాహిత్యం సేకరణ" } ]}
+let litNBTitle = [
+  { la: 'En', txt: "Daasa Sāhitya Archive" },
+  { la: 'Ka', txt: "ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ" },
+  { la: 'Ta', txt: "தாச இலக்கியம் சேகரிப்பு" },
+  { la: 'Te', txt: "దాస సాహిత్యం సేకరణ" }
+]
 
-let litPageTitle = { "AllValues": [
-  { "la": "En", "txt": " Daasa । Crowdsourced Collection of Haridasa Compositions" },
-  { "la": "Ka", "txt": " ದಾಸ । ಸಮೂಹ ನಿರ್ವಹಿತ ಹರಿದಾಸ ಸಾಹಿತ್ಯಗಳ ಸಂಗ್ರಹ" },
-  { "la": "Ta", "txt": "தாச । குழு நிர்வகிக்கும் ஹரிதாஸ இலக்கியம் சேகரிப்பு" },
-  { "la": "Te", "txt": "దాస । సమూహం నిర్వహించిన హరిదాస సాహిత్యం సేకరణ" } ]}
-// குழு நிர்வகிக்கும் சேகரிப்பு
-//கூட்டம் நிர்வகிக்கப்பட்டது ஹரிதாச இலக்கியங்களின் தொகுப்பு
+let litPageTitle = [
+  { la: 'En', txt: "Daasa । Crowdsourced Archive of Haridasa Compositions" },
+  { la: 'Ka', txt: "ದಾಸ । ಸಮೂಹ ನಿರ್ವಹಿತ ಹರಿದಾಸ ಸಾಹಿತ್ಯಗಳ ಸಂಗ್ರಹ" },
+  { la: 'Ta', txt: "தாச । குழு நிர்வகிக்கும் ஹரிதாஸ இலக்கியம் சேகரிப்பு" },
+  { la: 'Te', txt: "దాస । సమూహం నిర్వహించిన హరిదాస సాహిత్యం సేకరణ" } ]
   
+let strDscrptn = 'ದಾಸರ ಪದ, ಸುಳಾದಿ, ದೇವರನಾಮ ಮತ್ತು ಕೀರ್ತನೆಗಳ ಸಂಗ್ರಹ | Compiled Haridasa Sahitya';
+
+let litLangChanged = [
+  { la: 'En', txt: "Let's Read in English" },
+  { la: 'Ka', txt: "ಕನ್ನಡದಲ್ಲಿ ಓದೋಣ" },
+  { la: 'Ta', txt: "தமிழில் படிப்போம்" },
+  { la: 'Te', txt: "తెలుగులో చదువుదాం"} ]
+
+let litdbTableHdr = [
+  { la: 'En', txt: "Dasaboard" },
+  { la: 'Ka', txt: "ದಾಸ ಫಲಕ" },
+  { la: 'Ta', txt: "தாச பலகை" },
+  { la: 'Te', txt: "దాస పలక"} ]
+
+let litdbSbTtl = [
+  { la: 'En', txt: "Haridasas" },
+  { la: 'Ka', txt: "ಹರಿದಾಸರು" },
+  { la: 'Ta', txt: "ஹரிதாசர்கள்" },
+  { la: 'Te', txt: "హరిదాసులు"} ]
+
+let litdbWrkSbTtl = [
+  { la: 'En', txt: "Masterworks" },
+  { la: 'Ka', txt: "ಕೃತಿಗಳು" },
+  { la: 'Ta', txt: "இலக்கியம்" },
+  { la: 'Te', txt: "సాహిత్యం"} ]
+
+let litPrelHdg = [
+  { la: 'En', txt: "Prelude" },
+  { la: 'Ka', txt: "ಮುನ್ನುಡಿ" },
+  { la: 'Ta', txt: "முன்னுரை" },
+  { la: 'Te', txt: "ఉపోద్ఘాతం"} ]
+
+let litSbttlVid = [
+  { la: 'En', txt: "Videos" },
+  { la: 'Ka', txt: "ವೀಡಿಯೊಗಳು" },
+  { la: 'Ta', txt: "வீடியோக்கள்" },
+  { la: 'Te', txt: "వీడియోలు"} ]
+
+let litSbttlVstr = [
+  { la: 'En', txt: "Visitors" },
+  { la: 'Ka', txt: "ಸಂದರ್ಶಕರು" },
+  { la: 'Ta', txt: "பார்வையாளர்கள்" },
+  { la: 'Te', txt: "సందర్శకులు"} ]
+
+let litSbttlSbscrbrs = [
+  { la: 'En', txt: "Subscribers" },
+  { la: 'Ka', txt: "ಚಂದಾದಾರರು" },
+  { la: 'Ta', txt: "சந்தாதாரர்கள்" },
+  { la: 'Te', txt: "చందాదారులు"} ]
+
+let litSbttlCntrbtr = [
+  { la: 'En', txt: "Contributors" },
+  { la: 'Ka', txt: "ಕೊಡುಗೆದಾರರು" },
+  { la: 'Ta', txt: "பங்களிப்பாளர்கள்" },
+  { la: 'Te', txt: "సహకారులు"} ]
+// become a dasa: நீங்களும் தாசா ஆகுங்கள் : మీరు కూడా దాసా అవ్వండి : ನೀವೂ ದಾಸರಾಗಿ
+
 // /* TBD: Update strPageTitle for a selected dasa/song */
   /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-let strDscrptn = 'ದಾಸರ ಪದ, ಸುಳಾದಿ, ದೇವರನಾಮ ಮತ್ತು ಕೀರ್ತನೆಗಳ ಸಂಗ್ರಹ | Compiled Haridasa Sahitya';
 
-let litdbTableHdr = 'Dasaboard'
 // let strDAASA = `Donate An Amazing Song for Archive`;
 let strDAASA = `Duly Appreciate & Admire Sages Advise`;
 
 let strShloka = `भग्न पृष्ठ कटि ग्रीवा बद्ध दृष्टिः अधोमुखी ।<br>कष्टेन लिखितम् शास्त्रम् यत्नेन परिपालय ॥`
 
 let litPrelude =
-  `<p>This is not just another website for <i>dAsa sAhitya</i>; this is the <strong>Crowdsourced Archive</strong> of dAsa sAhitya, where the knowledge has been poured in from across barriers.<br>
+  `<p>This is not just another lyrics listing website... This is the <strong>Crowdsourced Archive</strong> of <i>dAsa sAhitya</i>, where the knowledge has been poured in by contributors from across regions & across religions. The prupose is to spread the knowledge in 4 different languages.<br>
   <p>Intrigued and interested souls have contributed their part, either by adding a lyric or by sending a video they have sung in.</p><br>
   <p>The task of creating such a repository can't just be a hobby but a service to Daasas, to impart their valuable work in <i>an easily available, neater, organized, convenient and impeccable</i> form.</p><br>
   <p class='var(--Purple)'>You too become a <b style='color: var(--Maroon)'>'DAASA'</b>, if you <i style='color: var(--Maroon)'>${strDAASA}</i>.</p><br>
@@ -142,20 +192,30 @@ let litPrelude =
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
+function fnFeedHTML() {
+  
+}
+
 window.fnFeedHome = async function fnFeedHome() {
 // words = codelines[i].split(" ");
-  document.getElementsByTagName('title')[0].innerHTML = fnPickItInCurrLang(litPageTitle);
+  document.getElementsByTagName('title')[0].innerHTML = fnPickLangTxt(litPageTitle);
   document.querySelector('meta[name="description"]').setAttribute("content", strDscrptn);
+  document.getElementById('Title').innerHTML = fnPickLangTxt(litNBTitle);
+  document.getElementById('dbHdng').innerHTML = fnPickLangTxt(litdbTableHdr);
 
-  document.getElementById('Title').innerHTML = fnPickItInCurrLang(litNBTitle);
+  document.getElementById('dbDasaSbttl').innerHTML = fnPickLangTxt(litdbSbTtl);
+  document.getElementById('dbWrksSbttl').innerHTML = fnPickLangTxt(litdbWrkSbTtl);
 
-  // litNBTitle.NBTitle.forEach( xLa => {
-  //   // console.log(xLa.txt);
-  //   (fnWhichLanguage()===xLa.la) ? (document.getElementById('Title').innerHTML = xLa.txt) : null;
-  // });
-  document.getElementById('dbHdng').innerHTML = litdbTableHdr;
+  document.getElementById('hdgPrelude').innerHTML = fnPickLangTxt(litPrelHdg);
 
+  //TBD
   document.getElementById('txtPrelude').innerHTML = litPrelude;
+
+  document.getElementById('crdSbTtlVid').innerHTML = fnPickLangTxt(litSbttlVid);
+  document.getElementById('crdSbTtlVstr').innerHTML = fnPickLangTxt(litSbttlVstr);
+  document.getElementById('crdSbTtlSubs').innerHTML = fnPickLangTxt(litSbttlSbscrbrs);
+  document.getElementById('crdSbTtlCntrbt').innerHTML = fnPickLangTxt(litSbttlCntrbtr);
+
 }
 /* - - - - - - - - */
 

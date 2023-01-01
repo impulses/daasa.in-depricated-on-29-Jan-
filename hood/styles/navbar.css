@@ -68,6 +68,8 @@
 }
 
 .btnLang {
+  display: grid;
+  align-items: center;
   --btnWxH: 32px;
   width:  var(--btnWxH);
   height: var(--btnWxH);

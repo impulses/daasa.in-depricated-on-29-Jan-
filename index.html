@@ -59,16 +59,16 @@
           <!-- Dasaboard Right Panel -->
           <div id="dbStats_R">
             <div id="crdVideo" class="InfoCard">
-              <div>72</div><div>Videos</div>
+              <div>72</div><div id="crdSbTtlVid">Videos</div>
             </div>
             <div id="crdVstr" class="InfoCard">
-              <div>10</div><div>Visitors</div>
+              <div>10</div><div id="crdSbTtlVstr">Visitors</div>
             </div>
             <div id="crdSubscr" class="InfoCard">
-                <div>92</div><div>Subscribers</div>
+                <div>92</div><div id="crdSbTtlSubs">Subscribers</div>
             </div>
             <div id="crdCntrbt" class="InfoCard">
-                <div>18</div><div>Contributors</div>
+                <div>18</div><div id="crdSbTtlCntrbt">Contributors</div>
             </div>
           </div>
           <!-- Dasaboard Bottom Panel -->
@@ -101,16 +101,20 @@
         <div class="Register mTB40">
           <div class="FlexC">
             <p class="Heading">Become a DAASA</p>
-            <p style="font-size: 14px; color: var(--Gray);">Register to Contribute or Just to Support. Thank You!</p>
+            <p style="font-size: 14px; color: var(--Gray);">Sign up to contribute or support. Thank you!</p>
           </div>
 
-          <form class="FormWrap" action="">
+          <!-- <form id="frmSignUp" name="frmReg" class="FormWrap" action=""> -->
+          <form id="frmSignUp" name="frmReg" class="FormWrap" action="" onsubmit="return false;">
             <div>
-              <input type="text" id="frmFN" name="fn" placeholder="First Name">
-              <input type="text" id="frmLN" name="ln" placeholder="Last Name">
+              <input type="text" name="fn" placeholder="First Name" required>
+              <input type="text" name="ln" placeholder="Last Name">
             </div>
-            <input type="email" id="frmEm" name="em"  placeholder="Email">
-            <input type="submit" id="frmSbmt" value="Sign Me Up">
+            <div>
+              <input type="email" name="em" placeholder="Email" required>
+              <input type="text" name="pl" placeholder="Place" >
+            </div>
+              <input type="submit" id="frmSbmt" value="Sign Up">
           </form>
           <p class="f14 fcL">Don't worry, no spam here! Your information will be used only for <code>daasa.in</code> statistics and related updates. You will not receive any emails.</p>
         </div>

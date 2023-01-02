@@ -44,7 +44,7 @@
 
 #NavIco_Wrap:is(:hover, :focus, :active) { cursor: pointer; background-color: var(--Hover); }
 
-#Title {
+#NBTitle {
   font-family: var(--fEn);
   font-weight: 600;
   font-size: var(--nbTitle);
@@ -53,7 +53,7 @@
   cursor: pointer;
 }
 
-#Title:hover { color: var(--Blue_D); }
+#NBTitle:hover { color: var(--Blue_D); }
 
 #Subtitle {
   font-size: 14px;

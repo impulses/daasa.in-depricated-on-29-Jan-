@@ -10,30 +10,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <title></title>
+    <meta name="description" content="Daasa.in is a Crowdsourced Archive of compositions of Haridasas who followed Madhvacharya's Madhwa philosophy. This site has lyrics for Dasa compositions in English and three major South Indian literary languages; Kannada, Tamil and Telugu. Many lyrics have videos. ದಾಸರ ಪದ, ಸುಳಾದಿ, ದೇವರನಾಮ ಮತ್ತು ಕೀರ್ತನೆಗಳ ಸಂಗ್ರಹ"/>
+    <title id="PageTitle"></title>
     <link rel="stylesheet" href="/hood/styles/index.css" />
   </head>
 
   <body id="Home">
     <nav id="Navbar">
-      <div id="idNav_L"><div id="Title" onclick="location.href='/';"></div></div>
+      <div id="idNav_L"><div id="NBTitle" onclick="location.href='/';"></div></div>
       <div id="idNav_R"></div>
     </nav>
     <main id="Wrapper">
       <div id="Content">
-        <div id="dbHdng" class="Heading mB16"></div>
+        <div id="dbTableHdr" class="Heading mB16"></div>
         <div id="idDasaboard">
           <!-- Dasaboard Left Panel -->
           <div id="dbStats_L">
             <div class="dbTableHdr">
               <div>
                 <div id="dbDasaCount">13</div>
-                <div id="dbDasaSbttl">Dasas</div>
+                <div id="dbSbTtl">Dasas</div>
               </div>
               <div>
                 <div id="dbWrksCount">128</div>
-                <div id="dbWrksSbttl">Masterworks</div>
+                <div id="dbWrkSbTtl">Masterworks</div>
               </div>
             </div>
             <div class="dbWorkList">
@@ -59,16 +59,16 @@
           <!-- Dasaboard Right Panel -->
           <div id="dbStats_R">
             <div id="crdVideo" class="InfoCard">
-              <div>72</div><div id="crdSbTtlVid">Videos</div>
+              <div>72</div><div id="SbttlVid">Videos</div>
             </div>
             <div id="crdVstr" class="InfoCard">
-              <div>10</div><div id="crdSbTtlVstr">Visitors</div>
+              <div>10</div><div id="SbttlVstr">Visitors</div>
             </div>
             <div id="crdSubscr" class="InfoCard">
-                <div>92</div><div id="crdSbTtlSubs">Subscribers</div>
+                <div>92</div><div id="SbttlSbscrbrs">Subscribers</div>
             </div>
             <div id="crdCntrbt" class="InfoCard">
-                <div>18</div><div id="crdSbTtlCntrbt">Contributors</div>
+                <div>18</div><div id="SbttlCntrbtr">Contributors</div>
             </div>
           </div>
           <!-- Dasaboard Bottom Panel -->
@@ -94,8 +94,8 @@
           </div>
         </div>
         <div class="Pack">
-          <div id="hdgPrelude" class="Heading mB16">Prelude</div>
-          <div id="txtPrelude"></div>
+          <div id="PrelHdg" class="Heading mB16">Prelude</div>
+          <div id="Prelude"></div>
         </div>
         <!-- Registration -->
         <div class="Register mTB40">
@@ -104,15 +104,15 @@
             <p style="font-size: 14px; color: var(--Gray);">Sign up to contribute or support. Thank you!</p>
           </div>
 
-          <!-- <form id="frmSignUp" name="frmReg" class="FormWrap" action=""> -->
-          <form id="frmSignUp" name="frmReg" class="FormWrap" action="" onsubmit="return false;">
+          <form id="frmSignUp" name="frmReg" class="FormWrap" action="">
+          <!-- <form id="frmSignUp" name="frmReg" class="FormWrap" action="" onsubmit="return false;"> -->
             <div>
               <input type="text" name="fn" placeholder="First Name" required>
               <input type="text" name="ln" placeholder="Last Name">
             </div>
             <div>
               <input type="email" name="em" placeholder="Email" required>
-              <input type="text" name="pl" placeholder="Place" >
+              <input type="text"  name="pl" placeholder="Place">
             </div>
               <input type="submit" id="frmSbmt" value="Sign Up">
           </form>

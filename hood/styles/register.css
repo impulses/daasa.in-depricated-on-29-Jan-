@@ -31,7 +31,7 @@
 /* .FormWrap p {} */
 
 /* #frmFN, #frmLN, #frmEm, #frmSbmt  */
-.FormWrap div input, #frmSbmt {
+.FormWrap div input, #btnSubmit {
   height: var(--fldHeight);
   border-radius: 4px;
   border: 1px solid var(--Border_D);
@@ -42,7 +42,7 @@
   font-size: 16px;
 }
 
-#frmSbmt {
+#btnSubmit {
   padding: 8px 24px;
   height: 40px;
   max-width: max-content;

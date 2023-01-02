@@ -100,25 +100,25 @@
         <!-- Registration -->
         <div class="Register mTB40">
           <div class="FlexC">
-            <p class="Heading">Become a DAASA</p>
-            <p style="font-size: 14px; color: var(--Gray);">Sign up to contribute or support. Thank you!</p>
+            <p id="RegTtl" class="Heading"></p>
+            <!-- <p style="font-size: 14px; color: var(--Gray);">Sign up to contribute or support. Thank you!</p> -->
+            <p id="RegSbttl" style="font-size: 14px; color: var(--Gray);"></p>
           </div>
 
           <form id="frmSignUp" name="frmReg" class="FormWrap" action="">
-          <!-- <form id="frmSignUp" name="frmReg" class="FormWrap" action="" onsubmit="return false;"> -->
             <div>
-              <input type="text" name="fn" placeholder="First Name" required>
-              <input type="text" name="ln" placeholder="Last Name">
+              <input id="fldFN" type="text" name="fn" placeholder="First Name" required>
+              <input id="fldLN" type="text" name="ln" placeholder="Last Name">
             </div>
             <div>
-              <input type="email" name="em" placeholder="Email" required>
-              <input type="text"  name="pl" placeholder="Place">
+              <input id="fldEm" type="email" name="em" placeholder="Email" required>
+              <input id="fldPl" type="text"  name="pl" placeholder="Place">
             </div>
-              <input type="submit" id="frmSbmt" value="Sign Up">
+              <input id="btnSubmit" type="submit" value="Sign Up">
           </form>
           <p class="f14 fcL">Don't worry, no spam here! Your information will be used only for <code>daasa.in</code> statistics and related updates. You will not receive any emails.</p>
         </div>
-      </div> <!-- End Content -->
+      </div><!-- End Content -->
     </main>
   </body>
 </html>

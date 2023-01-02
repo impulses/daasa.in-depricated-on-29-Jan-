@@ -16,6 +16,17 @@ window.fnActive = (Element) => {
 }
 /* - - - - - - - - */
 
+/* Toast Messages */
+window.fnShowToast = function fnShowToast(Msg) {
+  const tDiv = document.createElement("div");
+  tDiv.id = "idToast"; // For styling
+  tDiv.className = "show"; // Add "show" class
+  tDiv.innerText = Msg;
+  document.body.appendChild(tDiv); // Append to body
+  setTimeout( function(){ tDiv.remove(); }, 2000 ); // Remove div after 2 sec
+}
+/* - - - - - - - - */
+
 /* fnDimensions('ID') – Shows window size */
 /* const fnDimensions = (Ele) => {
   let WH = ( window.innerWidth+'x' + window.innerHeight )

@@ -89,3 +89,18 @@ function fnTest1 () {
 // pageHeight = window.document.documentElement.scrollHeight
 
 // event.stopPropagation();
+
+/* const myForm = document.forms.frmReg.elements;
+console.log(myForm.em.placeholder);
+myForm.em.placeholder= "you@email.com"; */
+
+
+function hasKannadaChar(str) {
+  return /[\u0C80-\u0CFF]/.test(str);
+}
+// Tamil Range: 0B80–0BFF
+// Telugu Range: 0C00–0C7F
+// Kannada Range: 0C80–0CFF
+/* - - - - - - - - */
+// https://wesbos.com/tagged-template-literals
+/* - - - - - - - - */

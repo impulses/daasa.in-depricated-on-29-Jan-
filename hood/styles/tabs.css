@@ -1,0 +1,57 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* tabs.css | Tabs UI | 03/01/2023                 */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+@import url("~twigs.css");
+
+:root { --hTabbar: 48px; }
+
+.Tabbar {
+  display: grid;
+  grid: var(--hTabbar) / repeat(auto-fit, minmax(128px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(200px,1fr);
+
+  min-width: 100%;
+  background: transparent;
+  border-bottom: 1px solid var(--Border);
+
+  overflow: hidden;
+  -ms-overflow-style: none; scrollbar-width: none;
+  overflow-x: scroll;
+}
+.Tabbar::-webkit-scrollbar { display: none; }
+
+.aTab {
+  display: grid;
+  align-content: center;
+  color: var(--Txt_H);
+  font-weight: 500;
+  text-align: center;
+  padding: 8px 24px;
+  border-bottom: 2px solid transparent;
+}
+
+.aTab:not(.tabOn).aTab:is( :hover, :focus, :active ) {
+  cursor: pointer;
+  color: var(--Blue_D);
+  background: var(--Hover);
+}
+
+.tabOn {
+  border: none;
+  color: var(--Txt);
+  border-bottom: 2px solid var(--Blue_D);
+}
+
+/* - - - - - - - - Media Queries - - - - - - - - */
+@media only screen and (min-width: 600px) and (max-width: 992px) { /* Tablets */
+
+}
+
+@media only screen and (min-width: 375px) and (max-width: 599px) {
+  .Tabbar {
+    padding: 0 16px;
+  }
+}
+/* - - - - - - - - - - - - - - - - */

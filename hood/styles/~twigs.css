@@ -20,10 +20,6 @@
   color: var(--Col);
   background: var(--BGCol);
 }
-/* :root #Navbar {
-  background: var(--BGCol);
-  border-bottom: var(--Line);
-} */
 /* - - - - - - - -  */
 
 :root.Light {
@@ -42,13 +38,6 @@
   border-bottom: 1px solid #383939;
 }
 /* - - - - - - - - - - - - - - - - */
-
-.ctrTabs{
-  place-self: center;
-  display: grid;
-  grid: 1fr / 1fr 1fr 1fr;
-  gap: 8px;
-}
 
 .Shloka {
   display: grid;

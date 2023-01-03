@@ -7,6 +7,8 @@
 /* - - - - - - - - Wrapper styles for various pages - - - - - - - - */
 #Wrapper {
   display: grid;
+  grid-template-rows: max-content;
+  /* grid-template-columns: repeat(auto-fit, minmax(192px, 1fr)); */
   gap: 24px;
 
   max-width: var(--wContent);
@@ -14,20 +16,12 @@
   margin-left:  auto;
   margin-right: auto;
   overflow-y: scroll;
-  padding: 40px 0px;
+  padding: 0;
 }
 
-#Catalog #Wrapper {
-  /* grid: var(--TabbarHeight) var(--SearchboxHeight) auto auto / 1fr; */
-  /* background: rgba(0, 0, 0, 0.04); */
-  background: transparent;
-}
-
-#Content { height: max-content; padding: 24px; }
-
-.Pack {
-  padding: 24px 0;
-  /* background-color: lightcyan; */
+#Content {
+  height: max-content;
+  padding: 40px 24px;
 }
 
 /* - - - - - - - - Media Queries - - - - - - - - */
@@ -35,7 +29,6 @@
 }
 
 @media only screen and (min-width: 375px) and (max-width: 599px) { /* Smartphones */
-  #Wrapper { padding: 24px; }
-  #Content { padding: 0; }
+  #Content { padding: 24px; }
 }
 /* - - - - - - - - - - - - - - - - */

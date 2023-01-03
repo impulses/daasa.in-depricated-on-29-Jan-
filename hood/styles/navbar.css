@@ -7,13 +7,13 @@
 :root {
   /* GLOBALS */
   --nbHeight:  71px;
-  --nbTitle:   clamp( 16px, calc(15px + 1vw), 20px );
+  --nbTitle:   clamp( 15px, calc(14px + 1vw), 20px );
   --nbPadding: 0px 24px;
 }
 
 #Navbar {
     display: grid;
-    grid: var(--nbHeight) / repeat( auto-fit, minmax(160px, 1fr) );
+    grid: var(--nbHeight) / repeat( auto-fit, minmax(176px, 1fr) );
     /* gap: 8px; */
     padding: var(--nbPadding);
     top: 0;
@@ -53,7 +53,7 @@
   cursor: pointer;
 }
 
-#NBTitle:hover { color: var(--Blue_D); }
+#Title:hover { color: var(--Blue_D); }
 
 #Subtitle {
   font-size: 14px;
@@ -82,14 +82,14 @@
 }
 #idNav_R button:not(:first-child) { margin-left: 16px; }
 
-.btnLang:not(.Slctd):hover {
+.btnLang:not(.btnOn):hover {
   cursor: pointer;
   color: var(--Blue_D);
   background: var(--Blue_L);
   border: 1px solid var(--Blue_D);
 }
 
-.Slctd {
+.btnOn {
   color: #FFF;
   border: none;
   background: var(--Txt_H);
@@ -99,8 +99,8 @@
 /* - - - - - - - - Media Queries - - - - - - - - */
 @media only screen and (max-width: 428px) {
   #Navbar{
-    grid: auto / repeat( auto-fit, minmax(186px, 1fr) );
-    gap: 16px;
+    grid: auto / repeat( auto-fit, minmax(184px, 1fr) );
+    gap: 0px;
     padding: 16px;
   }
 

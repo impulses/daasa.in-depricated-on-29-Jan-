@@ -53,6 +53,8 @@
   -moz-appearance: button;
   appearance: button;
 }
+
+#btnSubmit:is(:hover, :active, :focus) { cursor: pointer; }
 /* - - - - - - - - - - - - - - - - */
 
 /* - - - - - - - - Media Queries - - - - - - - - */

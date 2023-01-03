@@ -73,35 +73,84 @@ p  { font-size: 16px Serif; }
 
 .p08   { padding: var(--px08); }
 .pTB08 { padding-top: var(--px08); padding-bottom: var(--px08); }
+.pT08  { padding-top: var(--px08); }
+.pB08  { padding-bottom: var(--px08); }
+.pLR08 { padding-left: var(--px08); padding-right: var(--px08); }
+.pL08  { padding-left: var(--px08); }
+.pR08  { padding-right: var(--px08); }
+
 .p16   { padding: var(--px16); }
 .pTB16 { padding-top: var(--px16); padding-bottom: var(--px16); }
+.pT16  { padding-top: var(--px16); }
+.pB16  { padding-bottom: var(--px16); }
 .pLR16 { padding-left: var(--px16); padding-right: var(--px16); }
+.pL16  { padding-left: var(--px16); }
+.pR16  { padding-right: var(--px16); }
+
 .p24   { padding: var(--px24); }
 .pTB24 { padding-top: var(--px24); padding-bottom: var(--px24); }
+.pT24  { padding-top: var(--px24); }
+.pB24  { padding-bottom: var(--px24); }
 .pLR24 { padding-left: var(--px24); padding-right: var(--px24); }
+.pL24  { padding-left: var(--px24); }
+.pR24  { padding-right: var(--px24); }
+
 .p32   { padding: var(--px32); }
 .pTB32 { padding-top: var(--px32); padding-bottom: var(--px32); }
+.pT32  { padding-top: var(--px32); }
+.pB32  { padding-bottom: var(--px32); }
 .pLR32 { padding-left: var(--px32); padding-right: var(--px32); }
+.pL32  { padding-left: var(--px32); }
+.pR32  { padding-right: var(--px32); }
+
 .p40   { padding: var(--px40); }
 .pTB40 { padding-top: var(--px40); padding-bottom: var(--px40); }
+.pT40  { padding-top: var(--px40); }
+.pB40  { padding-bottom: var(--px40); }
 .pLR40 { padding-left: var(--px40); padding-right: var(--px40); }
+.pL40  { padding-left: var(--px40); }
+.pR40  { padding-right: var(--px40); }
+/* - - - - - - - - - - - - - - - - */
 
 .m08   { margin: var(--px08); }
 .mTB08 { margin-top: var(--px08); margin-bottom: var(--px08); }
+.mT08  { margin-top: var(--px08); }
+.mB08  { margin-bottom: var(--px08); }
+.mLR08 { margin-left: var(--px08); margin-right: var(--px08); }
+.mL08  { margin-left: var(--px08); }
+.mR08  { margin-right: var(--px08); }
+
 .m16   { margin: var(--px16); }
 .mTB16 { margin-top: var(--px16); margin-bottom: var(--px16); }
 .mT16  { margin-top: var(--px16); }
 .mB16  { margin-bottom: var(--px16); }
 .mLR16 { margin-left: var(--px16); margin-right: var(--px16); }
+.mL16  { margin-left: var(--px16); }
+.mR16  { margin-right: var(--px16); }
+
 .m24   { margin: var(--px24); }
-.mTB24 { margin-top: var(--px32); margin-bottom: var(--px32); }
-.mLR24 { margin-left: var(--px32); margin-right: var(--px32); }
+.mTB24 { margin-top: var(--px24); margin-bottom: var(--px24); }
+.mT24  { margin-top: var(--px24); }
+.mB24  { margin-bottom: var(--px24); }
+.mLR24 { margin-left: var(--px24); margin-right: var(--px24); }
+.mL24  { margin-left: var(--px24); }
+.mR24  { margin-right: var(--px24); }
+
 .m32   { margin: var(--px32); }
 .mTB32 { margin-top: var(--px32); margin-bottom: var(--px32); }
+.mT32  { margin-top: var(--px32); }
+.mB32  { margin-bottom: var(--px32); }
 .mLR32 { margin-left: var(--px32); margin-right: var(--px32); }
+.mL32  { margin-left: var(--px32); }
+.mR32  { margin-right: var(--px32); }
+
 .m40   { margin: var(--px40); }
 .mTB40 { margin-top: var(--px40); margin-bottom: var(--px40); }
+.mT40  { margin-top: var(--px40); }
+.mB40  { margin-bottom: var(--px40); }
 .mLR40 { margin-left: var(--px40); margin-right: var(--px40); }
+.mL40  { margin-left: var(--px40); }
+.mR40  { margin-right: var(--px40); }
 /* - - - - - - - - - - - - - - - - */
 
 .Brdr { border: 1px solid var(--Border); }

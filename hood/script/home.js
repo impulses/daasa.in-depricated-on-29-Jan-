@@ -4,8 +4,6 @@
 
 /* When the window loads */
 window.addEventListener("load", function() {
-  // fnAddLangBtns();
-  // fnDoTitles();
   // if (document.getElementsByTagName('BODY')[0].id==='Home') {
     fnFeedHome();
     fnFeedForm();
@@ -14,8 +12,8 @@ window.addEventListener("load", function() {
 });
 /* - - - - - - - - */
 
-function fnFeedHome() {
-  fnPush2IDs( [ 'tsdbTableHdr', 'tsdbSbTtl', 'tsdbWrkSbTtl', 'tsSbttlVid', 'tsSbttlVstr', 'tsSbttlSbscrbrs', 'tsSbttlCntrbtr','tsPrelHdg', 'tsPrelude', 'tsRegTtl', 'tsRegSbttl' ] );
+window.fnFeedHome = () => {
+  fnPush2IDs( [ 'tsdbTableHdr', 'tsdbSbTtl', 'tsdbWrkSbTtl', 'tsSbttlVid', 'tsSbttlVstr', 'tsSbttlSbscrbrs', 'tsSbttlCntrbtr','tsPrelHdg', 'tsPrelude', 'tsRegTtl', 'tsRegSbttl', 'tsRegDsclmr' ] );
 }
 /* - - - - - - - - */
 
@@ -24,7 +22,7 @@ function fnPush2Form(ID, FieldAttr, Val) {
 }
 /* - - - - - - - - */
 
-function fnFeedForm() {
+window.fnFeedForm = () => {
   let xFields = [ 'fldFN', 'fldLN', 'fldEm', 'fldPl' ]
   xFields.forEach( xF => {
     fnPush2Form( xF, 'placeholder', fnPickLangTxt( eval( 'ts'+String(xF) ) ))

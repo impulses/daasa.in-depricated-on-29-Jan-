@@ -4,9 +4,10 @@
 
 /* When the window loads */
 window.addEventListener("load", function() {
-  // fnDimensions('WxH');
   fnAddLangBtns();
   fnDoTitles();
+  ( URLHas('catalog') ) ? console.log('catalog is the url') : console.log('No');
+  ( URLHas('gems') ) ? console.log('gems is the url') : console.log('No');
 });
 /* - - - - - - - - */
 
@@ -37,8 +38,11 @@ window.fnAddLangBtns = () => {
       fnShowToast( fnPickLangTxt(tsLangChanged) );
       fnDoTitles(); // Update the HTML & Navbar
       /* Individually handling page content... */
-      // (document.getElementsByTagName('BODY')[0].id==='Home') ? fnFeedHome() : null; // Update the 'Home' page content
-      // (document.getElementsByTagName('BODY')[0].id!='Home') ? fnDoTabLabels() : null; // Update the 'NON-Home' page TABS content
+      if(document.getElementsByTagName('BODY')[0].id==='Home') {
+        fnFeedHome()
+        fnFeedForm();
+      }; // Update the 'Home' page content
+      (document.getElementsByTagName('BODY')[0].id!='Home') ? fnDoTabLabels() : null; // Update the 'NON-Home' page TABS content
     });
     target.appendChild(btn);
   });
@@ -79,6 +83,22 @@ window.fnShowToast = function fnShowToast(Msg) {
   tDiv.innerText = Msg;
   document.body.appendChild(tDiv); // Append to body
   setTimeout( function(){ tDiv.remove(); }, 2000 ); // Remove div after 2 sec
+}
+/* - - - - - - - - */
+
+/* Returns the last segment of the current URL */
+window.WhereamI = () => {
+  const segments = new URL(window.location.href).pathname.split('/');
+  const last = segments.pop() || segments.pop(); //Handle trailing slash
+  console.log(last);
+  return(last);
+}
+/* - - - - - - - - */
+
+/* Returns true if URS has the search string */
+window.URLHas = (string) => {
+  if ( window.location.href.indexOf(string) > 0 ) { return(true) }
+  return(false);
 }
 /* - - - - - - - - */
 

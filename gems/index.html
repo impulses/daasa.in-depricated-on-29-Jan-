@@ -3,30 +3,42 @@
 <!DOCTYPE html>
 <html lang="en-IN">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ದಾಸರ ಪದ, ಸುಳಾದಿ, ದೇವರನಾಮ ಮತ್ತು ಕೀರ್ತನೆಗಳ ಸಂಗ್ರಹ | Compiled Haridasa Sahitya" />
-  <title>ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ | ಹರಿದಾಸ ಸಾಹಿತ್ಯಗಳ ಸಮೂಹ ನಿರ್ವಹಿತ ಸಂಗ್ರಹತಾಣ</title>
   <script type="module" src="/hood/script/index.js"></script>
-  <link rel="stylesheet" href="/hood/styles/twigs.css" />
-</head>
+  <script type="module" src="/hood/script/literals.js"></script>
+  <script type="module" src="/hood/script/catalog.js"></script>
 
-<body id="Catalogue">
-  <nav id="Navbar">
-    <div id="idNav_L">
-      <div id="NavIco_Wrap"> <div id="NavIcon"></div> </div>
-          <h1 id="Title" onclick="location.href='/';">ದಾಸ ಸಾಹಿತ್ಯ ಸಂಗ್ರಹ</h1>
-          <!-- <div id="Subtitle">ಹರಿದಾಸ ಕೀರ್ತನೆಗಳ ಸಮೂಹ ನಿರ್ವಹಿತ ತಾಣ</div> -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Daasa.in is a Crowdsourced Archive of compositions of Haridasas who followed Madhvacharya's Madhwa philosophy. This site has lyrics for Dasa compositions in English and three major South Indian literary languages; Kannada, Tamil and Telugu. Many lyrics have videos. ದಾಸರ ಪದ, ಸುಳಾದಿ, ದೇವರನಾಮ ಮತ್ತು ಕೀರ್ತನೆಗಳ ಸಂಗ್ರಹ"/>
+    <title id="PageTitle"></title>
+    <link rel="stylesheet" href="/hood/styles/index.css" />
+  </head>
+
+  <body id="Catalog">
+    <nav id="Navbar">
+      <div id="idNav_L"><div id="NBTitle" onclick="location.href='/';"></div></div>
+      <div id="idNav_R"></div>
+    </nav>
+    <main id="Wrapper">
+      <div id="TabsWrap" class="Tabbar">
+        <!-- <div id="Tab1" class="aTab">ದಾಸರು</div>
+        <div id="Tab2" class="aTab">ಕೃತಿಗಳು</div>
+        <div id="Tab3" class="aTab">ಇಷ್ಟದ ಪಟ್ಟಿ</div> -->
       </div>
-    </div>
-    <div id="idNav_R" class="GridC">
-      <div id="WxH" class="fntEng"></div>
-      <!-- <label for="Toggler"><input type="checkbox" id="Toggler"/> Dark Mode</label> -->
-    </div>
-  </nav>
+      <div id="Content">
+        <div id="dbHdng" class="Heading">Catalog</div>
+        <div class="ctrSrch">
+          <form action="" class="FlexR">
+          <!-- <form action=""> -->
+            <input type="text" name="q" required tabindex="1" class="Searchbox" placeholder="Search" onblur="this.placeholder='Search'"/>
+            <button class="ClearSrch" type="reset"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></button>
+            <button type="submit" value="Submit" class="searchButton"><i class="SrchIcon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M10 2C14.4183 2 18 5.58172 18 10C18 11.5846 17.5393 13.0616 16.7445 14.3044L21.4946 19.0545C22.1685 19.7283 22.1685 20.8208 21.4946 21.4946C20.8208 22.1685 19.7283 22.1685 19.0545 21.4946L14.3044 16.7445C13.0616 17.5393 11.5846 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2ZM10 16C13.3137 16 16 13.3137 16 10C16 6.68629 13.3137 4 10 4C6.68629 4 4 6.68629 4 10C4 13.3137 6.68629 16 10 16Z"/></g></svg></i></button>
+          </form>
+        </div>
+      </div> <!-- End Content -->
     </main>
+    <div id="idToast"></div>
   </body>
-
 </html>

@@ -22,27 +22,41 @@
 }
 .Tabbar::-webkit-scrollbar { display: none; }
 
-.aTab {
-  display: grid;
-  align-content: center;
-  color: var(--Txt_H);
-  font-weight: 500;
-  text-align: center;
-  padding: 8px 24px;
-  border-bottom: 2px solid transparent;
-}
-
-.aTab:not(.tabOn).aTab:is( :hover, :focus, :active ) {
+.aTab:not(.aTabOn).aTab:is( :hover, :focus, :active ) {
   cursor: pointer;
   color: var(--Blue_D);
   background: var(--Hover);
 }
 
-.tabOn {
+.Tabbar a {
+  cursor: auto;
+  border-bottom: 2px solid transparent;
+}
+
+.Tabbar a > * {
+  display: grid;
+  align-items: center;
+  color: var(--Txt_H);
+  font-weight: 500;
+  text-align: center;
+  height: 100%;
+}
+
+.aTabOn {
   border: none;
   color: var(--Txt);
-  border-bottom: 2px solid var(--Blue_D);
+  border-bottom: 2px solid var(--Blue_D) !important;
 }
+
+/* .aTab a div:after {
+  display:block;
+  content: '';
+  border-bottom: 2px solid var(--Gray_L);
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+.aTab a div:hover:after { transform: scaleX(1); } */
+
 
 /* - - - - - - - - Media Queries - - - - - - - - */
 @media only screen and (min-width: 600px) and (max-width: 992px) { /* Tablets */

@@ -4,30 +4,27 @@
 
 /* When the window loads */
 window.addEventListener("load", function() {
-  // if (document.getElementsByTagName('BODY')[0].id==='Home') {
-    fnFeedHome();
-    fnFeedForm();
-  // }
-  fnListen4mSubmit(); console.log("DATABASE ACCESS\nPRELUDE\nAND NUMBERS ARE TBD...");
+  console.log('Home.js is now on');
+fnListen4mSubmit(); console.log("DATABASE ACCESS\nPRELUDE\nAND NUMBERS ARE TBD...");
 });
 /* - - - - - - - - */
 
 window.fnFeedHome = () => {
-  fnPush2IDs( [ 'tsdbTableHdr', 'tsdbSbTtl', 'tsdbWrkSbTtl', 'tsSbttlVid', 'tsSbttlVstr', 'tsSbttlSbscrbrs', 'tsSbttlCntrbtr','tsPrelHdg', 'tsPrelude', 'tsRegTtl', 'tsRegSbttl', 'tsRegDsclmr' ] );
+  fnPick1Push2IDs( [ 'tsdbTableHdr', 'tsdbSbTtl', 'tsdbWrkSbTtl', 'tsSbttlVid', 'tsSbttlVstr', 'tsSbttlSbscrbrs', 'tsSbttlCntrbtr','tsPrelHdg', 'tsPrelude', 'tsRegTtl', 'tsRegSbttl', 'tsRegDsclmr' ] );
 }
 /* - - - - - - - - */
 
-function fnPush2Form(ID, FieldAttr, Val) {
-  document.getElementById(ID).setAttribute(FieldAttr,Val);
+function fnPush2Form( ID, FieldAttr, Val ) {
+  document.getElementById(ID).setAttribute( FieldAttr, Val );
 }
 /* - - - - - - - - */
 
 window.fnFeedForm = () => {
   let xFields = [ 'fldFN', 'fldLN', 'fldEm', 'fldPl' ]
   xFields.forEach( xF => {
-    fnPush2Form( xF, 'placeholder', fnPickLangTxt( eval( 'ts'+String(xF) ) ))
+    fnPush2Form( xF, 'placeholder', fnPickALangTxt( eval( 'ts'+String(xF) ) ))
   })
-  fnPush2Form('btnSubmit', 'value', fnPickLangTxt(tsbtnSubmit))
+  fnPush2Form('btnSubmit', 'value', fnPickALangTxt(tsbtnSubmit))
 }
 /* - - - - - - - - */
 

@@ -27,7 +27,7 @@
 
 #idNav_L {
   display: grid;
-  grid: 1fr / auto;
+  grid: 1fr / max-content max-content;
   align-items: center;
   gap: 8px;
   color: var(--Txt_H);
@@ -50,10 +50,10 @@
   font-size: var(--nbTitle);
   color: var(--Txt_H);
   overflow-wrap: break-word;
-  cursor: pointer;
+  max-width: max-content;
 }
 
-#Title:hover { color: var(--Blue_D); }
+#NBTitle:hover { cursor: pointer; color: var(--Blue_D); }
 
 #Subtitle {
   font-size: 14px;
@@ -82,14 +82,14 @@
 }
 #idNav_R button:not(:first-child) { margin-left: 16px; }
 
-.btnLang:not(.btnOn):hover {
+.btnLang:not(.btnLangOn):hover {
   cursor: pointer;
   color: var(--Blue_D);
   background: var(--Blue_L);
   border: 1px solid var(--Blue_D);
 }
 
-.btnOn {
+.btnLangOn {
   color: #FFF;
   border: none;
   background: var(--Txt_H);

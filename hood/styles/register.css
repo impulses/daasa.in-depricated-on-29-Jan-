@@ -28,7 +28,6 @@
   /* Reuse this Grid template */
   gap: var(--GridGap);
 }
-/* .FormWrap p {} */
 
 /* #frmFN, #frmLN, #frmEm, #frmSbmt  */
 .FormWrap div input, #btnSubmit {
@@ -52,6 +51,7 @@
   -webkit-appearance: button;
   -moz-appearance: button;
   appearance: button;
+  justify-self: end;
 }
 
 #btnSubmit:is(:hover, :active, :focus) { cursor: pointer; }

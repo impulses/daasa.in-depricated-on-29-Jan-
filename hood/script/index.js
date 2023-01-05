@@ -4,71 +4,101 @@
 
 /* When the window loads */
 window.addEventListener("load", function() {
-  fnAddLangBtns();
-  fnDoTitles();
-  ( URLHas('catalog') ) ? console.log('catalog is the url') : console.log('No');
-  ( URLHas('gems') ) ? console.log('gems is the url') : console.log('No');
+  fnLanguageShifter( 'idNav_R', btnLangIDs, 'btnLang', btnLabels );
+  fnExecSequence();
 });
 /* - - - - - - - - */
 
-window.btnLang_ID = [ 'En','Ka','Ta','Te' ];
-window.btnLabel   = [ 'E', 'ಕ', 'த', 'తె' ];
-let    currLang   = '' // Global. Default to none
-/* - - - - - - - - */
-
 window.fnWhatLang = () => {
-  (currLang === null) ? currLang = 'Ka' : currLang = localStorage.getItem('currLang'); // Check for last lang, default to Ka if null
+  (currLang === null) ? currLang = 'Ka' : currLang = localStorage.getItem('currLang'); // Check for last lang, Default to Ka if null
   localStorage.setItem( 'currLang', currLang ); // Save to localStorage
   return currLang;
 }
 /* - - - - - - - - */
 
-window.fnAddLangBtns = () => {
-  let target = document.getElementById('idNav_R'),  i = 0;
-  btnLang_ID.forEach( X => {
-    var btn = document.createElement("button");
+window.btnLangIDs = [ 'En','Ka','Ta','Te' ];
+window.btnLabels   = [ 'E', 'ಕ', 'த', 'తె' ];
+let    currLang   = '' // Global. Default to none
+/* - - - - - - - - */
+
+/* Create Language Shifter buttons */
+window.fnLanguageShifter = function ( ParentDiv, ElementsList, ClassName, Labels ) {
+  let target = document.getElementById(String(ParentDiv));
+  let ActiveClass = ClassName+'On';
+  ElementsList.forEach( (X, Y) => { // Y is just a counter
+    var btn = document.createElement( 'button' );
     btn.id = X ; // ID for button
-    btn.className = 'btnLang'; // Btn Classes
-    (fnWhatLang()===btnLang_ID[i]) ? btn.classList.add('btnOn') : null; // Check for the last saved language and 
-    btn.innerHTML = btnLabel[i++] ;
+    btn.className = String(ClassName); //Add Element's Class
+    (fnWhatLang()===ElementsList[Y]) ? btn.classList.add(String(ActiveClass)) : null; // Add Active classname
+    btn.innerHTML = Labels[Y] ;
     /* Listen to LangBtns event */
     btn.addEventListener ( "click", function() {
-      fnActive(this, 'btnOn');
+      fnActive( this, ActiveClass );
       localStorage.setItem( 'currLang', X ); // Save currLang to localStorage
-      fnShowToast( fnPickLangTxt(tsLangChanged) );
-      fnDoTitles(); // Update the HTML & Navbar
-      /* Individually handling page content... */
-      if(document.getElementsByTagName('BODY')[0].id==='Home') {
-        fnFeedHome()
-        fnFeedForm();
-      }; // Update the 'Home' page content
-      (document.getElementsByTagName('BODY')[0].id!='Home') ? fnDoTabLabels() : null; // Update the 'NON-Home' page TABS content
+      fnToast( fnPickALangTxt(tsLangChanged), 1500 );
+      fnExecSequence(); /* To individually handle a sequence */
     });
     target.appendChild(btn);
   });
 }
 /* - - - - - - - - */
 
-/* Picks up the string in current language set and returns */
-window.fnPickLangTxt = (litVar) => {
+/* Execution sequence run by fnLanguageShifter */
+function fnExecSequence() {
+  fnPick1Push2IDs([ 'tsPageTitle', 'tsNBTitle' ]); // Update HTML & Navbar
+  if(document.getElementsByTagName('BODY')[0].id==='pgHome') {
+//check if I can use the url here above...
+    fnFeedHome(); // home.js
+    fnFeedForm(); // home.js
+  } else {
+    fnCreateTabs('TabsWrap', idTabIDs, 'aTab'); //Don't show Tabs on home
+  }
+}
+/* - - - - - - - - */
+
+/* Create Tabs from idTabIDs and add addEventListener */
+window.fnCreateTabs = ( Parent, TabsIDList, Class ) => {
+  document.getElementById(Parent).innerHTML=''; // Clear it first
+  TabsIDList.forEach( (X, Y) => {
+    var anchor = document.createElement("a");
+    anchor.setAttribute( 'href',"/" + TabsIDList[Y].toLowerCase() + "/" );
+    var tab = document.createElement("p");
+    // var tab = document.createElement("div");
+    anchor.id = X ; // Tab ID
+    anchor.className = Class; // Tab Classes
+    let tsVar = eval('ts'+TabsIDList[Y]); // Add 'ts' for string
+    tab.innerHTML = fnPickALangTxt(tsVar); // Write labels
+    anchor.appendChild(tab);
+    document.getElementById(Parent).appendChild(anchor);
+  });
+  fnMarkThisTab(); // Check and mark the current URL's match
+  /*- - - - */
+  function fnMarkThisTab() { // Check and mark the current URL's match
+    TabsIDList.forEach( X => {
+      (URLHas(X.toLowerCase())) ? fnActive(document.getElementById(X), Class+'On') : null;
+    })
+  }
+}
+/* - - - - - - - - */
+
+/* Picks up the string in current language-set and returns */
+window.fnPickALangTxt = (arrOfTS) => {
   let Txt = '';
-  Array.isArray(litVar) ? litVar.forEach(lang => { (fnWhatLang()===lang.la) ? (Txt=lang.txt) : null}) : console.log( litVar + ' is not an array');
+  Array.isArray(arrOfTS) ? arrOfTS.forEach( lang => { (fnWhatLang()===lang.la) ? ( Txt = lang.txt ) : null }) : console.log( arrOfTS + " is not an array" );
   return( Txt );
 }
 /* - - - - - - - - */
 
 /* Pushes the picked stings to IDs in HTML page */
-window.fnPush2IDs = ( IDList ) => {
-  /* Note: NBTitle (in HTML) = (tsNBTitle-ts) (in JS) */
-  IDList.forEach( li => { document.getElementById(li.slice(2)).innerHTML = fnPickLangTxt(eval(li)); /* console.log(fnPickLangTxt(eval(li))); */ });
+window.fnPick1Push2IDs = ( IDList ) => {
+  /* Note: IDs in HTML are prefixed with 'ts' in literals JS */
+  IDList.forEach( li => {
+    document.getElementById(li.slice(2)).innerHTML = fnPickALangTxt( eval(li) );
+  });
 }
 /* - - - - - - - - */
 
-/* Picks up title strings from ts-array */
-window.fnDoTitles = () => { fnPush2IDs([ 'tsPageTitle', 'tsNBTitle' ]); }
-/* - - - - - - - - */
-
-/* fnActive | Looks for elements with the same className siblings, marks 'this' element as active. */
+/* Check sibling-elements with the same className; mark 'this' as active. */
 window.fnActive = (Element, ActivClass) => {
   let Class = Element.className.split(" ")[0]; // Get the first className
   Class ? document.querySelectorAll(`.${Class}`).forEach((Item) => { Item.classList.toggle((ActivClass) ? ActivClass : null, Element === Item) }) : null;
@@ -76,13 +106,14 @@ window.fnActive = (Element, ActivClass) => {
 /* - - - - - - - - */
 
 /* Toast Messages */
-window.fnShowToast = function fnShowToast(Msg) {
+window.fnToast = (Msg, Timeout) => {
   const tDiv = document.createElement("div");
   tDiv.id = "idToast"; // For styling
   tDiv.className = "show"; // Add "show" class
   tDiv.innerText = Msg;
   document.body.appendChild(tDiv); // Append to body
-  setTimeout( function(){ tDiv.remove(); }, 2000 ); // Remove div after 2 sec
+  (Timeout) ? null : Timeout=2000; // 2 Sec if not specified
+  setTimeout( function(){ tDiv.remove(); }, Timeout ); // Remove div
 }
 /* - - - - - - - - */
 
@@ -95,7 +126,7 @@ window.WhereamI = () => {
 }
 /* - - - - - - - - */
 
-/* Returns true if URS has the search string */
+/* Check if URL has that string */
 window.URLHas = (string) => {
   if ( window.location.href.indexOf(string) > 0 ) { return(true) }
   return(false);

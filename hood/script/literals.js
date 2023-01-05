@@ -162,22 +162,25 @@ window.tsRegDsclmr = [
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 /* Inner Pages... */
-window.idTabIDs = [ 'TabH', 'TabC','TabG' ]
+window.idTabIDs = [ 'Garlands', 'Gems', 'Favs' ]
 
-window.tsTabH = [
-  { la: 'En', txt: "Tab Label 1" },
+// window.tsTabH = [
+window.tsGarlands = [
+  { la: 'En', txt: "Daasas" },
   { la: 'Ka', txt: "ದಾಸರು" },
   { la: 'Ta', txt: "தாவல் 1" },
   { la: 'Te', txt: "టాబ్ 1"} ]
   
-window.tsTabC = [
-  { la: 'En', txt: "Tab Label 2" },
+// window.tsTabC = [
+window.tsGems = [
+  { la: 'En', txt: "Compositions" },
   { la: 'Ka', txt: "ಕೃತಿಗಳು" },
   { la: 'Ta', txt: "தாவல் 2" },
   { la: 'Te', txt: "టాబ్ 2"} ]
 
-window.tsTabG = [
-  { la: 'En', txt: "Tab Label 3" },
+// window.tsTabG = [
+window.tsFavs = [
+  { la: 'En', txt: "Favorites" },
   { la: 'Ka', txt: "ನೆಚ್ಚಿನವು" },
   { la: 'Ta', txt: "தாவல் 3" },
   { la: 'Te', txt: "టాబ్ 3"} ]

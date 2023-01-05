@@ -104,3 +104,52 @@ function hasKannadaChar(str) {
 /* - - - - - - - - */
 // https://wesbos.com/tagged-template-literals
 /* - - - - - - - - */
+
+
+/*-------------------OBSERVERS-------------------*/
+
+
+function waitForElm(selector) {
+  return new Promise(resolve => {
+      if (document.querySelector(selector)) {
+          return resolve(document.querySelector(selector));
+      }
+
+      const observer = new MutationObserver(mutations => {
+          if (document.querySelector(selector)) {
+              resolve(document.querySelector(selector));
+              observer.disconnect();
+          }
+      });
+
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
+  });
+}
+
+// /* Select a target to observe */
+// const target = document.querySelector('body'); // Select the entire DOM
+// /* Create a new observer instance */
+// const observer = new MutationObserver(function() { //https://openjavascript.info/
+//   if (document.getElementById('Catlg')) {
+//       console.log("The new div was just appended!");
+//       fnPick1Push2IDs([ 'tsCatlg' ]);
+//       // observer.disconnect();
+//   }
+//   if (document.getElementById('Gems')) {
+//       console.log("The new div was just appended!");
+//       fnPick1Push2IDs([ 'tsGems' ]);
+//       // observer.disconnect();
+//   }
+//   if (document.getElementById('Favs')) {
+//       console.log("The new div was just appended!");
+//       fnPick1Push2IDs([ 'tsFavs' ]);
+//       // observer.disconnect();
+//   }
+// });
+// const config = { childList: true }; // Set configuration object
+// observer.observe(target, config); // Start the observer
+// /* - - - - - - - - */
+/*--------------------------------------*/

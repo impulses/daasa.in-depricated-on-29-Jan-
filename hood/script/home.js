@@ -5,7 +5,8 @@
 /* When the window loads */
 window.addEventListener("load", function() {
   console.log('Home.js is now on');
-fnListen4mSubmit(); console.log("DATABASE ACCESS\nPRELUDE\nAND NUMBERS ARE TBD...");
+fnListen4mSubmit();
+// console.log("DATABASE ACCESS\nPRELUDE\nAND NUMBERS ARE TBD...");
 });
 /* - - - - - - - - */
 

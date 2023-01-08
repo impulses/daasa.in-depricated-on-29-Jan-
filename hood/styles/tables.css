@@ -1,0 +1,35 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+/* Tables.css | Tables Styles | 29/12/2022         */
+/* - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+/* clean up this file; it's been copy-pasted... */
+
+@import url("~twigs.css");
+
+#tblWrap {
+  display: grid;
+  background: #FFF;
+  border-radius: 6px;
+  border: 1px solid var(--Border_D);
+
+  grid-column: 1 / span 3;
+  background: #FFF;
+
+  grid: auto 1fr / 1fr;
+  gap: 0;
+}
+
+/* - - - - - - - - Media Queries - - - - - - - - */
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+/* Tablets */
+
+}
+
+@media only screen and (min-width: 375px) and (max-width: 599px) {
+/* Smartphones */
+
+  #tblWrap { grid-column: 1 / span 4; }
+
+}
+/* - - - - - - - - - - - - - - - - */

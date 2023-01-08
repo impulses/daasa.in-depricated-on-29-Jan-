@@ -10,15 +10,15 @@ window.addEventListener("load", function() {
 /* - - - - - - - - */
 
 window.fnWhatLang = () => {
-  (currLang === null) ? currLang = 'Ka' : currLang = localStorage.getItem('currLang'); // Check for last lang, Default to Ka if null
-  localStorage.setItem( 'currLang', currLang ); // Save to localStorage
-  return currLang;
+  (LangNow === null) ? LangNow = 'Ka' : LangNow = localStorage.getItem('LangNow'); // Check for last lang, Default to Ka if null
+  localStorage.setItem( 'LangNow', LangNow ); // Save to localStorage
+  return LangNow;
 }
 /* - - - - - - - - */
 
-window.btnLangIDs = [ 'En','Ka','Ta','Te' ];
-window.btnLabels   = [ 'E', 'ಕ', 'த', 'తె' ];
-let    currLang   = '' // Global. Default to none
+window.btnLangIDs = [ 'En','Kn','Ta','Te' ];
+window.btnLabels  = [ 'E', 'ಕ', 'த', 'తె' ];
+window.LangNow    = '' // Global. Default to none
 /* - - - - - - - - */
 
 /* Create Language Shifter buttons */
@@ -34,7 +34,7 @@ window.fnLanguageShifter = function ( ParentDiv, ElementsList, ClassName, Labels
     /* Listen to LangBtns event */
     btn.addEventListener ( "click", function() {
       fnActive( this, ActiveClass );
-      localStorage.setItem( 'currLang', X ); // Save currLang to localStorage
+      localStorage.setItem( 'LangNow', X ); // Save LangNow to localStorage
       fnToast( fnPickALangTxt(tsLangChanged), 1500 );
       fnExecSequence(); /* To individually handle a sequence */
     });
@@ -50,9 +50,13 @@ function fnExecSequence() {
 //check if I can use the url here above...
     fnFeedHome(); // home.js
     fnFeedForm(); // home.js
+    fnUpdate_Dasaboard(); // heave.js
   } else {
     fnCreateTabs('TabsWrap', idTabIDs, 'aTab'); //Don't show Tabs on home
   }
+  
+  /* Common Functions to be executed */
+  // TBD
 }
 /* - - - - - - - - */
 
@@ -141,4 +145,11 @@ window.URLHas = (string) => {
     fnDimensions(Ele);
   } );
 } */
+/* - - - - - - - - */
+
+/* Pushes the picked stings to IDs in HTML page */
+window.fnValidateVarVal = (Var, Val) => {
+  Array.isArray(Var) ? alert(Var + " is an array") : null;
+  document.getElementById(Var).innerHTML = Val;
+}
 /* - - - - - - - - */

@@ -6,37 +6,32 @@
 
 :root {
   --TabbarHeight: 48px;
-  --icoSize: 20px;
+  --icoSize: 18px;
   --SearchboxHeight: 48px;
   --SearchboxWidth: 640px;
 }
 
-.ctrSrch { /* Search container */
-
-  /* grid-column: 3 / span 4; */
+.SrchWrap { /* Search container */
 
   display: grid;
   grid-template-columns: 4fr auto;
-  /* place-content: center; */
   place-content: stretch;
 
   margin: 0 auto;
   max-width: var(--SearchboxWidth);
   height: var(--SearchboxHeight);
-
-  /* margin: 0; */
   background: #FFF;
   border: 1px solid var(--Border_D);
   border-radius: 8px;
   overflow: hidden;
 }
 
-.ctrSrch:hover, .ctrSrch:focus-within {
+.SrchWrap:hover, .SrchWrap:focus-within {
   border: none;
   box-shadow: var(--shadowSrchBx);
 }
-.ctrSrch:focus-within .SrchIcon { fill: var(--Gray); }
-.ctrSrch:focus-within .ClearSrch { visibility: visible; }
+.SrchWrap:focus-within .icoSearch { fill: var(--Gray); }
+.SrchWrap:focus-within .ClearSrch { visibility: visible; }
 
 .Searchbox, .ClearSrch, .searchButton { background: transparent; }
 
@@ -46,7 +41,7 @@
   font-size: 16px;
   border: 0;
   outline:none;
-  padding: 0 8px;
+  padding: 0 16px;
 }
 
 .ClearSrch {
@@ -75,22 +70,31 @@
 
 .ClearSrch:is(:active, :hover, :focus), .searchButton:is(:active, :hover, :focus) { cursor:pointer; }
 
-.SrchIcon {
+.icoSearch {
   align-self: center;
   justify-self: center;
   height: var(--icoSize);
   width: var(--icoSize);
-  fill: var(--Gray_L);
   z-index:2;
-  /* https://editsvgcode.com/ */
+  fill: var(--Gray_L);
 }
 
 /* - - - - - - - - Media Queries - - - - - - - - */
 @media only screen and ( max-width: 984px ) {}
 /* - - - - */
 @media only screen and ( max-width: 768px ) {
-  /* .ctrSrch { background-color: red !important; } */
+  /* .SrchWrap { background-color: red !important; } */
 }
 /* - - - - */
-@media only screen and ( max-width: 428px ) and ( min-width: 319px ) and (orientation: portrait) {}
+@media only screen and ( max-width: 428px ) and ( min-width: 319px ) and (orientation: portrait) {};
 /* - - - - - - - - - - - - - - - - */
+
+
+/* Search Icon SVG below:
+Original:
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M10 2C14.4183 2 18 5.58172 18 10C18 11.5846 17.5393 13.0616 16.7445 14.3044L21.4946 19.0545C22.1685 19.7283 22.1685 20.8208 21.4946 21.4946C20.8208 22.1685 19.7283 22.1685 19.0545 21.4946L14.3044 16.7445C13.0616 17.5393 11.5846 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2ZM10 16C13.3137 16 16 13.3137 16 10C16 6.68629 13.3137 4 10 4C6.68629 4 4 6.68629 4 10C4 13.3137 6.68629 16 10 16Z"/></g></svg>
+
+Compressed:
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M10 2a8 8 0 0 1 6.744 12.304l4.75 4.75a1.725 1.725 0 1 1-2.44 2.44l-4.75-4.75A8 8 0 1 1 10 2Zm0 14a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/>
+</svg> */

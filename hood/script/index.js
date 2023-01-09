@@ -45,20 +45,16 @@ window.fnLanguageShifter = function ( ParentDiv, ElementsList, ClassName, Labels
 
 /* Execution sequence run by fnLanguageShifter */
 function fnExecSequence() {
-
   fnPick1Push2IDs([ 'tsPageTitle', 'tsNBTitle' ]); // Update HTML & Navbar
   if(document.getElementsByTagName('BODY')[0].id==='pgHome') {
-    //check if I can use the url here above...
+//check if I can use the url here above...
     fnFeedHome(); // home.js
     fnFeedForm(); // home.js
-console.log('Now to run "fnUpdate_Dasaboard"...');
     fnUpdate_Dasaboard(); // heave.js
     } else {
-      fnCreateTabs('TabsWrap', idTabIDs, 'aTab'); //Don't show Tabs on home
+      fnCreateTabs('TabsWrap', idTabIDs, 'aTab'); //No Tabs in home
     }
-    
     /* Common Functions to be executed */
-    // TBD
 }
 /* - - - - - - - - */
 
@@ -108,6 +104,11 @@ window.fnPick1Push2IDs = ( IDList ) => {
 window.fnActive = (Element, ActivClass) => {
   let Class = Element.className.split(" ")[0]; // Get the first className
   Class ? document.querySelectorAll(`.${Class}`).forEach((Item) => { Item.classList.toggle((ActivClass) ? ActivClass : null, Element === Item) }) : null;
+}
+/* - - - - - - - - */
+
+window.fnNoClone = (arrArray) => {
+  return arrArray.filter((itemX, Index) => arrArray.indexOf(itemX) === Index); // https://www.javatpoint.com/removing-duplicate-from-arrays-in-javascript
 }
 /* - - - - - - - - */
 

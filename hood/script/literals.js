@@ -19,6 +19,7 @@ window.tsNBTitle = [
   { la: 'Te', txt: "దాస సాహిత్యం సేకరణ" }
 ]
 
+/* Dasaboard and Cards */
 window.tsLangChanged = [
   { la: 'En', txt: "Let's Read in English" },
   { la: 'Kn', txt: "ಕನ್ನಡದಲ್ಲಿ ಓದೋಣ" },
@@ -40,8 +41,8 @@ window.tsdbSbTtl = [
 window.tsdbWrkSbTtl = [
   { la: 'En', txt: "Masterworks" },
   { la: 'Kn', txt: "ಕೃತಿಗಳು" },
-  { la: 'Ta', txt: "இலக்கியம்" },
-  { la: 'Te', txt: "సాహిత్యం"} ]
+  { la: 'Ta', txt: "படைப்புகள்" }, //இலக்கியங்கள்
+  { la: 'Te', txt: "రచనలు"} ] //సాహిత్యాలు
 
 window.tsSbttlVid = [
   { la: 'En', txt: "Videos" },
@@ -67,6 +68,7 @@ window.tsSbttlCntrbtr = [
   { la: 'Ta', txt: "பங்களிப்பாளர்கள்" },
   { la: 'Te', txt: "సహకారులు"} ]
 
+/* Prelude headers and content */
 window.tsPrelHdg = [
     { la: 'En', txt: "Prelude" },
     { la: 'Kn', txt: "ಮುನ್ನುಡಿ" },

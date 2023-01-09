@@ -45,18 +45,20 @@ window.fnLanguageShifter = function ( ParentDiv, ElementsList, ClassName, Labels
 
 /* Execution sequence run by fnLanguageShifter */
 function fnExecSequence() {
+
   fnPick1Push2IDs([ 'tsPageTitle', 'tsNBTitle' ]); // Update HTML & Navbar
   if(document.getElementsByTagName('BODY')[0].id==='pgHome') {
-//check if I can use the url here above...
+    //check if I can use the url here above...
     fnFeedHome(); // home.js
     fnFeedForm(); // home.js
+console.log('Now to run "fnUpdate_Dasaboard"...');
     fnUpdate_Dasaboard(); // heave.js
-  } else {
-    fnCreateTabs('TabsWrap', idTabIDs, 'aTab'); //Don't show Tabs on home
-  }
-  
-  /* Common Functions to be executed */
-  // TBD
+    } else {
+      fnCreateTabs('TabsWrap', idTabIDs, 'aTab'); //Don't show Tabs on home
+    }
+    
+    /* Common Functions to be executed */
+    // TBD
 }
 /* - - - - - - - - */
 

@@ -2,31 +2,74 @@
 /* heave.js | Reads database info |    12 Dec 2022 */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* -------- Global Declarations --------*/
-/* My web app's Firebase configuration (required ones) */
+/* -------- Firebase Config --------*/
 const firebaseConfig = {
+  /* My web app's Firebase configuration (required ones) */
   apiKey: "AIzaSyAouFH1UMAriF3Pmn1HIzUPdJD2oN2qlWo",
   projectId: "daasa-in"
 };
-/* - - - - - - - - */
 
 /* Import the needed functions from the SDKs */
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 const app = initializeApp(firebaseConfig); // Init Firebase
 import { getFirestore, getDocs, getDoc, doc, query, collection, collectionGroup, where, orderBy } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 const db = getFirestore(); // Get a reference to the service
-/* -------- */
 const glbRootCollection = "Haridasas"; // DB RootCollection
-const LocalDataRef = 'Daasa_Data_Deposit'; // localStorage ref
+/* - - - - - - - - */
+
 /* -------- */
-window.arrDasaID = [];
-window.arrDasas  = []; // Array contents variable, per LangNow
+window.LocalDataRef = 'Daasa_Data_Deposit'; // localStorage ref.
+// Note: UniqueID='Song_En' | AuthorID='Author_En'
+let arrDasaID=[], arrDasas=[], arrSongID=[], arrSongs=[];
+/* -------- */
+
+window.fnList_Dasas_N_IDs = () => { // Returns arrDasaID & arrDasas
+  let LngNw = localStorage.getItem('LangNow');
+// alert(LngNw);
+  let DDD;// DDD = Disk Data Dump
+  DDD = JSON.parse(window.localStorage.getItem(LocalDataRef));
+  arrDasaID = DDD.map((X) => { return(X.Author_En); });
+  // Use [] when you join two variables
+  arrDasas  = DDD.map((X) => { return(X['Author_'+LngNw]); });
+  arrSongID = DDD.map((X) => { return(X.Song_En); });
+  arrSongs  = DDD.map((X) => { return(X['Song_'+LngNw]); });
+// console.table(arrSongID);;
+// console.table(arrSongs);
+  return [ arrDasaID, arrDasas, arrSongID, arrSongs ]; // Return an array
+}
 /* - - - - - - - - */
 
 /* When the window loads */
 window.onload = function() {
+
   fnCheck_for_Data();
-  // fnUpdate_Dasaboard(); // is called in index.js
+
+}
+/* - - - - - - - - */
+
+async function fnCheckifLyricsExist () {
+  //CHECK HOW FAR I CAN USE THE LOCAL DATA...
+  // const QS = query(collection(db, glbRootCollection), where("Song_E", "==", strSongTitle));
+    // const QSinDB = await getDocs(QS);
+    const KTitle = QSinDB.docs.map(doc => doc.data().Song_K);
+    const KAuthor = QSinDB.docs.map(doc => doc.data().Author_K);
+    const xYTLink = QSinDB.docs.map(doc => doc.data().YTLink);
+// check for subcollection
+  const QQ = query(collection(db, glbRootCollection+"/"+strSubCollection+"/Lyrics")); /* All documents, sort by era, for authors */
+    const querySnapshot = await getDocs(QQ);
+
+this.db.collection('users').doc('uid')
+  .get().limit(1).then(
+  doc => {
+    if (doc.exists) {
+      this.db.collection('users').doc('uid').collection('friendsSubcollection').get().
+        then(sub => {
+          if (sub.docs.length > 0) {
+            console.log('subcollection exists');
+          }
+        });
+    }
+  });
 }
 /* - - - - - - - - */
 
@@ -58,76 +101,44 @@ window.qryAuthors = query( collection(db, glbRootCollection), orderBy("Era", "as
 }
 /* - - - - - - - - */
 
-// window.fnNoClone = (arrArray) => {
-//   return arrArray.filter((itemX, Index) => arrArray.indexOf(itemX) === Index); // https://www.javatpoint.com/removing-duplicate-from-arrays-in-javascript
-// }
-// /* - - - - - - - - */
-
 window.fnUpdate_Dasaboard = () => {
-  let arrD = JSON.parse(window.localStorage.getItem(LocalDataRef));
-  let strAuth_LA = 'Author_' + LangNow;
-  // Note: UniqueID='Song_En' | AuthorID='Author_En'
-  arrDasas = arrD.map((X) => { return(X[strAuth_LA]); }); // Use [] when you join two variables
-  arrDasaID  = arrD.map( (X) => { return( X.Author_En ); });
+  fnList_Dasas_N_IDs();
   fnValidateVarVal('dbDasaCount', fnNoClone(arrDasas).length); // Show Dasas count
-  let IDs2Send = fnNoClone(arrDasaID); // HTML element's ID
-  let CountAuthWrk = 0, AllSongsCnt = 0;
-  let arrWrksCnt = [];
+  let CountAuthWrk = 0, AllSongsCnt = 0, arrWrksCnt = [];
   let pDiv = document.getElementById('WorksTable');
-  pDiv.innerHTML='';// Clear table wrapper
-  // Counting works of each arrDasas item 
+  pDiv.innerHTML=''; // Clear table wrapper
+  // Now count works of each arrDasas item 
   fnNoClone(arrDasas).forEach( (aD, i) => {
-    CountAuthWrk = fnGetWrkLst( fnNoClone(arrDasaID)[i], false ); // Receive an author's works count
+    CountAuthWrk = fnGet_Wrks_Lst_or_Cnt( fnNoClone(arrDasaID)[i], false ); // Receive an author's works count
     arrWrksCnt.push( String(CountAuthWrk).padStart(2, '0') ) // Push ## to arrWrksCnt
     AllSongsCnt += CountAuthWrk; // Add to AllSongsCnt
+// console.table( fnGet_Wrks_Lst_or_Cnt( fnNoClone(arrDasaID)[i], true ) );
   })
-  // console.table(arrWrksCnt);
   document.getElementById('dbWrksCount').innerHTML = AllSongsCnt;
   fnFillTable( pDiv, fnNoClone(arrDasaID), fnNoClone(arrDasas), arrWrksCnt );
 }
 /* - - - - - - - - */
 
 // Returns songs list if ReturnSongs is true; else return Count
-window.fnGetWrkLst = (strAuthID, ReturnSongs) => {
+window.fnGet_Wrks_Lst_or_Cnt = (strAuthID, ReturnSongs) => {
+  let LngNw = localStorage.getItem('LangNow');
   const QA = JSON.parse(window.localStorage.getItem(LocalDataRef));
-  // - - - - FILTER - - - -
-  var fltrdAuthor = QA.filter(({ Author_En }) => Author_En === strAuthID); // Filter songs of strAuthID
+
+  // - - - - FILTER JSON - - - -
+  var fltrdAuthor = QA.filter(({Author_En}) => Author_En === strAuthID); // Filter songs of strAuthID
   // - - - -
-  let WCount = 0;
-  let SongsList2Send = [];
+  let WrksCnt = 0, SongsList2Send = [];
   Object.entries(fltrdAuthor).forEach( Sng => {
-    SongsList2Send.push( Sng[1]['Song_' + LangNow] ) // Throw songs in current language
-    WCount++ // Count number of songs
+    SongsList2Send.push( Sng[1]['Song_' + LngNw] ) // Push songs in current language
+    WrksCnt++ // Keep a count of those songs
   });
   if( ReturnSongs == true ) {
     // console.table(fltrdAuthor);
-    console.table( SongsList2Send );
+    // console.table( SongsList2Send );
     return SongsList2Send;
   } else {
-    // console.log(strAuthID +' has '+WCount+' works');
-    return WCount;
+    // console.log(strAuthID +' has '+WrksCnt+' works');
+    return WrksCnt;
   }
-}
-/* - - - - - - - - */
-
-window.fnFillTable = (strWrap, arrRowIDs, arrCol1, arrCol2) => {
-  var tbl = document.createElement("table");
-  var tbdy = document.createElement('tbody');
-  arrRowIDs.forEach( (rwid, x) => {
-    var tr = document.createElement('tr');
-    tr.setAttribute("id", rwid); // To go to garlands page
-    var td1 = document.createElement('td');
-    var td2 = document.createElement('td');
-    td1.innerHTML = arrCol1[x]; // 1st Daasas cell
-    td2.innerHTML = arrCol2[x]; // 2nd Number cell
-    tr.appendChild(td1); tr.appendChild(td2);
-    tbdy.appendChild(tr)
-    tr.addEventListener ( "click", function() {
-// Link function will come here
-fnToast( this.innerText +' will go to garlands page', 1500 );
-    });
-  })
-  tbl.appendChild(tbdy);
-  strWrap.appendChild(tbl);
 }
 /* - - - - - - - - */

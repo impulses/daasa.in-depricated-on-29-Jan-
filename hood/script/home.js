@@ -4,9 +4,7 @@
 
 /* When the window loads */
 window.addEventListener("load", function() {
-// console.log('Home.js is now on');
-fnListen4mSubmit();
-// console.log("DATABASE ACCESS\nPRELUDE\nAND NUMBERS ARE TBD...");
+  fnListen4mSubmit();
 });
 /* - - - - - - - - */
 
@@ -31,7 +29,7 @@ window.fnFeedForm = () => {
 
 function fnListen4mSubmit() {
   const formElem = document.getElementById('frmSignUp');
-  // const formElem = document.querySelector('form'); // Use this for all forms
+  // const formElem = document.querySelector('form'); // Use this for 'all forms'
 
   (formElem) ? // Exists?
     formElem.addEventListener('submit', (e) => {

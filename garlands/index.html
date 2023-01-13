@@ -1,11 +1,12 @@
-<!-- index.html | A Daasa project file | 12 Dec 2022 | Sree */ -->
+<!-- index.html | Garlands: Grouped by Dasas | 12 Dec 2022 -->
 
 <!DOCTYPE html>
 <html lang="en-IN">
 
+  <script type="module" src="/hood/script/garlands.js"></script>
+  <script type="module" src="/hood/script/heave.js"></script>
   <script type="module" src="/hood/script/index.js"></script>
   <script type="module" src="/hood/script/literals.js"></script>
-  <script type="module" src="/hood/script/garlands.js"></script>
 
   <head>
     <meta charset="UTF-8" />
@@ -18,74 +19,26 @@
 
   <body id="pgGarlands">
     <nav id="Navbar">
-      <div id="idNav_L"><div id="NBTitle" onclick="location.href='/';"></div></div>
+      <div id="idNav_L">
+        <div id="NBTitle" onclick="location.href='/';"></div>
+      </div>
+      <div id="TabsWrap" class="Tabbar"></div>
       <div id="idNav_R"></div>
     </nav>
     <main id="Wrapper">
-      <div id="TabsWrap" class="Tabbar">
-        <!-- <div id="Tab1" class="aTab">ದಾಸರು</div>
-        <div id="Tab2" class="aTab">ಕೃತಿಗಳು</div>
-        <div id="Tab3" class="aTab">ಇಷ್ಟದ ಪಟ್ಟಿ</div> -->
-      </div>
+      <!-- <div id="TabsWrap" class="Tabbar"></div> -->
       <div id="Content">
-        <div id="dbHdng" class="Heading mB24">Catalog</div>
-        <div class="SrchWrap mB40">
+        <div class="SrchWrap mB40"> <!-- Searchbar -->
           <form action="" class="FlexR">
-          <!-- <form action=""> -->
             <input type="text" name="q" required tabindex="1" class="Searchbox" placeholder="Search" onblur="this.placeholder='Search'"/>
             <button class="ClearSrch" type="reset"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></button>
             <button type="submit" value="Submit" class="searchButton"><i class="icoSearch"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2a8 8 0 0 1 6.744 12.304l4.75 4.75a1.725 1.725 0 1 1-2.44 2.44l-4.75-4.75A8 8 0 1 1 10 2Zm0 14a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/></svg></i></button>
-            <!-- <button type="submit" value="Submit" class="searchButton"><i class="icoSearch"></i> -->
-            </button>
           </form>
-        </div>
-        <!-- Table 1 -->
-        <div id="dbStats_L">
-        <div class="dbTableHdr">
-
-          <div>
-            <div id="dbDasaCount">ಶ್ರೀಪಾದರಾಜರು</div>
-            <div id="dbSbTtl">ಅವಧಿ 1404 – 1502</div>
-            <!-- <div class="chevron-right"></div> -->
-          </div>
-          <div>
-            <!-- <div id="dbWrksCount">24</div>
-            <div id="dbWrkSbTtl">ಕೃತಿಗಳು</div> -->
-            <!-- <i class="material-icons" style="font-size:24px; color:var(--Gray_M);">unfold_more</i> -->
-            <i class="material-icons" style="font-size:24px; color:var(--Gray_M);">unfold_less</i>
-          </div>
-        </div>
-        <div class="dbWorkList">
-          <table>
-            <tbody>
-              <tr><td>ಶ್ರೀಪಾದರಾಜರು</td>            <td>90</td></tr>
-              <tr><td>ವಾದಿರಾಜ ತೀರ್ಥರು</td>         <td>16</td></tr>
-              <tr><td>ಪುರಂದರದಾಸರು</td>           <td>80</td></tr>
-              <tr><td>ಕನಕದಾಸರು</td>              <td>32</td></tr>
-              <tr><td>ರಾಘವೇಂದ್ರ ತೀರ್ಥರು</td>       <td>60</td></tr>
-              <tr><td>ಪಾಂಡುರಂಗ ವಿಟ್ಠಲದಾಸರು</td>    <td>32</td></tr>
-              <tr><td>ಪ್ರಸನ್ನ ವೆಂಕಟದಾಸರು</td>       <td>16</td></tr>
-              <tr><td>ವಿಜಯದಾಸರು</td>            <td>56</td></tr>
-              <tr><td>ಗೋಪಾಲದಾಸರು</td>          <td>40</td></tr>
-              <tr><td>ಜಗನ್ನಾಥದಾಸರು</td>           <td>24</td></tr>
-              <tr><td>ಹೆಳವನಕಟ್ಟೆ ಗಿರಿಯಮ್ಮ</td>      <td>08</td></tr>
-              <tr><td>ಹರಪನಹಳ್ಳಿ ಭೀಮವ್ವ</td>       <td>20</td></tr>
-              <tr><td>ಗುರು ಜಗನ್ನಾಥದಾಸರು</td>      <td>32</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-        <!-- End Table 1 -->
-
-        <details>
-          <summary><div>
-            Summary header
-          </div></summary>
-          <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
-        </details>
-
-      </div> <!-- End Content -->
+        </div> <!-- End Searchbar -->
+        <div id="tblsGarlands" class="tblGrlnds">
+          <!-- Tables here -->
+        </div> <!-- End Content -->
     </main>
-    <div id="idToast"></div>
   </body>
+
 </html>

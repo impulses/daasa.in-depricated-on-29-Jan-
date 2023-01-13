@@ -4,32 +4,33 @@
 
 /* When the window loads */
 window.addEventListener("load", function() {
-  fnLanguageShifter( 'idNav_R', btnLangIDs, 'btnLang', btnLabels );
+  fnSwitchLang( 'idNav_R', btnLangIDs, 'btnLang', btnLabels );
   fnExecSequence();
 });
 /* - - - - - - - - */
 
-window.fnWhatLang = () => {
-  (LangNow === null) ? LangNow = 'Ka' : LangNow = localStorage.getItem('LangNow'); // Check for last lang, Default to Ka if null
-  localStorage.setItem( 'LangNow', LangNow ); // Save to localStorage
+const btnLangIDs = [ 'En','Kn','Ta','Te' ];
+const btnLabels  = [ 'E', 'ಕ', 'த', 'తె' ];
+let   LangNow    = '' // Global. Default to none
+/* - - - - - - - - */
+
+window.fnWhichLang = () => {
+  (LangNow === null) ? LangNow = 'Ka' :
+  LangNow = localStorage.getItem('LangNow'); // Set Ka if not already stored
+  localStorage.setItem( 'LangNow', LangNow );
   return LangNow;
 }
 /* - - - - - - - - */
 
-window.btnLangIDs = [ 'En','Kn','Ta','Te' ];
-window.btnLabels  = [ 'E', 'ಕ', 'த', 'తె' ];
-window.LangNow    = '' // Global. Default to none
-/* - - - - - - - - */
-
 /* Create Language Shifter buttons */
-window.fnLanguageShifter = function ( ParentDiv, ElementsList, ClassName, Labels ) {
+window.fnSwitchLang = function ( ParentDiv, ElementsList, ClassName, Labels ) {
   let target = document.getElementById(String(ParentDiv));
   let ActiveClass = ClassName+'On';
   ElementsList.forEach( (X, Y) => { // Y is just a counter
     var btn = document.createElement( 'button' );
     btn.id = X ; // ID for button
     btn.className = String(ClassName); //Add Element's Class
-    (fnWhatLang()===ElementsList[Y]) ? btn.classList.add(String(ActiveClass)) : null; // Add Active classname
+    (fnWhichLang()===ElementsList[Y]) ? btn.classList.add(String(ActiveClass)) : null; // Add Active classname
     btn.innerHTML = Labels[Y] ;
     /* Listen to LangBtns event */
     btn.addEventListener ( "click", function() {
@@ -43,18 +44,29 @@ window.fnLanguageShifter = function ( ParentDiv, ElementsList, ClassName, Labels
 }
 /* - - - - - - - - */
 
-/* Execution sequence run by fnLanguageShifter */
+/* Execution sequence run by fnSwitchLang */
 function fnExecSequence() {
-  fnPick1Push2IDs([ 'tsPageTitle', 'tsNBTitle' ]); // Update HTML & Navbar
-  if(document.getElementsByTagName('BODY')[0].id==='pgHome') {
-//check if I can use the url here above...
+  // Update HTML & Navbar for all pages
+  fnPick1Push2IDs([ 'tsPageTitle', 'tsNBTitle' ]);
+  if( WhereAmI() == '' ){
+    // No Tabs in home
     fnFeedHome(); // home.js
     fnFeedForm(); // home.js
     fnUpdate_Dasaboard(); // heave.js
-    } else {
-      fnCreateTabs('TabsWrap', idTabIDs, 'aTab'); //No Tabs in home
-    }
-    /* Common Functions to be executed */
+  }
+  else if( WhereAmI() == 'garlands' || 'gems'|| 'favs' ){
+    fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
+  }
+  // URLHas('garlands') ? console.log('URL has garlands') : null;
+  if( WhereAmI()=='garlands' ){
+    fnAuth_N_Wrks_Tbl(); //garlands
+  }
+  if( WhereAmI()=='gems' ){
+    console.log('gems')
+  }
+  if( WhereAmI()=='favs' ){
+    console.log('favs')
+  }
 }
 /* - - - - - - - - */
 
@@ -62,16 +74,16 @@ function fnExecSequence() {
 window.fnCreateTabs = ( Parent, TabsIDList, Class ) => {
   document.getElementById(Parent).innerHTML=''; // Clear it first
   TabsIDList.forEach( (X, Y) => {
-    var anchor = document.createElement("a");
-    anchor.setAttribute( 'href',"/" + TabsIDList[Y].toLowerCase() + "/" );
+    var tabAnchor = document.createElement("a");
+    tabAnchor.setAttribute( 'href',"/" + TabsIDList[Y].toLowerCase() + "/" );
     var tab = document.createElement("p");
     // var tab = document.createElement("div");
-    anchor.id = X ; // Tab ID
-    anchor.className = Class; // Tab Classes
+    tabAnchor.id = X ; // Tab ID
+    tabAnchor.className = Class; // Tab Classes
     let tsVar = eval('ts'+TabsIDList[Y]); // Add 'ts' for string
     tab.innerHTML = fnPickALangTxt(tsVar); // Write labels
-    anchor.appendChild(tab);
-    document.getElementById(Parent).appendChild(anchor);
+    tabAnchor.appendChild(tab);
+    document.getElementById(Parent).appendChild(tabAnchor);
   });
   fnMarkThisTab(); // Check and mark the current URL's match
   /*- - - - */
@@ -86,7 +98,7 @@ window.fnCreateTabs = ( Parent, TabsIDList, Class ) => {
 /* Picks up the string in current language-set and returns */
 window.fnPickALangTxt = (arrOfTS) => {
   let Txt = '';
-  Array.isArray(arrOfTS) ? arrOfTS.forEach( lang => { (fnWhatLang()===lang.la) ? ( Txt = lang.txt ) : null }) : console.log( arrOfTS + " is not an array" );
+  Array.isArray(arrOfTS) ? arrOfTS.forEach( lang => { (fnWhichLang()===lang.la) ? ( Txt = lang.txt ) : null }) : console.log( arrOfTS + " is not an array" );
   return( Txt );
 }
 /* - - - - - - - - */
@@ -107,6 +119,20 @@ window.fnActive = (Element, ActivClass) => {
 }
 /* - - - - - - - - */
 
+window.fnScroll2ID = () => {
+  let scrl2 = localStorage.getItem( 'Scroll2' );
+  if (scrl2) { // scrollIntoView() doesn't have much control
+    var element = document.getElementById(scrl2);
+    var headerOffset = document.getElementById( 'Navbar' ).offsetHeight+16;
+    var elementPosition = element.getBoundingClientRect().top;
+    var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    window.scrollTo({
+        top: offsetPosition, // behavior: "smooth"
+    });
+  }
+  localStorage.removeItem( 'Scroll2' );
+}
+
 window.fnNoClone = (arrArray) => {
   return arrArray.filter((itemX, Index) => arrArray.indexOf(itemX) === Index); // https://www.javatpoint.com/removing-duplicate-from-arrays-in-javascript
 }
@@ -125,10 +151,10 @@ window.fnToast = (Msg, Timeout) => {
 /* - - - - - - - - */
 
 /* Returns the last segment of the current URL */
-window.WhereamI = () => {
+window.WhereAmI = () => {
   const segments = new URL(window.location.href).pathname.split('/');
   const last = segments.pop() || segments.pop(); //Handle trailing slash
-  console.log(last);
+  // console.log(last);
   return(last);
 }
 /* - - - - - - - - */
@@ -154,5 +180,33 @@ window.URLHas = (string) => {
 window.fnValidateVarVal = (Var, Val) => {
   Array.isArray(Var) ? alert(Var + " is an array") : null;
   document.getElementById(Var).innerHTML = Val;
+}
+/* - - - - - - - - */
+
+window.fnFillTable = (strWrap, arrRowIDs, arrCol1, arrCol2) => {
+  var tbl = document.createElement("table");
+  var tbdy = document.createElement('tbody');
+  arrRowIDs.forEach( (rwid, x) => {
+    var tr = document.createElement('tr');
+    var anchor = document.createElement('a');
+    anchor.setAttribute( 'id', rwid );
+    // anchor.setAttribute( 'href',"/garlands/#" + rwid );
+    anchor.setAttribute( 'href',"/garlands");
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    td1.innerHTML = arrCol1[x]; // 1st Daasas cell
+    td2.innerHTML = arrCol2[x]; // 2nd Number cell
+    anchor.appendChild(td1);
+    anchor.appendChild(td2);
+    tr.appendChild(anchor)
+    tbdy.appendChild(anchor);
+
+    anchor.addEventListener ( "click", function() {
+      // fnScroll2ID( this, this.id );
+      localStorage.setItem( 'Scroll2', this.id ); // Save id to localStorage
+    });
+  })
+  tbl.appendChild(tbdy);
+  strWrap.appendChild(tbl);
 }
 /* - - - - - - - - */

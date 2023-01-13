@@ -6,6 +6,7 @@
 
 :root {
   --dbWrkLstH: 352px;
+  --tblGrlndsH: 448px;
   --CardSpan: repeat( auto-fill, minmax( 176px, 1fr ) );
   --hdbCard: 96px;
   --InfoCardBrdr: 1px solid rgba(0, 0, 0, 0.05);
@@ -28,29 +29,59 @@
   margin-bottom: 24px;
 }
 
-.dbWorkList {
+.dbWorkList { height: var(--dbWrkLstH); }
+/* .tblGrlnds { max-height: var(--tblGrlndsH); } */
+
+.dbWorkList, .tblGrlnds {
   display: grid;
-  height: var(--dbWrkLstH);
   overflow: hidden;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .dbWorkList::-webkit-scrollbar { display: none; }
+.tblGrlnds::-webkit-scrollbar { display: none; }
 
-.dbWorkList table {
+.dbWorkList table, .tblGrlnds table {
   border-collapse: collapse;
   font-size: clamp( 13px, calc( 13px + 1vw), 15px );
 }
-.dbWorkList td { padding: 16px; }
+.dbWorkList td, .tblGrlnds td { padding: 16px; }
 
-.dbWorkList tr:hover td {
+.dbWorkList a, .tblGrlnds a {
+  display: grid;
+  grid: 56px / 1fr auto ;
+  text-decoration: none;
+  color: var(--Txt);
+}
+/* .dbWorkList tr:hover, */
+.dbWorkList a:hover, .tblGrlnds a:hover {
   cursor: pointer;
   color: var(--Blue);
   background: var(--Hover);
 }
+/* .dbWorkList tr:hover td {
+  cursor: pointer;
+  color: var(--Blue);
+  background: var(--Hover);
+} */
 
 #dbStats_L, #dbStats_R > div, .StatCard { border-radius: 6px; }
+
+.tblGrlnds > div {
+  border-radius: 6px; 
+  border: 1px solid var(--Border_D);
+  overflow: hidden;
+}
+.tblGrlnds table {
+  display: grid;
+}
+.tblGrlnds>div div:first-child {
+  display: grid;
+  padding: 24px 16px;
+  background: var(--BG_L);
+  border-bottom: 1px solid var(--Border);
+}
 
 #dbStats_L, .StatCard { border: 1px solid var(--Border_D); }
 

@@ -57,7 +57,7 @@
     box-sizing: border-box;
     letter-spacing: 0.5px;
     line-height: 150%;
-    color: var(--Txt);
+    /* color: var(--Txt); */
 }
 
 html {
@@ -70,10 +70,11 @@ body {
 
 /* html { scroll-behavior: smooth; } */
 
-a, a:hover, a:visited {
+a, a:hover {
     color: var(--Blue);
     text-decoration: none;
 }
+a:visited{ color: inherit; }
 
 ::selection      { color: var(--White); background: var(--Orange); }
 ::-moz-selection { color: var(--White); background: var(--Orange); }

@@ -4,33 +4,53 @@
 
 @import url("~twigs.css");
 
-:root {
-  /* GLOBALS */
+:root { /* GLOBALS */
   --nbHeight:  71px;
-  --nbTitle:   clamp( 15px, calc(14px + 1vw), 20px );
+  --nbTitle:   clamp( 14px, calc(13px + 1vw), 20px );
   --nbPadding: 0px 24px;
+  --NavAndTabbarBG: rgba(255,255,255,0.96);
 }
 
 #Navbar {
-    display: grid;
-    grid: var(--nbHeight) / repeat( auto-fit, minmax(176px, 1fr) );
-    /* gap: 8px; */
-    padding: var(--nbPadding);
-    top: 0;
-    z-index: 100;
-    position: sticky;
-    position: -webkit-sticky;
-    box-sizing: border-box;
-    background: rgba(255,255,255,0.96);
-    border-bottom: var(--Line);
+  display: grid;
+  /* grid: var(--nbHeight) / repeat( auto-fit, minmax(176px, 1fr) ); */ /* Was very good but can't use now */
+  /* gap: 8px; */
+  padding: var(--nbPadding);
+  top: 0;
+  z-index: 100;
+  position: sticky;
+  position: -webkit-sticky;
+  box-sizing: border-box;
+  background: var(--NavAndTabbarBG);
+  border-bottom: var(--Line);
+}
+
+#pgHome #Navbar {
+  grid: var(--nbHeight) / repeat( 2, minmax(176px, 1fr) );
+  /* gap: 8px; */
+  background: var(--NavAndTabbarBG);
+  border-bottom: var(--LineH);
 }
 
 #idNav_L {
   display: grid;
-  grid: 1fr / max-content max-content;
   align-items: center;
-  gap: 8px;
   color: var(--Txt_H);
+}
+
+#pgGarlands #Navbar {
+  /* grid: var(--nbHeight) / repeat( 2, minmax(176px, 1fr) ); */
+  grid: var(--nbHeight) / repeat( 4, minmax(176px, 1fr) );
+}
+
+#pgGarlands #idNav_L {
+  grid-column: 1 / span 1;
+}
+#pgGarlands #TabsWrap {
+  grid-column: 2 / span 2;
+}
+#pgGarlands #idNav_R {
+  grid-column: 4 / span 1;
 }
 
 #NavIco_Wrap {
@@ -97,12 +117,39 @@
 /* - - - - - - - - - - - - - - - - */
 
 /* - - - - - - - - Media Queries - - - - - - - - */
-@media only screen and (max-width: 428px) {
-  #Navbar{
-    grid: auto / repeat( auto-fit, minmax(184px, 1fr) );
-    gap: 0px;
-    padding: 16px;
+@media only screen and (max-width: 992px) and (min-width: 768px) { /* Tablet Landscape */
+  #Navbar { grid: var(--nbHeight) / repeat(4, minmax(176px, 1fr)); }
+  #pgGarlands #idNav_L { grid-row: 1; grid-column: 1/span 2; }
+  #pgGarlands #TabsWrap { grid-row: 2; grid-column: 1/span 4; }
+  #pgGarlands #idNav_R { grid-row: 1; grid-column: 3/span 2;
   }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 600px){ /* Tablets */
+  #pgGarlands #Navbar { grid: var(--nbHeight)/repeat(4, 1fr); }
+  #pgGarlands #idNav_L  { grid-row: 1; grid-column: 1/span 2; }
+  #pgGarlands #TabsWrap { grid-row: 2; grid-column: 1/span 4; }
+  #pgGarlands #idNav_R  { grid-row: 1; grid-column: 3/span 2; }
+}
+
+@media only screen and (max-width: 599px) and (min-width: 428px) { /* mobiles */
+  #pgGarlands #Navbar {
+  /* grid: var(--nbHeight) / repeat(auto-fit, minmax(176px, 1fr)); } */
+  grid: var(--nbHeight) / repeat(4, 1fr); }
+  #pgGarlands #idNav_L  { grid-row: 1; grid-column: 1/span 2; }
+  #pgGarlands #TabsWrap { grid-row: 2; grid-column: 1/span 4; }
+  #pgGarlands #idNav_R  { grid-row: 1; grid-column: 3/span 2; }
+
+  #idNav_R button:not(:first-child) { margin-left: 8px; }
+}
+
+@media only screen and (max-width: 427px) and (min-width: 320px)  { /* small mobiles */
+  #pgGarlands #Navbar {
+    grid: var(--nbHeight) / repeat(4, 1fr); }
+  /* grid: var(--nbHeight) / repeat(auto-fit, minmax(176px, 1fr)); } */
+  #pgGarlands #idNav_L  { grid-row: 1; grid-column: 1/span 2; }
+  #pgGarlands #TabsWrap { grid-row: 2; grid-column: 1/span 4; }
+  #pgGarlands #idNav_R  { grid-row: 1; grid-column: 3/span 2; }
 
   #idNav_R button:not(:first-child) { margin-left: 8px; }
 }

@@ -10,6 +10,7 @@
   1rem     = 16px | 1px = 0.0625rem 
   0.9375rem = 15px
   0.875rem = 14px
+  1.75rem  = 28px
   1.25rem  = 20px
   1.5rem   = 24px
   002rem   = 32px
@@ -31,14 +32,11 @@
   position: -webkit-sticky;
   box-sizing: border-box;
   background: var(--NavAndTabbarBG);
-  border-bottom: var(--Line);
+  border-bottom: var(--LineH);
 }
 
 #pgHome #Navbar {
   grid: var(--nbHeight) / repeat( 2, minmax(176px, 1fr) );
-  /* gap: 8px; */
-  background: var(--NavAndTabbarBG);
-  border-bottom: var(--LineH);
 }
 
 #idNav_L {
@@ -47,18 +45,17 @@
   overflow: hidden;
 }
 
-#pgGarlands #Navbar {
-  /* grid: var(--nbHeight) / repeat( 2, minmax(176px, 1fr) ); */
+/* #Navbar on other than homepage */
+:where( #pgGarlands, #pgGems, #pgFavs ) :is( #Navbar ) {
   grid: var(--nbHeight) / repeat( 4, minmax(176px, 1fr) );
 }
-
-#pgGarlands #idNav_L {
+:where( #pgGarlands, #pgGems, #pgFavs ) :is( #idNav_L ) {
   grid-column: 1 / span 1;
 }
-#pgGarlands #TabsWrap {
+:where( #pgGarlands, #pgGems, #pgFavs ) :is( #TabsWrap ) {
   grid-column: 2 / span 2;
 }
-#pgGarlands #idNav_R {
+:where( #pgGarlands, #pgGems, #pgFavs ) :is( #idNav_R) {
   grid-column: 4 / span 1;
 }
 
@@ -79,9 +76,11 @@
   font-size: var(--nbTitle);
   overflow-wrap: break-word;
   max-width: max-content;
+  height: 100%;
+  display: grid;
+  align-content: center;
   /* color: var(--Txt_H); */
-  /* color: var(--Purple); */
-  color: var(--Primary);
+  color: var(--Purple);
 }
 
 #NBTitle:hover { cursor: pointer; color: var(--Blue_D); }
@@ -101,7 +100,7 @@
 .btnLang {
   display: grid;
   align-items: center;
-  --btnWxH: clamp( 1.5rem, calc(1rem + 2vw ), 2rem);
+  --btnWxH: clamp( 1.75rem, calc(1rem + 2vw ), 2rem);
   width:  var(--btnWxH);
   height: var(--btnWxH);
   font: var(--fEn);
@@ -133,36 +132,26 @@
 /* - - - - - - - - Media Queries - - - - - - - - */
 @media only screen and (max-width: 992px) and (min-width: 768px) { /* Tablet Landscape */
   #Navbar { grid: var(--nbHeight) / repeat(4, minmax(176px, 1fr)); }
-  #pgGarlands #idNav_L { grid-row: 1; grid-column: 1/span 2; }
-  #pgGarlands #TabsWrap { grid-row: 2; grid-column: 1/span 4; }
-  #pgGarlands #idNav_R { grid-row: 1; grid-column: 3/span 2;
+  :where( #pgGarlands, #pgGems, #pgFavs ) :is( #idNav_L ) { grid-row: 1; grid-column: 1/span 2; }
+  :where( #pgGarlands, #pgGems, #pgFavs ) :is( #TabsWrap ) { grid-row: 2; grid-column: 1/span 4; }
+  :where( #pgGarlands, #pgGems, #pgFavs ) :is( #idNav_R ) { grid-row: 1; grid-column: 3/span 2;
   }
 }
 
 /* @media only screen and (max-width: 767px) and (min-width: 600px){ */
   /* Tablets */
 @media only screen and (max-width: 767px) and (min-width: 320px){ /* Tablets */
-  #pgGarlands #Navbar { grid: var(--nbHeight)/repeat(4, 1fr); }
-  #pgGarlands #idNav_L  { grid-row: 1; grid-column: 1/span 2; }
-  #pgGarlands #TabsWrap { grid-row: 2; grid-column: 1/span 4; }
-  #pgGarlands #idNav_R  { grid-row: 1; grid-column: 3/span 2; }
+  :where( #pgGarlands, #pgGems, #pgFavs ) :is( #Navbar ) { grid: var(--nbHeight)/repeat(4, 1fr); }
+  :where( #pgGarlands, #pgGems, #pgFavs ) :is( #idNav_L ) { grid-row: 1; grid-column: 1/span 2; }
+  :where( #pgGarlands, #pgGems, #pgFavs ) :is( #TabsWrap ) { grid-row: 2; grid-column: 1/span 4; }
+  :where( #pgGarlands, #pgGems, #pgFavs ) :is( #idNav_R ) { grid-row: 1; grid-column: 3/span 2; }
 }
 
 @media only screen and (max-width: 599px) and (min-width: 428px) {
-  /* #pgGarlands #Navbar { grid: var(--nbHeight)/repeat(4, 1fr); }
-  #pgGarlands #idNav_L  { grid-row: 1; grid-column: 1/span 2; }
-  #pgGarlands #TabsWrap { grid-row: 2; grid-column: 1/span 4; }
-  #pgGarlands #idNav_R  { grid-row: 1; grid-column: 3/span 2; } */
-
-  #idNav_R button:not(:first-child) { margin-left: 8px; }
+  /* #idNav_R button:not(:first-child) { margin-left: 8px; } */
 }
 
 @media only screen and (max-width: 427px) and (min-width: 320px)  { /* small mobiles */
-  /* #pgGarlands #Navbar { grid: var(--nbHeight)/repeat(4, 1fr); }
-  #pgGarlands #idNav_L  { grid-row: 1; grid-column: 1/span 2; }
-  #pgGarlands #TabsWrap { grid-row: 2; grid-column: 1/span 4; }
-  #pgGarlands #idNav_R  { grid-row: 1; grid-column: 3/span 2; } */
-
-  #idNav_R button:not(:first-child) { margin-left: 8px; }
+  /* #idNav_R button:not(:first-child) { margin-left: 8px; } */
 }
 /* - - - - - - - - - - - - - - - - */

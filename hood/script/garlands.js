@@ -10,15 +10,35 @@ let DasaIDs=[], DasaNms=[], SongIDs=[], SongNms=[];
 window.addEventListener("load", function() {
   fnAuth_N_Wrks_Tbl();
   fnScroll2ID();
+  console.log('I am here... garlands.js');
+  let zx = document.getElementById('NBTitle');
+  zx.innerHTML='';
+  fnRedrawDiv([ 'NBTitle' ]);
+  // location.reload(); // For Safari bug
 });
 /* - - - - - - - - */
+window.fnRedrawDiv = (Ele) => { //For Safari Bug... Huh!
+  // https://www.sitepoint.com/javascript-snippet-force-dom-element-redrawrepaint/
+  var element = document.getElementById(Ele);
+  var x = document.createTextNode('');
+  x.id="xxx";
+  var disp = element.style.display; // Previous display style
+  element.appendChild(x);
+  element.style.display = 'none'; // Hide it momentarily
+  setTimeout( () => {
+    element.style.display = disp;
+    // element.removeAttribute("style");
+    try { x.parentNode.removeChild(x); } catch (err) { }
+    }, 32);
+}
+
 
 // Writes the table in Garlands page
 window.fnAuth_N_Wrks_Tbl = () => {
-  DasaIDs = fnList_Dasas_N_IDs()[0]; // heave.js
-  DasaNms = fnList_Dasas_N_IDs()[1]; // heave.js
-  SongIDs = fnList_Dasas_N_IDs()[2]; // heave.js
-  SongNms = fnList_Dasas_N_IDs()[3]; // heave.js
+  DasaIDs = fnMake_D_W_ID_List()[0]; // heave.js
+  DasaNms = fnMake_D_W_ID_List()[1]; // heave.js
+  SongIDs = fnMake_D_W_ID_List()[2]; // heave.js
+  SongNms = fnMake_D_W_ID_List()[3]; // heave.js
 
   let Wrp = document.getElementById('tblsGarlands');
   Wrp.innerHTML = ''; // Erase for rewriting...
@@ -54,7 +74,6 @@ window.fnAuth_N_Wrks_Tbl = () => {
       tblwrp.appendChild(tbl);
       Wrp.appendChild(tblwrp);
     //-----------
-    // console.log(zz);
   })
 }
 /* - - - - - - - - */

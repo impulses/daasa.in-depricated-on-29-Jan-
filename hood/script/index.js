@@ -4,6 +4,7 @@
 
 /* When the window loads */
 window.addEventListener("load", function() {
+  fnWhichLang();
   fnSwitchLang( 'idNav_R', btnLangIDs, 'btnLang', btnLabels );
   fnExecSequence();
 });
@@ -14,10 +15,13 @@ const btnLabels  = [ 'E', 'ಕ', 'த', 'తె' ];
 let   LangNow    = '' // Global. Default to none
 /* - - - - - - - - */
 
+// Separate this functionality to just check. Set lang shoudl be in another function
 window.fnWhichLang = () => {
-  (LangNow === null) ? LangNow = 'Ka' :
-  LangNow = localStorage.getItem('LangNow'); // Set Ka if not already stored
-  localStorage.setItem( 'LangNow', LangNow );
+  LangNow = localStorage.getItem('LangNow');
+  if( LangNow == null ) {
+    LangNow = 'Kn';
+    localStorage.setItem( 'LangNow', LangNow ) // Set Kn default
+  }
   return LangNow;
 }
 /* - - - - - - - - */
@@ -48,24 +52,29 @@ window.fnSwitchLang = function ( ParentDiv, ElementsList, ClassName, Labels ) {
 function fnExecSequence() {
   // Update HTML & Navbar for all pages
   fnPick1Push2IDs([ 'tsPageTitle', 'tsNBTitle' ]);
-  if( WhereAmI() == '' ){
+  // let H = document.getElementById('pgHome')
+  if( WhereAmI() == '' || WhereAmI()==null ){
     // No Tabs in home
     fnFeedHome(); // home.js
     fnFeedForm(); // home.js
     fnUpdate_Dasaboard(); // heave.js
   }
-  else if( WhereAmI() == 'garlands' || 'gems'|| 'favs' ){
-    fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
-  }
+  // else if( WhereAmI() == 'garlands' || 'gems'|| 'favs' ){
+  //   fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
+  // }
   // URLHas('garlands') ? console.log('URL has garlands') : null;
   if( WhereAmI()=='garlands' ){
+    console.log('garlands')
+    fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
     fnAuth_N_Wrks_Tbl(); //garlands
   }
-  if( WhereAmI()=='gems' ){
+  else if( WhereAmI()=='gems' ){
     console.log('gems')
+    fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
   }
-  if( WhereAmI()=='favs' ){
+  else if( WhereAmI()=='favs' ){
     console.log('favs')
+    fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
   }
 }
 /* - - - - - - - - */
@@ -103,7 +112,7 @@ window.fnPickALangTxt = (arrOfTS) => {
 }
 /* - - - - - - - - */
 
-/* Pushes the picked stings to IDs in HTML page */
+/* Remove 'li' and write to IDs in HTML page */
 window.fnPick1Push2IDs = ( IDList ) => {
   /* Note: IDs in HTML are prefixed with 'ts' in literals JS */
   IDList.forEach( li => {
@@ -121,17 +130,16 @@ window.fnActive = (Element, ActivClass) => {
 
 window.fnScroll2ID = () => {
   let scrl2 = localStorage.getItem( 'Scroll2' );
-  if (scrl2) { // scrollIntoView() doesn't have much control
+  if (scrl2) { // scrollIntoView() has no control
     var element = document.getElementById(scrl2);
-    var headerOffset = document.getElementById( 'Navbar' ).offsetHeight+16;
     var elementPosition = element.getBoundingClientRect().top;
+    var headerOffset = document.getElementById( 'Navbar' ).offsetHeight+16;
     var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    window.scrollTo({
-        top: offsetPosition, // behavior: "smooth"
-    });
+    window.scrollTo({ top: offsetPosition });
   }
   localStorage.removeItem( 'Scroll2' );
 }
+/* - - - - - - - - */
 
 window.fnNoClone = (arrArray) => {
   return arrArray.filter((itemX, Index) => arrArray.indexOf(itemX) === Index); // https://www.javatpoint.com/removing-duplicate-from-arrays-in-javascript
@@ -176,9 +184,9 @@ window.URLHas = (string) => {
 } */
 /* - - - - - - - - */
 
-/* Pushes the picked stings to IDs in HTML page */
-window.fnValidateVarVal = (Var, Val) => {
-  Array.isArray(Var) ? alert(Var + " is an array") : null;
+/* Push strings to IDs in HTML page */
+window.fnShowValue = (Var, Val) => {
+  // Array.isArray(Var) ? alert(Var + " is an array") : null; //Why?
   document.getElementById(Var).innerHTML = Val;
 }
 /* - - - - - - - - */
@@ -202,7 +210,6 @@ window.fnFillTable = (strWrap, arrRowIDs, arrCol1, arrCol2) => {
     tbdy.appendChild(anchor);
 
     anchor.addEventListener ( "click", function() {
-      // fnScroll2ID( this, this.id );
       localStorage.setItem( 'Scroll2', this.id ); // Save id to localStorage
     });
   })

@@ -135,17 +135,17 @@ function waitForElm(selector) {
 // const observer = new MutationObserver(function() { //https://openjavascript.info/
 //   if (document.getElementById('Catlg')) {
 //       console.log("The new div was just appended!");
-//       fnPick1Push2IDs([ 'tsCatlg' ]);
+//       fnPush2HTML([ 'tsCatlg' ]);
 //       // observer.disconnect();
 //   }
 //   if (document.getElementById('Gems')) {
 //       console.log("The new div was just appended!");
-//       fnPick1Push2IDs([ 'tsGems' ]);
+//       fnPush2HTML([ 'tsGems' ]);
 //       // observer.disconnect();
 //   }
 //   if (document.getElementById('Favs')) {
 //       console.log("The new div was just appended!");
-//       fnPick1Push2IDs([ 'tsFavs' ]);
+//       fnPush2HTML([ 'tsFavs' ]);
 //       // observer.disconnect();
 //   }
 // });

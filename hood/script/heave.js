@@ -23,27 +23,56 @@ window.LocalDataRef = 'Daasa_Data_Deposit'; // localStorage ref.
 let arrDasaID=[], arrDasas=[], arrSongID=[], arrSongs=[];
 /* -------- */
 
-window.fnList_Dasas_N_IDs = () => { // Returns arrDasaID & arrDasas
+window.fnMake_D_W_ID_List = () => { // Returns arrDasaID & arrDasas
   let LngNw = localStorage.getItem('LangNow');
-// alert(LngNw);
-  let DDD;// DDD = Disk Data Dump
-  DDD = JSON.parse(window.localStorage.getItem(LocalDataRef));
+  let DDD = JSON.parse( window.localStorage.getItem(LocalDataRef) ); // DDD = Disk Data Dump
+  
+  if(!DDD) { console.log('No data yet') };
+
   arrDasaID = DDD.map((X) => { return(X.Author_En); });
-  // Use [] when you join two variables
-  arrDasas  = DDD.map((X) => { return(X['Author_'+LngNw]); });
+  arrDasas  = DDD.map((X) => { return(X['Author_'+LngNw]); }); // Use [] when you join two variables
   arrSongID = DDD.map((X) => { return(X.Song_En); });
   arrSongs  = DDD.map((X) => { return(X['Song_'+LngNw]); });
-// console.table(arrSongID);;
-// console.table(arrSongs);
+  // console.table(arrSongID);
+  // console.table(arrSongs);
   return [ arrDasaID, arrDasas, arrSongID, arrSongs ]; // Return an array
 }
 /* - - - - - - - - */
 
 /* When the window loads */
 window.onload = function() {
+//CHECK IF THIS NEEDS TO RUN EVERYTIME EVEN WHEN ON OTHER PAGES
+console.log('Inside Heave');
+// if( WhereAmI()=='garlands' ) {
+ fnCheck_for_Data(); }
+// }
+/* - - - - - - - - */
 
-  fnCheck_for_Data();
+async function fnCheck_for_Data() { // Must be async function
+  try {
+    if (window.localStorage.getItem(LocalDataRef) !== null) {
+      (WhereAmI()=='') ? fnUpdate_Dasaboard() : null;
+    } else {
+      window.localStorage.removeItem( LocalDataRef ); // Just in case; clear
+      await fnGet_FSDB_Data(); // Read Firestore Database
+      (WhereAmI()=='') ? fnUpdate_Dasaboard() : null; //If @ home
+    }
+  } catch (error) { console.log(error) }
+}
+/* - - - - - - - - */
 
+/* -------- Fetch the Firestore database content -------- */
+async function fnGet_FSDB_Data() { // Must be async function
+  // - - - -
+  window.qryAuthors = query( collection(db, glbRootCollection), orderBy("Era", "asc") ); /* All docs, sort by author's era */
+  const Snapshot_Auth = await getDocs(qryAuthors); // Fetch all authors
+  // - - - -
+  const QueriedDBData = [];
+  Snapshot_Auth.forEach( doc => {
+    QueriedDBData.push( doc.data() ); // Push to QueriedDBData
+    // console.log( Object.values(doc.data()) );
+  });
+  window.localStorage.setItem( LocalDataRef, JSON.stringify(QueriedDBData) ); // Store in localStorage
 }
 /* - - - - - - - - */
 
@@ -58,8 +87,7 @@ async function fnCheckifLyricsExist () {
   const QQ = query(collection(db, glbRootCollection+"/"+strSubCollection+"/Lyrics")); /* All documents, sort by era, for authors */
     const querySnapshot = await getDocs(QQ);
 
-this.db.collection('users').doc('uid')
-  .get().limit(1).then(
+this.db.collection('users').doc('uid').get().limit(1).then(
   doc => {
     if (doc.exists) {
       this.db.collection('users').doc('uid').collection('friendsSubcollection').get().
@@ -73,37 +101,9 @@ this.db.collection('users').doc('uid')
 }
 /* - - - - - - - - */
 
-async function fnCheck_for_Data() { // Must be async function
-  try {
-    if (window.localStorage.getItem(LocalDataRef) !== null) {
-      // Do nothing if localStorage data exists
-    } else {
-      window.localStorage.clear(); // Just in case; clear
-      localStorage.setItem( 'LangNow', LangNow );
-      await fnGet_FSDB_Data(); // Read Firestore Database
-    }
-  } catch (error) { console.log(error) }
-}
-/* - - - - - - - - */
-
-/* -------- Fetch the Firestore database content -------- */
-async function fnGet_FSDB_Data() { // Must be async function
-window.qryAuthors = query( collection(db, glbRootCollection), orderBy("Era", "asc") ); /* All docs, sort by author's era */
-  const Snapshot_Auth = await getDocs(qryAuthors); // Fetch all authors
-  // - - - -
-  const QueriedDBData = [];
-  // - - - -
-  Snapshot_Auth.forEach( doc => {
-    QueriedDBData.push( doc.data() ); // Push to QueriedDBData
-    // console.log( Object.values(doc.data()) );
-  });
-  window.localStorage.setItem( LocalDataRef, JSON.stringify(QueriedDBData) ); // Store in localStorage
-}
-/* - - - - - - - - */
-
 window.fnUpdate_Dasaboard = () => {
-  fnList_Dasas_N_IDs();
-  fnValidateVarVal('dbDasaCount', fnNoClone(arrDasas).length); // Show Dasas count
+  fnMake_D_W_ID_List();
+  fnShowValue('dbDasaCount', fnNoClone(arrDasas).length); // Show Dasas count
   let CountAuthWrk = 0, AllSongsCnt = 0, arrWrksCnt = [];
   let pDiv = document.getElementById('WorksTable');
   pDiv.innerHTML=''; // Clear table wrapper

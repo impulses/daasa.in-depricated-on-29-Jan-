@@ -64,16 +64,16 @@ function fnExecSequence() {
   // }
   // URLHas('garlands') ? console.log('URL has garlands') : null;
   if( WhereAmI()=='garlands' ){
-    console.log('garlands')
+// console.log('garlands')
     fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
-    fnAuth_N_Wrks_Tbl(); //garlands
+    // fnAuth_N_Wrks_Tbl(); //garlands //this gave kirik opening
   }
   else if( WhereAmI()=='gems' ){
-    console.log('gems')
+// console.log('gems')
     fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
   }
   else if( WhereAmI()=='favs' ){
-    console.log('favs')
+// console.log('favs')
     fnCreateTabs('TabsWrap', idTabIDs, 'aTab');
   }
 }
@@ -135,6 +135,7 @@ window.fnScroll2ID = () => {
     var elementPosition = element.getBoundingClientRect().top;
     var headerOffset = document.getElementById( 'Navbar' ).offsetHeight+16;
     var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    element.open = true;
     window.scrollTo({ top: offsetPosition });
   }
   localStorage.removeItem( 'Scroll2' );

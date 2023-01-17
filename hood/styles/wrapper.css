@@ -9,7 +9,6 @@
   display: grid;
   grid-template-rows: max-content;
   /* grid-template-columns: repeat(auto-fit, minmax(192px, 1fr)); */
-  /* gap: 24px; */
   max-width: var(--wContent);
   min-height: calc( 100vh - var(--nbHeight, 71px) );
   margin-left:  auto;

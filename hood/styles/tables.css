@@ -2,7 +2,6 @@
 /* Tables.css | Tables Styles | 29/12/2022         */
 /* - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
 /* clean up this file; it's been copy-pasted... */
 
 @import url("~twigs.css");
@@ -31,5 +30,65 @@
 
   #tblWrap { grid-column: 1 / span 4; }
 
+}
+/* - - - - - - - - - - - - - - - - */
+
+.Accordion details {
+  overflow: hidden;
+  border: 1px solid var(--Border);
+  border-radius: 6px;
+  /* padding: .5em .5em 0; */
+  margin: 24px 0;
+  background: #FFF;
+}
+
+.Accordion summary {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px;
+  list-style-type: none;
+  outline: none;
+  background: var(--BG_L) !important;
+}
+
+/* Add .details-container div later to scroll */
+/* .Accordion details {
+  --AccordionH: 448px;
+  max-height: var(--AccordionH);
+  overflow-y: scroll;
+} */
+
+summary:is(:hover, :active) { background-color: var(--Hover); color: var(--Blue); /* Note: NO :focus */ }
+details[open] > summary:is(:hover, :active) { background-color: var(--Hover); color: var(--Blue); }
+
+.Accordion::-webkit-scrollbar { display: none; }
+
+details > summary::-webkit-details-marker { display: none; }
+details > summary::after, details[open] > summary::before {
+  color: var(--Gray);
+  font-family: 'Material Icons';
+  font-size: 20px;
+  float: right;
+}
+details >       summary::after { content: 'expand_more'; }
+details[open] > summary::after { content: 'expand_less'  }
+
+details[open] summary {
+    border-bottom: 1px solid var(--Border);
+    /* color: var(--Text); */
+}
+
+/* - - - - - - - - Media Queries - - - - - - - - */
+@media only screen and (min-width: 768px) and (max-width: 992px) { /* Tablet Landscape */}
+@media only screen and (min-width: 600px) and (max-width: 767px) { /* Tablets [992px?]*/
+
+}
+
+@media only screen and (min-width: 375px) and (max-width: 599px) { /* Smartphones */
+.Accordion {
+  margin: 0;
+  /* background: blueviolet !important; */
+}
 }
 /* - - - - - - - - - - - - - - - - */

@@ -26,7 +26,7 @@ let arrDasaID=[], arrDasas=[], arrSongID=[], arrSongs=[];
 window.fnMake_D_W_ID_List = () => { // Returns arrDasaID & arrDasas
   let LngNw = localStorage.getItem('LangNow');
   let DDD = JSON.parse( window.localStorage.getItem(LocalDataRef) ); // DDD = Disk Data Dump
-  
+
   if(!DDD) { console.log('No data yet') };
 
   arrDasaID = DDD.map((X) => { return(X.Author_En); });
@@ -41,11 +41,10 @@ window.fnMake_D_W_ID_List = () => { // Returns arrDasaID & arrDasas
 
 /* When the window loads */
 window.onload = function() {
-//CHECK IF THIS NEEDS TO RUN EVERYTIME EVEN WHEN ON OTHER PAGES
-console.log('Inside Heave');
-// if( WhereAmI()=='garlands' ) {
- fnCheck_for_Data(); }
-// }
+  //CHECK IF THIS NEEDS TO RUN EVERYTIME EVEN ON OTHER PAGES 
+  console.log('Inside Heave [TBD]');
+  fnCheck_for_Data();
+}
 /* - - - - - - - - */
 
 async function fnCheck_for_Data() { // Must be async function

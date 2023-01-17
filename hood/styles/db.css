@@ -6,7 +6,6 @@
 
 :root {
   --dbWrkLstH: 352px;
-  --tblGrlndsH: 448px;
   --CardSpan: repeat( auto-fill, minmax( 176px, 1fr ) );
   --hdbCard: 96px;
   --InfoCardBrdr: 1px solid rgba(0, 0, 0, 0.05);
@@ -30,9 +29,10 @@
 }
 
 .dbWorkList { height: var(--dbWrkLstH); }
-/* .tblGrlnds { max-height: var(--tblGrlndsH); } */
 
-.dbWorkList, .tblGrlnds {
+
+/* .dbWorkList, .Accordion { */
+.dbWorkList {
   display: grid;
   overflow: hidden;
   overflow-y: scroll;
@@ -40,22 +40,22 @@
   scrollbar-width: none;
 }
 .dbWorkList::-webkit-scrollbar { display: none; }
-.tblGrlnds::-webkit-scrollbar { display: none; }
 
-.dbWorkList table, .tblGrlnds table {
+
+.dbWorkList table, .Accordion table {
   border-collapse: collapse;
   font-size: clamp( 13px, calc( 13px + 1vw), 15px );
 }
-.dbWorkList td, .tblGrlnds td { padding: 16px; }
+.dbWorkList td, .Accordion td { padding: 16px; }
 
-.dbWorkList a, .tblGrlnds a {
+.dbWorkList a, .Accordion a {
   display: grid;
   grid: 56px / 1fr auto ;
   text-decoration: none;
   color: var(--Txt);
 }
 /* .dbWorkList tr:hover, */
-.dbWorkList a:hover, .tblGrlnds a:hover {
+.dbWorkList a:hover, .Accordion a:hover {
   cursor: pointer;
   color: var(--Blue);
   background: var(--Hover);
@@ -68,15 +68,15 @@
 
 #dbStats_L, #dbStats_R > div, .StatCard { border-radius: 6px; }
 
-.tblGrlnds > div {
+.Accordion > div {
   border-radius: 6px; 
   border: 1px solid var(--Border_D);
   overflow: hidden;
 }
-.tblGrlnds table {
+.Accordion table {
   display: grid;
 }
-.tblGrlnds>div div:first-child {
+.Accordion>div div:first-child {
   display: grid;
   padding: 24px 16px;
   background: var(--BG_L);
